@@ -1,2 +1,4 @@
 # RestaurApp
-RestaurApp Aplicación móvil para el curso de Desarrollo de Dispositivos para Dispositivos Móviles - UPC - 2015-01
+Aplicación móvil para el curso de "Desarrollo para Dispositivos Móviles"<br /><br />
+UPC<br />
+2015-01
