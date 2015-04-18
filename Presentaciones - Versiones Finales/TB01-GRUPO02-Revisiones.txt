@@ -1,0 +1,3 @@
+- Refinar los objetivos específicos. Tienes que estar relacionados con los requerimientos funcionales.
+- Mejorar el diagrama de arquitectura.
+- Estadísticas sobre población.
