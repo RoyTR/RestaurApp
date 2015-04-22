@@ -1,3 +1,11 @@
-- Refinar los objetivos específicos. Tienes que estar relacionados con los requerimientos funcionales.
-- Mejorar el diagrama de arquitectura.
+- Refinar los objetivos específicos. Tienen que estar relacionados con los requerimientos funcionales.
+
 - Estadísticas sobre población.
+
+
+app web, capa servicios
+
+
+
+- Mejorar el diagrama de arquitectura.
+app->servicio->flickr
