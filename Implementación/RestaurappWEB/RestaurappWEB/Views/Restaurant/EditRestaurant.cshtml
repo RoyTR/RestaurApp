@@ -1,0 +1,59 @@
+﻿@model RestaurappWEB.ViewModel.Restaurant.EditRestaurantViewModel
+
+
+@{
+    ViewBag.Title = "Restaurante";
+}
+
+@section Breadcrumbs{
+    <li><a href="@Url.Action("ListRestaurant", "Restaurant")">Restaurantes</a></li>
+}
+
+
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse" data-sortable-id="form-stuff-5">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                </div>
+                <h4 class="panel-title"><i class="fa fa-building-o"></i>Registrar Restaurant</h4>
+            </div>
+            <div class="panel-body">
+                <form role="form" method="post">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Nombre, new { @class = "control-label" })
+                        @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Nombre)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Descripcion, new { @class = "control-label" })
+                        @Html.TextBoxFor(x => x.Descripcion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Descripcion)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Latitud, new { @class = "control-label" })
+                        @Html.TextBoxFor(x => x.Latitud, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(x => x.Latitud)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Longitud, new { @class = "control-label" })
+                        @Html.TextBoxFor(x => x.Longitud, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Longitud)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.CategoriaId, new { @class = "control-label" })
+                        @Html.DropDownListFor(x => x.CategoriaId, new SelectList(Model.LstCategorias, "id", "nombre", Model.CategoriaId), "[-Seleccione-]", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                        <a class="btn btn-default" href="@Url.Action("ListRestaurant", "Restaurant")"><i class="fa fa-long-arrow-left"></i> Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- end col-6 -->
+</div>
