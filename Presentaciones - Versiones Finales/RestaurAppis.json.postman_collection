@@ -1,0 +1,1630 @@
+{
+	"id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+	"name": "RestaurAppis",
+	"description": "Proyecto de Apis para RestaurApp",
+	"order": [],
+	"folders": [
+		{
+			"id": "a13d2cba-4048-5b3e-3a53-dac4a843daf9",
+			"name": "Categorias",
+			"description": "",
+			"write": true,
+			"order": [
+				"2e317a72-d5b1-59bd-7800-a8b0bca3ce72",
+				"a6f47d82-a7ca-7753-25d3-137ede8ced84",
+				"1d67cf68-96c6-2623-1e85-85a44cdd99ba",
+				"3eb88720-e101-199a-5a13-ed35838d55d8",
+				"1701400c-d37c-d8e6-5102-9688f4b9e6e7",
+				"2e69e784-9f7c-aef9-70de-6387cd0f51d3"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0
+		},
+		{
+			"id": "5b48252e-a6e1-44e8-3999-a8b37ec2b1c5",
+			"name": "Fotos",
+			"description": "",
+			"write": true,
+			"order": [
+				"a2103a0d-ac2c-12e0-8b9e-37158f6f0ad9",
+				"ff116998-357c-0055-713d-564d423d3bf4",
+				"63f118e6-b253-5883-0b59-4e98586f6f51",
+				"46faf3b3-bc70-db2b-2251-211a5e9d9e91"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0
+		},
+		{
+			"id": "6385520e-3165-edf9-6494-f110108b600c",
+			"name": "Grupos",
+			"description": "",
+			"write": true,
+			"order": [
+				"1233ee58-7ed1-e560-f223-dc24b2157f96",
+				"1314c11b-60d9-285e-2709-46f99fbbd7e0",
+				"c9864eb3-fa5b-8ac0-6360-196c8fbf0510",
+				"d4d5cd10-b76d-d740-2ff6-1aec269ab994",
+				"82f3b6ee-d24a-ca1f-8d2c-e883e120bbb7",
+				"cfde4467-c772-f1cd-2af4-6f5e9a35df69",
+				"04aa993f-145a-84d5-571f-0ddd7aeeea14"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0,
+			"collectionId": "57edb077-7552-05c8-4c37-cb39fd751e2e"
+		},
+		{
+			"id": "91b53432-4192-2718-6e5a-116d6932e447",
+			"name": "Preferencias",
+			"description": "",
+			"write": true,
+			"order": [
+				"df8a06c2-30dc-2864-c069-6e3a6ddb346d",
+				"26b4dc54-aebd-ffd3-cebc-8329ca7e9a39",
+				"1d5bbd4e-b397-a8f6-0f1c-54846ce01f80",
+				"b46c0fcc-c34b-7092-8076-95ac7b3f583f",
+				"07728216-eb80-54c9-a528-fe835bb94583"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0
+		},
+		{
+			"id": "9d7211c9-c5af-d016-a3d6-23333efd4865",
+			"name": "Recomendaciones",
+			"description": "",
+			"write": true,
+			"order": [
+				"47a4bd97-d497-d70a-5cc8-c9195844bc8b",
+				"a495b58c-776f-dda4-3553-d8a4fd2392a3",
+				"8d1153cc-f077-f42f-0859-2f6ceab41e63",
+				"40368e42-3e06-71b7-f7b2-39c4ae5d69da",
+				"fb6de71c-3b33-a17f-2edb-308817540b72",
+				"f09137f2-782b-73de-9e73-a74a4963c890"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0
+		},
+		{
+			"id": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4",
+			"name": "Restaurantes",
+			"description": "",
+			"write": true,
+			"order": [
+				"e255aa25-782a-4cdb-0929-3ac3944f641c",
+				"99159890-17fd-a6af-7fcb-9915a82e01e1",
+				"91b55e09-05f4-60b7-9a45-4241685fe50c",
+				"1322a33c-910b-81a2-2783-eff4ddb64a37",
+				"14e1b77a-382a-d086-4d07-3c6046713b2a",
+				"1e02a4bb-f29b-cdeb-ffb8-69b6768ee219",
+				"2aa16b99-1d78-972a-7827-74582edef766"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0,
+			"collectionId": "57edb077-7552-05c8-4c37-cb39fd751e2e"
+		},
+		{
+			"id": "82f16653-cdb0-9dc6-27aa-b27470c16a06",
+			"name": "Usuarios",
+			"description": "",
+			"write": true,
+			"order": [
+				"611c6a64-29af-e077-0899-c57f98ef4707",
+				"d9ae451b-4f7d-68b9-ab5c-e657f28618f2",
+				"730f98de-830b-7ac8-95fd-c27de8f9667f",
+				"26b526a3-36b0-aa41-fcf9-f7d4bab09bce"
+			],
+			"collection_name": "RestaurAppis",
+			"collection_owner": 0,
+			"collection_id": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e",
+			"owner": 0
+		}
+	],
+	"timestamp": 1430707539918,
+	"synced": false,
+	"owner": 0,
+	"sharedWithTeam": false,
+	"subscribed": false,
+	"remoteLink": "",
+	"public": false,
+	"write": true,
+	"requests": [
+		{
+			"id": "04aa993f-145a-84d5-571f-0ddd7aeeea14",
+			"headers": "",
+			"url": "http://restaurapp.app/api/grupos/usuarios/eliminar?usuario_id=3&grupo_id=4",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431847008187,
+			"name": "api/grupos/usuarios/eliminar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "07728216-eb80-54c9-a528-fe835bb94583",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios/2/preferencias?include=detail",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431758862948,
+			"name": "api/usuarios/1/preferencias",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "91b53432-4192-2718-6e5a-116d6932e447"
+		},
+		{
+			"id": "1233ee58-7ed1-e560-f223-dc24b2157f96",
+			"headers": "",
+			"url": "http://restaurapp.app/api/grupos?include=usuarios",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431839139346,
+			"name": "api/grupos",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "1314c11b-60d9-285e-2709-46f99fbbd7e0",
+			"headers": "",
+			"url": "http://restaurapp.app/api/grupos/1?include=usuarios",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "usuario_id",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grupo_id",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431841494239,
+			"name": "api/grupos/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "1322a33c-910b-81a2-2783-eff4ddb64a37",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes/4",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "_method",
+					"value": "PATCH",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nombre",
+					"value": "nombre1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "updated_by",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431733335687,
+			"name": "api/restaurantes/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "14e1b77a-382a-d086-4d07-3c6046713b2a",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes/2",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431733392805,
+			"name": "api/restaurantes/2",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "1701400c-d37c-d8e6-5102-9688f4b9e6e7",
+			"headers": "",
+			"url": "http://restaurapp.app/api/categorias/4",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430712407921,
+			"name": "api/categorias/4",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"write": true,
+			"folder": "a13d2cba-4048-5b3e-3a53-dac4a843daf9",
+			"synced": false,
+			"owner": 0
+		},
+		{
+			"id": "1d5bbd4e-b397-a8f6-0f1c-54846ce01f80",
+			"headers": "",
+			"url": "http://restaurapp.app/api/preferencias/agregar",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "usuario_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "categoria_id",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431758104681,
+			"name": "api/preferencias/agregar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "91b53432-4192-2718-6e5a-116d6932e447"
+		},
+		{
+			"id": "1d67cf68-96c6-2623-1e85-85a44cdd99ba",
+			"headers": "",
+			"url": "http://restaurapp.app/api/categorias/create",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creado",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431732486656,
+			"name": "api/categorias/create",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "a13d2cba-4048-5b3e-3a53-dac4a843daf9"
+		},
+		{
+			"id": "1e02a4bb-f29b-cdeb-ffb8-69b6768ee219",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes/categorias/agregar",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "restaurante_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "categoria_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431843735945,
+			"name": "api/restaurantes/categorias/agregar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "26b4dc54-aebd-ffd3-cebc-8329ca7e9a39",
+			"headers": "",
+			"url": "http://restaurapp.app/api/preferencias/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creadodsdshgh",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431754330329,
+			"name": "api/preferencias/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "91b53432-4192-2718-6e5a-116d6932e447"
+		},
+		{
+			"id": "26b526a3-36b0-aa41-fcf9-f7d4bab09bce",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios/5",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431746327200,
+			"name": "api/usuarios/5",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "82f16653-cdb0-9dc6-27aa-b27470c16a06"
+		},
+		{
+			"id": "2aa16b99-1d78-972a-7827-74582edef766",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes/categorias/eliminar",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "restaurante_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "categoria_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431843770756,
+			"name": "api/restaurantes/categorias/eliminar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "2e317a72-d5b1-59bd-7800-a8b0bca3ce72",
+			"headers": "",
+			"url": "http://restaurapp.app/api/categorias",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431838581854,
+			"name": "api/categorias",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "a13d2cba-4048-5b3e-3a53-dac4a843daf9"
+		},
+		{
+			"id": "2e69e784-9f7c-aef9-70de-6387cd0f51d3",
+			"headers": "",
+			"url": "http://restaurapp.app/api/categorias/1/restaurantes",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431736567210,
+			"name": "api/categorias/1/restaurantes",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "a13d2cba-4048-5b3e-3a53-dac4a843daf9"
+		},
+		{
+			"id": "3eb88720-e101-199a-5a13-ed35838d55d8",
+			"headers": "",
+			"url": "http://restaurapp.app/api/categorias/5",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "_method",
+					"value": "PATCH",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nombre",
+					"value": "nombre",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "updated_by",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431838604414,
+			"name": "api/categorias/5",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "a13d2cba-4048-5b3e-3a53-dac4a843daf9"
+		},
+		{
+			"id": "40368e42-3e06-71b7-f7b2-39c4ae5d69da",
+			"headers": "",
+			"url": "http://restaurapp.app/api/recomendaciones/create",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "comentario",
+					"value": "mi nuevo comentario",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "usuario_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "restaurante_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grupo_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431846285116,
+			"name": "api/recomendaciones/create",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "9d7211c9-c5af-d016-a3d6-23333efd4865"
+		},
+		{
+			"id": "46faf3b3-bc70-db2b-2251-211a5e9d9e91",
+			"headers": "",
+			"url": "http://localhost:8080/restaurappis/public/api/fotos/2",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431753131821,
+			"name": "api/fotos/2",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "5b48252e-a6e1-44e8-3999-a8b37ec2b1c5",
+			"write": true,
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e"
+		},
+		{
+			"id": "47a4bd97-d497-d70a-5cc8-c9195844bc8b",
+			"headers": "",
+			"url": "http://restaurapp.app/api/recomendaciones/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "restaurante_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "categoria_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431845737764,
+			"name": "api/recomendaciones",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "9d7211c9-c5af-d016-a3d6-23333efd4865"
+		},
+		{
+			"id": "611c6a64-29af-e077-0899-c57f98ef4707",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431737878578,
+			"name": "api/usuarios",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "82f16653-cdb0-9dc6-27aa-b27470c16a06"
+		},
+		{
+			"id": "63f118e6-b253-5883-0b59-4e98586f6f51",
+			"headers": "",
+			"url": "http://localhost:8080/restaurappis/public/api/fotos/create",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431754282875,
+			"name": "api/fotos/create",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "5b48252e-a6e1-44e8-3999-a8b37ec2b1c5",
+			"write": true,
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e"
+		},
+		{
+			"id": "730f98de-830b-7ac8-95fd-c27de8f9667f",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios/create",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nombres",
+					"value": "Sasha",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "apellidos",
+					"value": "Arce",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "sarce",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "sasha@mail.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "1234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "is_admin",
+					"value": "No",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431746030590,
+			"name": "api/usuarios/create",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "82f16653-cdb0-9dc6-27aa-b27470c16a06"
+		},
+		{
+			"id": "82f3b6ee-d24a-ca1f-8d2c-e883e120bbb7",
+			"headers": "",
+			"url": "http://restaurapp.app/api/grupos/3",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431841230434,
+			"name": "api/grupos/3",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "8d1153cc-f077-f42f-0859-2f6ceab41e63",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios/2/recomendaciones",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "restaurante_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "categoria_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431846028844,
+			"name": "api/usuarios/1/recomendaciones",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "9d7211c9-c5af-d016-a3d6-23333efd4865"
+		},
+		{
+			"id": "91b55e09-05f4-60b7-9a45-4241685fe50c",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes/create",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creadodsds",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431732686506,
+			"name": "api/restaurantes/create",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "99159890-17fd-a6af-7fcb-9915a82e01e1",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creadodsds",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431733112700,
+			"name": "api/restaurantes/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "a2103a0d-ac2c-12e0-8b9e-37158f6f0ad9",
+			"headers": "",
+			"url": "http://localhost:8080/restaurappis/public/api/fotos",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creadodsds",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431753083955,
+			"name": "api/fotos",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "5b48252e-a6e1-44e8-3999-a8b37ec2b1c5",
+			"write": true,
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e"
+		},
+		{
+			"id": "a495b58c-776f-dda4-3553-d8a4fd2392a3",
+			"headers": "",
+			"url": "http://restaurapp.app/api/recomendaciones/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "restaurante_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "categoria_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431845753105,
+			"name": "api/recomendaciones/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "9d7211c9-c5af-d016-a3d6-23333efd4865"
+		},
+		{
+			"id": "a6f47d82-a7ca-7753-25d3-137ede8ced84",
+			"headers": "",
+			"url": "http://restaurapp.app/api/categorias/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430709268970,
+			"name": "api/categorias/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"write": true,
+			"folder": "a13d2cba-4048-5b3e-3a53-dac4a843daf9",
+			"synced": false,
+			"owner": 0
+		},
+		{
+			"id": "b46c0fcc-c34b-7092-8076-95ac7b3f583f",
+			"headers": "",
+			"url": "http://restaurapp.app/api/preferencias/eliminar?usuario_id=3&categoria_id=3",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431846625511,
+			"name": "api/preferencias/eliminar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "91b53432-4192-2718-6e5a-116d6932e447"
+		},
+		{
+			"id": "c9864eb3-fa5b-8ac0-6360-196c8fbf0510",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios/3/grupos",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431839560310,
+			"name": "api/usuarios/1/grupos",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "cfde4467-c772-f1cd-2af4-6f5e9a35df69",
+			"headers": "",
+			"url": "http://restaurapp.app/api/grupos/usuarios/agregar",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "usuario_id",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grupo_id",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431846988957,
+			"name": "api/grupos/usuarios/agregar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "d4d5cd10-b76d-d740-2ff6-1aec269ab994",
+			"headers": "",
+			"url": "http://restaurapp.app/api/grupos/create",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "Mi nuevo grupo",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431839675074,
+			"name": "api/grupos/create",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "6385520e-3165-edf9-6494-f110108b600c"
+		},
+		{
+			"id": "d9ae451b-4f7d-68b9-ab5c-e657f28618f2",
+			"headers": "",
+			"url": "http://restaurapp.app/api/usuarios/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431745852648,
+			"name": "api/usuarios/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "82f16653-cdb0-9dc6-27aa-b27470c16a06"
+		},
+		{
+			"id": "df8a06c2-30dc-2864-c069-6e3a6ddb346d",
+			"headers": "",
+			"url": "http://restaurapp.app/api/preferencias/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creadodsdshgh",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431754324783,
+			"name": "api/preferencias",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "91b53432-4192-2718-6e5a-116d6932e447"
+		},
+		{
+			"id": "e255aa25-782a-4cdb-0929-3ac3944f641c",
+			"headers": "",
+			"url": "http://restaurapp.app/api/restaurantes",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creado",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "updated_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431731259305,
+			"name": "api/restaurantes",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "caba0bd6-d1ba-fd2d-5108-4717ec2ddce4"
+		},
+		{
+			"id": "f09137f2-782b-73de-9e73-a74a4963c890",
+			"headers": "",
+			"url": "http://restaurapp.app/api/recomendaciones/fotos/eliminar",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "recomendacion_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431847906044,
+			"name": "api/recomendaciones/fotos/eliminar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "9d7211c9-c5af-d016-a3d6-23333efd4865"
+		},
+		{
+			"id": "fb6de71c-3b33-a17f-2edb-308817540b72",
+			"headers": "",
+			"url": "http://restaurapp.app/api/recomendaciones/fotos/agregar",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "recomendacion_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431847983632,
+			"name": "api/recomendaciones/fotos/agregar",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "9d7211c9-c5af-d016-a3d6-23333efd4865"
+		},
+		{
+			"id": "ff116998-357c-0055-713d-564d423d3bf4",
+			"headers": "",
+			"url": "http://localhost:8080/restaurappis/public/api/fotos/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "nombre",
+					"value": "creadodsds",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "latitud",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "longitud",
+					"value": "20000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "descripcion",
+					"value": "descrip",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "puntuacion_total",
+					"value": "6.3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "foto_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "created_by",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1431753103647,
+			"name": "api/fotos/1",
+			"description": "",
+			"collectionId": "384fea6a-c509-605b-7f4f-6874bcdef820",
+			"responses": [],
+			"synced": false,
+			"owner": 0,
+			"folder": "5b48252e-a6e1-44e8-3999-a8b37ec2b1c5",
+			"write": true,
+			"collection": "57edb077-7552-05c8-4c37-cb39fd751e2e"
+		}
+	]
+}
