@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="RestaurAppTheme" parent="@style/_RestaurAppTheme"/>
+
+  <style name="_RestaurAppTheme" parent="Theme.AppCompat.Light">
+
+    <item name="android:editTextBackground">@drawable/restaurapptheme_edit_text_holo_light</item>
+
+    <item name="android:textColorHighlight">#9900ccff</item>
+    <item name="android:textSelectHandleLeft">@drawable/restaurapptheme_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/restaurapptheme_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/restaurapptheme_text_select_handle_middle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewRestaurAppTheme</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/restaurapptheme_btn_check_holo_light</item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/restaurapptheme_btn_radio_holo_light</item>
+
+    <item name="android:buttonStyle">@style/ButtonRestaurAppTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonRestaurAppTheme</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerRestaurAppTheme</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarRestaurAppTheme</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarRestaurAppTheme</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarRestaurAppTheme</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigRestaurAppTheme</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallRestaurAppTheme</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleRestaurAppTheme</item>
+
+    <item name="android:listChoiceBackgroundIndicator">@drawable/restaurapptheme_list_selector_holo_light</item>
+
+    <item name="android:activatedBackgroundIndicator">@drawable/restaurapptheme_activated_background_holo_light</item>
+
+    <item name="android:fastScrollThumbDrawable">@drawable/restaurapptheme_fastscroll_thumb_holo</item>
+
+  </style>
+
+</resources>

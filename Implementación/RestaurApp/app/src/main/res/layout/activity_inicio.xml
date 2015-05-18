@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:background="@color/restaurapptheme_color"
+
+
+    tools:context=".PrincipalActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:src="@drawable/restaurapplogoicon"
+        />
+
+    <Button
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:text="Facebook"
+        android:id="@+id/buttonNuev"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:onClick="Registro"/>
+
+
+    <Button
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:text="Soy Nuevo en RestaurApp"
+        android:id="@+id/button2"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:onClick="Registro"/>
+
+
+    <Button
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:text="Soy Usuario de RestaurApp"
+        android:id="@+id/button3"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:onClick="Login"/>
+</LinearLayout>

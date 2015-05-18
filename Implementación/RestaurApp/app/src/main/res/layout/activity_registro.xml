@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    tools:context="upc.edu.pe.restaurapp.RegistroActivity"
+    android:background="#ffffff"
+    >
+
+    <Button
+        android:layout_width="192dp"
+        android:layout_height="50dp"
+        android:text="Iniciar Sesión"
+        android:id="@+id/regBtnIniciarSesion"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:onClick="irIniciarSesion"
+        />
+
+    <Button
+        android:layout_width="192dp"
+        android:layout_height="50dp"
+        android:text="Registrarse"
+        android:id="@+id/regBtnInacRegist"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/restaurapptheme_color"
+        android:background="@color/colorBtnInactivo"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Nombre"
+        android:ems="10"
+        android:id="@+id/regTextNombre"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@+id/regBtnIniciarSesion"
+        android:layout_alignRight="@+id/regBtnInacRegist"
+        android:layout_alignEnd="@+id/regBtnInacRegist" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textPersonName"
+        android:text="Apellidos"
+        android:ems="10"
+        android:id="@+id/regTextApellido"
+        android:layout_below="@+id/regTextNombre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/regBtnInacRegist"
+        android:layout_alignEnd="@+id/regBtnInacRegist" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/regTextEmail"
+        android:layout_below="@+id/regTextApellido"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/regBtnInacRegist"
+        android:layout_alignEnd="@+id/regBtnInacRegist"
+        android:text="email" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textPersonName"
+        android:text="UserName"
+        android:ems="10"
+        android:id="@+id/regTextUserName"
+        android:layout_below="@+id/regTextEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/regBtnInacRegist"
+        android:layout_alignEnd="@+id/regBtnInacRegist" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/regTextPassword"
+        android:layout_below="@+id/regTextUserName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="asdasd"
+        android:layout_alignRight="@+id/regBtnInacRegist"
+        android:layout_alignEnd="@+id/regBtnInacRegist" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/regTextConfirmPassword"
+        android:text="asdasd"
+        android:layout_below="@+id/regTextPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/regBtnInacRegist"
+        android:layout_alignEnd="@+id/regBtnInacRegist"/>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="Registrarse"
+        android:id="@+id/redBtnRegistrarse"
+        android:layout_marginTop="44dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/regTextConfirmPassword"
+        android:layout_alignRight="@+id/regTextConfirmPassword"
+        android:layout_alignEnd="@+id/regTextConfirmPassword" />
+
+</RelativeLayout>
