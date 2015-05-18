@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="upc.edu.pe.restaurapp.IniciarSesionActivity"
+    android:background="#ffffff"
+    >
+
+    <Button
+        android:layout_width="192dp"
+        android:layout_height="50dp"
+        android:text="Iniciar Sesión"
+        android:id="@+id/inisesBtnInacIniciarSesion"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+
+        android:textColor="@color/restaurapptheme_color"
+        android:background="@color/colorBtnInactivo"
+        />
+
+    <Button
+        android:layout_width="192dp"
+        android:layout_height="50dp"
+        android:text="Registrarse"
+        android:id="@+id/inisesBtnRegist"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:onClick="irRegistrarse"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Nombre de Usuario"
+        android:ems="10"
+        android:id="@+id/inisesTextNombre"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@+id/inisesBtnInacIniciarSesion"
+        android:layout_alignRight="@+id/inisesBtnRegist"
+        android:layout_alignEnd="@+id/inisesBtnRegist" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/inisesTextPassword"
+        android:layout_below="@+id/inisesTextNombre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="asdasd"
+        android:layout_alignRight="@+id/inisesBtnRegist"
+        android:layout_alignEnd="@+id/inisesBtnRegist" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordar"
+        android:id="@+id/checkBox"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/inisesTextPassword"
+        android:layout_alignLeft="@+id/inisesTextPassword"
+        android:layout_alignStart="@+id/inisesTextPassword"
+        android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="¿Olvidaste tu Contraseña?"
+        android:id="@+id/textView"
+        android:layout_marginBottom="30dp"
+        android:layout_alignTop="@+id/checkBox"
+        android:layout_alignRight="@+id/inisesTextPassword"
+        android:layout_alignEnd="@+id/inisesTextPassword" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="Iniciar Sesión"
+        android:id="@+id/redBtnRegistrarse"
+        android:layout_marginTop="75dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/inisesTextPassword"
+        android:layout_alignRight="@+id/inisesTextPassword"
+        android:layout_alignEnd="@+id/inisesTextPassword"
+        android:onClick="IniciarSesion"/>
+
+</RelativeLayout>

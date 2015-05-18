@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AutoCompleteTextViewRestaurAppTheme" parent="android:Widget.Holo.Light.AutoCompleteTextView">
+      <item name="android:dropDownSelector">@drawable/restaurapptheme_list_selector_holo_light</item>
+	    <item name="android:background">@drawable/restaurapptheme_edit_text_holo_light</item>
+  </style>
+
+  <style name="ButtonRestaurAppTheme" parent="android:Widget.Holo.Light.Button">
+	  <item name="android:background">#666666</item>
+      <item name="android:textColor">#ffffff</item>
+  </style>
+
+  <style name="ImageButtonRestaurAppTheme" parent="android:Widget.Holo.Light.ImageButton">
+	  <item name="android:background">@drawable/restaurapptheme_btn_default_holo_light</item>
+  </style>
+
+  <style name="SpinnerRestaurAppTheme" parent="android:Widget.Holo.Light.Spinner">
+      <item name="android:background">@drawable/restaurapptheme_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/restaurapptheme_list_selector_holo_light</item>
+  </style>
+
+  <style name="ProgressBarRestaurAppTheme" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/restaurapptheme_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/restaurapptheme_progress_indeterminate_horizontal_holo_light</item>
+  </style>
+
+  <style name="SeekBarRestaurAppTheme" parent="android:Widget.Holo.Light.SeekBar">
+      <item name="android:progressDrawable">@drawable/restaurapptheme_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/restaurapptheme_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:thumb">@drawable/restaurapptheme_scrubber_control_selector_holo_light</item>
+  </style>
+
+  <style name="RatingBarRestaurAppTheme" parent="android:Widget.Holo.Light.RatingBar">
+      <item name="android:progressDrawable">@drawable/restaurapptheme_ratingbar_full_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/restaurapptheme_ratingbar_full_holo_light</item>
+  </style>
+
+  <style name="RatingBarBigRestaurAppTheme" parent="android:Widget.Holo.Light.RatingBar.Indicator">
+      <item name="android:progressDrawable">@drawable/restaurapptheme_ratingbar_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/restaurapptheme_ratingbar_holo_light</item>
+  </style>
+
+  <style name="RatingBarSmallRestaurAppTheme" parent="android:Widget.Holo.Light.RatingBar.Small">
+      <item name="android:progressDrawable">@drawable/restaurapptheme_ratingbar_small_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/restaurapptheme_ratingbar_small_holo_light</item>
+  </style>
+
+  <style name="ToggleRestaurAppTheme" parent="android:Widget.Holo.Light.Button.Toggle">
+      <item name="android:background">@drawable/restaurapptheme_btn_toggle_holo_light</item>
+  </style>
+
+</resources>

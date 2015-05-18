@@ -1,0 +1,5 @@
+<resources>
+
+    <integer name="SPLASH_SCREEN_DELAY">1500</integer>
+
+</resources>

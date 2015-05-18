@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/restaurapptheme_color">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="10dp"
+        android:maxWidth="34dp"
+        android:scaleType="fitXY"
+        android:id="@+id/actionBarLogo"
+        android:clickable="false"
+        android:focusable="false"
+        android:longClickable="false"
+
+        android:src="@drawable/restaurappactionbar"        />
+
+
+</LinearLayout>
