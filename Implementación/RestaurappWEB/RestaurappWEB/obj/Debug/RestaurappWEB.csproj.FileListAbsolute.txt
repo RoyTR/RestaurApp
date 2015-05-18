@@ -25,3 +25,29 @@ C:\Users\JoséM\Documents\Visual Studio 2012\Projects\RestaurappWEB\RestaurappWE
 C:\Users\JoséM\Documents\Visual Studio 2012\Projects\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.dll
 C:\Users\JoséM\Documents\Visual Studio 2012\Projects\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.pdb
 C:\Users\JoséM\Documents\Visual Studio 2012\Projects\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.csprojResolveAssemblyReference.cache
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\RestaurappWEB.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\RestaurappWEB.pdb
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\en\RestaurappWEB.resources.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\EntityFramework.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\Newtonsoft.Json.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.Helpers.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.Mvc.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.Razor.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Deployment.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Razor.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\EntityFramework.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\Newtonsoft.Json.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.Helpers.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.Mvc.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.Razor.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Deployment.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Razor.xml
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.Globalization.Shared.ValidationStrings.resources
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.Globalization.Shared.ValidationStrings.en.resources
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.csproj.GenerateResource.Cache
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Debug\en\RestaurappWEB.resources.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.dll
+C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Debug\RestaurappWEB.pdb

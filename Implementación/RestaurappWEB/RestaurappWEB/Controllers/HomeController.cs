@@ -77,7 +77,7 @@ namespace RestaurappWEB.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
     }
 }

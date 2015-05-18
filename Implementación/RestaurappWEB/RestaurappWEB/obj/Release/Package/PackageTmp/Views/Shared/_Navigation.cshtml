@@ -1,0 +1,30 @@
+﻿<ul class="nav">
+    <li class="nav-header">Panel de Administración</li>
+    <li class='@(ViewBag.Section == "Dashboard" ? "active" : "")'>
+        <a href='@Url.Action("AdministradorIndex", "Home")'>
+            <i class="fa fa-dashboard"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li class='@(ViewBag.Title == "Usuarios" || ViewBag.Title == "Usuario"  ? "active" : "")'>
+        <a href='@Url.Action("ListUser", "User")'>
+            <i class="fa fa-users"></i>
+            <span>Usuarios</span>
+        </a>
+    </li>
+    <li class='@(ViewBag.Title == "Categorías" || ViewBag.Title == "Categoría"  ? "active" : "")'>
+        <a href='@Url.Action("ListCategory", "Category")'>
+            <i class="fa fa-cutlery"></i>
+            <span>Categorías</span>
+        </a>
+    </li>
+    <li class='@(ViewBag.Title == "Restaurantes" || ViewBag.Title == "Restaurante"  ? "active" : "")'>
+        <a href='@Url.Action("ListRestaurant", "Restaurant")'>
+            <i class="fa fa-building-o"></i>
+            <span>Restaurantes</span>
+        </a>
+    </li>
+    <!-- begin sidebar minify button -->
+    <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+    <!-- end sidebar minify button -->
+</ul>

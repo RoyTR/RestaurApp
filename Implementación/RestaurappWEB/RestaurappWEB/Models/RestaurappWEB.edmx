@@ -4,24 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="restaurapp_devModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="restaurapp_devModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="restaurapp_devModelStoreContainer">
-          <EntitySet Name="categoria" EntityType="restaurapp_devModel.Store.categoria" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="foto" EntityType="restaurapp_devModel.Store.foto" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="grupo" EntityType="restaurapp_devModel.Store.grupo" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="grupo_usuario" EntityType="restaurapp_devModel.Store.grupo_usuario" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="migrations" EntityType="restaurapp_devModel.Store.migrations" store:Type="Tables" store:Schema="restaurapp_dev" store:Name="migrations">
+          <EntitySet Name="categoria" EntityType="restaurapp_devModel.Store.categoria" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="foto" EntityType="restaurapp_devModel.Store.foto" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="grupo" EntityType="restaurapp_devModel.Store.grupo" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="grupo_usuario" EntityType="restaurapp_devModel.Store.grupo_usuario" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="migrations" EntityType="restaurapp_devModel.Store.migrations" store:Type="Tables" store:Schema="restaurapp" store:Name="migrations">
             <DefiningQuery>SELECT
       `migrations`.`migration`, 
       `migrations`.`batch`
       FROM `migrations` AS `migrations`</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="preferencia" EntityType="restaurapp_devModel.Store.preferencia" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="recomendacion" EntityType="restaurapp_devModel.Store.recomendacion" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="recomendacion_foto" EntityType="restaurapp_devModel.Store.recomendacion_foto" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="restaurante" EntityType="restaurapp_devModel.Store.restaurante" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="restaurante_categoria" EntityType="restaurapp_devModel.Store.restaurante_categoria" store:Type="Tables" Schema="restaurapp_dev" />
-          <EntitySet Name="usuario" EntityType="restaurapp_devModel.Store.usuario" store:Type="Tables" Schema="restaurapp_dev" />
+          <EntitySet Name="preferencia" EntityType="restaurapp_devModel.Store.preferencia" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="recomendacion" EntityType="restaurapp_devModel.Store.recomendacion" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="recomendacion_foto" EntityType="restaurapp_devModel.Store.recomendacion_foto" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="restaurante" EntityType="restaurapp_devModel.Store.restaurante" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="restaurante_categoria" EntityType="restaurapp_devModel.Store.restaurante_categoria" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="usuario" EntityType="restaurapp_devModel.Store.usuario" store:Type="Tables" Schema="restaurapp" />
           <AssociationSet Name="categoria_created_by_foreign" Association="restaurapp_devModel.Store.categoria_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="categoria" EntitySet="categoria" />
@@ -168,7 +168,7 @@
           <Property Name="usuario_id" Type="uint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'def.restaurapp_dev.migrations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'def.restaurapp.migrations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="migrations">
           <Key>
@@ -542,8 +542,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="restaurapp_devModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -660,14 +659,14 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="created_by" Type="Int64" Nullable="false" />
-          <Property Name="updated_by" Type="Int64" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="created_by" Nullable="false" />
+          <Property Type="Int64" Name="updated_by" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="deleted_at" Precision="0" />
           <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.categoria_created_by_foreign" FromRole="categoria" ToRole="usuario" />
           <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.categoria_updated_by_foreign" FromRole="categoria" ToRole="usuario" />
           <NavigationProperty Name="preferencia" Relationship="restaurapp_devModel.preferencia_categoria_id_foreign" FromRole="categoria" ToRole="preferencia" />
@@ -677,16 +676,16 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="url" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="url_min" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="formato" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="created_by" Type="Int64" Nullable="false" />
-          <Property Name="updated_by" Type="Int64" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="url" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="url_min" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="formato" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="created_by" Nullable="false" />
+          <Property Type="Int64" Name="updated_by" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="deleted_at" Precision="0" />
           <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.foto_created_by_foreign" FromRole="foto" ToRole="usuario" />
           <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.foto_updated_by_foreign" FromRole="foto" ToRole="usuario" />
           <NavigationProperty Name="recomendacion_foto" Relationship="restaurapp_devModel.recomendacion_foto_foto_id_foreign" FromRole="foto" ToRole="recomendacion_foto" />
@@ -696,13 +695,13 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="created_by" Type="Int64" Nullable="false" />
-          <Property Name="updated_by" Type="Int64" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="created_by" Nullable="false" />
+          <Property Type="Int64" Name="updated_by" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="deleted_at" Precision="0" />
           <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.grupo_created_by_foreign" FromRole="grupo" ToRole="usuario" />
           <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.grupo_updated_by_foreign" FromRole="grupo" ToRole="usuario" />
           <NavigationProperty Name="grupo_usuario" Relationship="restaurapp_devModel.grupo_usuario_grupo_id_foreign" FromRole="grupo" ToRole="grupo_usuario" />
@@ -712,9 +711,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="grupo_id" Type="Int64" Nullable="false" />
-          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="grupo_id" Nullable="false" />
+          <Property Type="Int64" Name="usuario_id" Nullable="false" />
           <NavigationProperty Name="grupo" Relationship="restaurapp_devModel.grupo_usuario_grupo_id_foreign" FromRole="grupo_usuario" ToRole="grupo" />
           <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.grupo_usuario_usuario_id_foreign" FromRole="grupo_usuario" ToRole="usuario" />
         </EntityType>
@@ -723,16 +722,16 @@
             <PropertyRef Name="migration" />
             <PropertyRef Name="batch" />
           </Key>
-          <Property Name="migration" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="batch" Type="Int32" Nullable="false" />
+          <Property Type="String" Name="migration" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="batch" Nullable="false" />
         </EntityType>
         <EntityType Name="preferencia">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="usuario_id" Type="Int64" Nullable="false" />
-          <Property Name="categoria_id" Type="Int64" Nullable="false" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="usuario_id" Nullable="false" />
+          <Property Type="Int64" Name="categoria_id" Nullable="false" />
           <NavigationProperty Name="categoria" Relationship="restaurapp_devModel.preferencia_categoria_id_foreign" FromRole="preferencia" ToRole="categoria" />
           <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.preferencia_usuario_id_foreign" FromRole="preferencia" ToRole="usuario" />
         </EntityType>
@@ -740,17 +739,17 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="comentario" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="puntuacion" Type="Int32" Nullable="false" />
-          <Property Name="usuario_id" Type="Int64" Nullable="false" />
-          <Property Name="restaurante_id" Type="Int64" Nullable="false" />
-          <Property Name="grupo_id" Type="Int64" Nullable="false" />
-          <Property Name="created_by" Type="Int64" Nullable="false" />
-          <Property Name="updated_by" Type="Int64" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="comentario" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="puntuacion" Nullable="false" />
+          <Property Type="Int64" Name="usuario_id" Nullable="false" />
+          <Property Type="Int64" Name="restaurante_id" Nullable="false" />
+          <Property Type="Int64" Name="grupo_id" Nullable="false" />
+          <Property Type="Int64" Name="created_by" Nullable="false" />
+          <Property Type="Int64" Name="updated_by" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="deleted_at" Precision="0" />
           <NavigationProperty Name="grupo" Relationship="restaurapp_devModel.recomendacion_grupo_id_foreign" FromRole="recomendacion" ToRole="grupo" />
           <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.recomendacion_created_by_foreign" FromRole="recomendacion" ToRole="usuario" />
           <NavigationProperty Name="recomendacion_foto" Relationship="restaurapp_devModel.recomendacion_foto_recomendacion_id_foreign" FromRole="recomendacion" ToRole="recomendacion_foto" />
@@ -762,9 +761,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="recomendacion_id" Type="Int64" Nullable="false" />
-          <Property Name="foto_id" Type="Int64" Nullable="false" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="recomendacion_id" Nullable="false" />
+          <Property Type="Int64" Name="foto_id" Nullable="false" />
           <NavigationProperty Name="foto" Relationship="restaurapp_devModel.recomendacion_foto_foto_id_foreign" FromRole="recomendacion_foto" ToRole="foto" />
           <NavigationProperty Name="recomendacion" Relationship="restaurapp_devModel.recomendacion_foto_recomendacion_id_foreign" FromRole="recomendacion_foto" ToRole="recomendacion" />
         </EntityType>
@@ -772,18 +771,18 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="latitud" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="longitud" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="foto_id" Type="Int64" />
-          <Property Name="puntuacion_total" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="created_by" Type="Int64" Nullable="false" />
-          <Property Name="updated_by" Type="Int64" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="latitud" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="longitud" Precision="10" Scale="2" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="foto_id" />
+          <Property Type="Decimal" Name="puntuacion_total" Precision="10" Scale="2" />
+          <Property Type="Int64" Name="created_by" Nullable="false" />
+          <Property Type="Int64" Name="updated_by" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="deleted_at" Precision="0" />
           <NavigationProperty Name="foto" Relationship="restaurapp_devModel.restaurante_foto_id_foreign" FromRole="restaurante" ToRole="foto" />
           <NavigationProperty Name="recomendacion" Relationship="restaurapp_devModel.recomendacion_restaurante_id_foreign" FromRole="restaurante" ToRole="recomendacion" />
           <NavigationProperty Name="restaurante_categoria" Relationship="restaurapp_devModel.restaurante_categoria_restaurante_id_foreign" FromRole="restaurante" ToRole="restaurante_categoria" />
@@ -794,9 +793,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="restaurante_id" Type="Int64" Nullable="false" />
-          <Property Name="categoria_id" Type="Int64" Nullable="false" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="restaurante_id" Nullable="false" />
+          <Property Type="Int64" Name="categoria_id" Nullable="false" />
           <NavigationProperty Name="categoria" Relationship="restaurapp_devModel.restaurante_categoria_categoria_id_foreign" FromRole="restaurante_categoria" ToRole="categoria" />
           <NavigationProperty Name="restaurante" Relationship="restaurapp_devModel.restaurante_categoria_restaurante_id_foreign" FromRole="restaurante_categoria" ToRole="restaurante" />
         </EntityType>
@@ -804,20 +803,20 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="facebook_id" Type="Int64" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="is_admin" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
-          <Property Name="access_token" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="created_by" Type="Int64" Nullable="false" />
-          <Property Name="updated_by" Type="Int64" Nullable="false" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombres" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="facebook_id" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="is_admin" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="access_token" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="created_by" Nullable="false" />
+          <Property Type="Int64" Name="updated_by" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="deleted_at" Precision="0" />
           <NavigationProperty Name="categoria" Relationship="restaurapp_devModel.categoria_created_by_foreign" FromRole="usuario" ToRole="categoria" />
           <NavigationProperty Name="categoria1" Relationship="restaurapp_devModel.categoria_updated_by_foreign" FromRole="usuario" ToRole="categoria" />
           <NavigationProperty Name="foto" Relationship="restaurapp_devModel.foto_created_by_foreign" FromRole="usuario" ToRole="foto" />
@@ -837,8 +836,8 @@
           <NavigationProperty Name="usuario3" Relationship="restaurapp_devModel.usuario_updated_by_foreign" FromRole="usuario1" ToRole="usuario" />
         </EntityType>
         <Association Name="categoria_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="categoria" Type="restaurapp_devModel.categoria" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -849,8 +848,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="categoria_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="categoria" Type="restaurapp_devModel.categoria" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -861,8 +860,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="preferencia_categoria_id_foreign">
-          <End Role="categoria" Type="restaurapp_devModel.categoria" Multiplicity="1" />
-          <End Role="preferencia" Type="restaurapp_devModel.preferencia" Multiplicity="*" />
+          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="1" />
+          <End Type="restaurapp_devModel.preferencia" Role="preferencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id" />
@@ -873,8 +872,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_categoria_categoria_id_foreign">
-          <End Role="categoria" Type="restaurapp_devModel.categoria" Multiplicity="1" />
-          <End Role="restaurante_categoria" Type="restaurapp_devModel.restaurante_categoria" Multiplicity="*" />
+          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="1" />
+          <End Type="restaurapp_devModel.restaurante_categoria" Role="restaurante_categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id" />
@@ -885,8 +884,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="foto_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="foto" Type="restaurapp_devModel.foto" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -897,8 +896,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="foto_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="foto" Type="restaurapp_devModel.foto" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -909,8 +908,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_foto_foto_id_foreign">
-          <End Role="foto" Type="restaurapp_devModel.foto" Multiplicity="1" />
-          <End Role="recomendacion_foto" Type="restaurapp_devModel.recomendacion_foto" Multiplicity="*" />
+          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion_foto" Role="recomendacion_foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="foto">
               <PropertyRef Name="id" />
@@ -921,8 +920,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_foto_id_foreign">
-          <End Role="foto" Type="restaurapp_devModel.foto" Multiplicity="0..1" />
-          <End Role="restaurante" Type="restaurapp_devModel.restaurante" Multiplicity="*" />
+          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="0..1" />
+          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="foto">
               <PropertyRef Name="id" />
@@ -933,8 +932,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="grupo" Type="restaurapp_devModel.grupo" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -945,8 +944,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="grupo" Type="restaurapp_devModel.grupo" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -957,8 +956,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_usuario_grupo_id_foreign">
-          <End Role="grupo" Type="restaurapp_devModel.grupo" Multiplicity="1" />
-          <End Role="grupo_usuario" Type="restaurapp_devModel.grupo_usuario" Multiplicity="*" />
+          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="1" />
+          <End Type="restaurapp_devModel.grupo_usuario" Role="grupo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="grupo">
               <PropertyRef Name="id" />
@@ -969,8 +968,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_grupo_id_foreign">
-          <End Role="grupo" Type="restaurapp_devModel.grupo" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.recomendacion" Multiplicity="*" />
+          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="grupo">
               <PropertyRef Name="id" />
@@ -981,8 +980,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_usuario_usuario_id_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="grupo_usuario" Type="restaurapp_devModel.grupo_usuario" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.grupo_usuario" Role="grupo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -993,8 +992,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="preferencia_usuario_id_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="preferencia" Type="restaurapp_devModel.preferencia" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.preferencia" Role="preferencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1005,8 +1004,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.recomendacion" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1017,8 +1016,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_foto_recomendacion_id_foreign">
-          <End Role="recomendacion" Type="restaurapp_devModel.recomendacion" Multiplicity="1" />
-          <End Role="recomendacion_foto" Type="restaurapp_devModel.recomendacion_foto" Multiplicity="*" />
+          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion_foto" Role="recomendacion_foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="recomendacion">
               <PropertyRef Name="id" />
@@ -1029,8 +1028,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_restaurante_id_foreign">
-          <End Role="restaurante" Type="restaurapp_devModel.restaurante" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.recomendacion" Multiplicity="*" />
+          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="restaurante">
               <PropertyRef Name="id" />
@@ -1041,8 +1040,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.recomendacion" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1053,8 +1052,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_usuario_id_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.recomendacion" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1065,8 +1064,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_categoria_restaurante_id_foreign">
-          <End Role="restaurante" Type="restaurapp_devModel.restaurante" Multiplicity="1" />
-          <End Role="restaurante_categoria" Type="restaurapp_devModel.restaurante_categoria" Multiplicity="*" />
+          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="1" />
+          <End Type="restaurapp_devModel.restaurante_categoria" Role="restaurante_categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="restaurante">
               <PropertyRef Name="id" />
@@ -1077,8 +1076,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="restaurante" Type="restaurapp_devModel.restaurante" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1089,8 +1088,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="restaurante" Type="restaurapp_devModel.restaurante" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1101,8 +1100,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="usuario_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="usuario1" Type="restaurapp_devModel.usuario" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1113,8 +1112,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="usuario_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.usuario" Multiplicity="1" />
-          <End Role="usuario1" Type="restaurapp_devModel.usuario" Multiplicity="*" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="restaurapp_devModel.usuario" Role="usuario1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1124,7 +1123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1133,142 +1132,142 @@
           <EntitySetMapping Name="categoria">
             <EntityTypeMapping TypeName="restaurapp_devModel.categoria">
               <MappingFragment StoreEntitySet="categoria">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="foto">
             <EntityTypeMapping TypeName="restaurapp_devModel.foto">
               <MappingFragment StoreEntitySet="foto">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="url_min" ColumnName="url_min" />
-                <ScalarProperty Name="formato" ColumnName="formato" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="formato" ColumnName="formato" />
+                <ScalarProperty Name="url_min" ColumnName="url_min" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="grupo">
             <EntityTypeMapping TypeName="restaurapp_devModel.grupo">
               <MappingFragment StoreEntitySet="grupo">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="grupo_usuario">
             <EntityTypeMapping TypeName="restaurapp_devModel.grupo_usuario">
               <MappingFragment StoreEntitySet="grupo_usuario">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
                 <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="migrations">
             <EntityTypeMapping TypeName="restaurapp_devModel.migrations">
               <MappingFragment StoreEntitySet="migrations">
-                <ScalarProperty Name="migration" ColumnName="migration" />
                 <ScalarProperty Name="batch" ColumnName="batch" />
+                <ScalarProperty Name="migration" ColumnName="migration" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="preferencia">
             <EntityTypeMapping TypeName="restaurapp_devModel.preferencia">
               <MappingFragment StoreEntitySet="preferencia">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
                 <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="recomendacion">
             <EntityTypeMapping TypeName="restaurapp_devModel.recomendacion">
               <MappingFragment StoreEntitySet="recomendacion">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="comentario" ColumnName="comentario" />
-                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
-                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
-                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
-                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="recomendacion_foto">
             <EntityTypeMapping TypeName="restaurapp_devModel.recomendacion_foto">
               <MappingFragment StoreEntitySet="recomendacion_foto">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="recomendacion_id" ColumnName="recomendacion_id" />
                 <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="recomendacion_id" ColumnName="recomendacion_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="restaurante">
             <EntityTypeMapping TypeName="restaurapp_devModel.restaurante">
               <MappingFragment StoreEntitySet="restaurante">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="latitud" ColumnName="latitud" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
-                <ScalarProperty Name="puntuacion_total" ColumnName="puntuacion_total" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="puntuacion_total" ColumnName="puntuacion_total" />
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="restaurante_categoria">
             <EntityTypeMapping TypeName="restaurapp_devModel.restaurante_categoria">
               <MappingFragment StoreEntitySet="restaurante_categoria">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
                 <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="restaurapp_devModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombres" ColumnName="nombres" />
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="facebook_id" ColumnName="facebook_id" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
-                <ScalarProperty Name="access_token" ColumnName="access_token" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="access_token" ColumnName="access_token" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="facebook_id" ColumnName="facebook_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
