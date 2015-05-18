@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void cambiarCerca(View v){
 
-        setContentView(R.layout.activity_main_cerca);
+        setContentView(R.layout.activity_main_cerca_lista);
 
     }
 
@@ -67,7 +67,23 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void cambiarRecomendaciones(View v){
-        setContentView(R.layout.activity_main_recomendaciones);
+        setContentView(R.layout.activity_main_recomendaciones_recomendados);
+
+    }
+
+
+
+
+
+    public void cambiarCercaMap(View v){
+
+        setContentView(R.layout.activity_main_cerca_mapa);
+
+    }
+
+    public void cambiarRecomendacionesPreferencias(View v){
+
+        setContentView(R.layout.activity_main_recomendaciones_preferencias);
 
     }
 

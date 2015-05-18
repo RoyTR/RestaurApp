@@ -9,6 +9,25 @@
     <string name="title_activity_registro">RegistroActivity</string>
     <string name="title_activity_iniciar_sesion">IniciarSesionActivity</string>
 
+    <string-array name="listaDemo">
+        <item>Shuttle Badminton</item>
+        <item>Tennis</item>
+        <item>FootBall</item>
+        <item>Basket Ball</item>
+        <item>Table Tennis</item>
+        <item>Chess</item>
+        <item>Hockey</item>
+    </string-array>
+    <string-array name="listaDemo2">
+        <item>Jugos</item>
+        <item>Fresas</item>
+        <item>Latas</item>
+        <item>Vasos</item>
+        <item>Tasas</item>
+        <item>Cubiertos</item>
+        <item>Servilletas</item>
+    </string-array>
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_main">MainActivity</string>
 

@@ -30,11 +30,12 @@
         android:layout_toRightOf="@+id/iniBtnBuscar"
         android:layout_toEndOf="@+id/iniBtnBuscar"
         android:textSize="10dp"
-        android:background="@color/colorGrisClaro"
+        android:background="@color/restaurapptheme_color"
         android:textStyle="bold"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
 
+        android:clickable="false"
         android:onClick="cambiarCerca"
         />
 
@@ -47,12 +48,10 @@
         android:layout_toLeftOf="@+id/iniBtnRecomen"
         android:layout_toStartOf="@+id/iniBtnRecomen"
         android:textSize="10dp"
-        android:background="@color/restaurapptheme_color"
+        android:background="@color/colorGrisClaro"
         android:textStyle="bold"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
-
-        android:clickable="false"
         android:onClick="cambiarFavoritos"
         />
 
@@ -69,7 +68,36 @@
         android:textStyle="bold"
         android:layout_marginLeft="1dp"
         android:onClick="cambiarRecomendaciones"
+        />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista"
+        android:id="@+id/mainRecomBtnRecom"
+        android:background="@color/restaurapptheme_color"
+        android:clickable="false"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/iniBtnCerca"
+        android:layout_alignEnd="@+id/iniBtnCerca"
+        android:onClick="cambiarCerca"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mapa"
+        android:id="@+id/mainCercaBtnMap"
+        android:background="@color/colorGrisClaro"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/iniBtnFavo"
+        android:layout_alignStart="@+id/iniBtnFavo"
+        android:onClick="cambiarCercaMap"
         />
 
     <ListView
@@ -78,9 +106,7 @@
         android:id="@+id/listView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:entries="@array/listaDemo2"
+        android:entries="@array/listaDemo"
         android:layout_below="@+id/mainRecomBtnRecom" />
-
-
 
 </RelativeLayout>
