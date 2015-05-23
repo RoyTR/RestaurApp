@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutmainbotonfooter"
+    tools:context="upc.edu.pe.restaurapp.MainActivity"
+
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    style="@style/_RestaurAppTheme"
+    >
+
+    <Button
+        android:id="@+id/mainbtnfterbuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/main_button_footer_buscar"
+        android:background="@color/colorGrisClaro"
+        android:textStyle="bold"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="1dp"
+        android:onClick="cambiarBuscar"
+
+        />
+    <Button
+        android:id="@+id/mainbtnftercerca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/main_button_footer_cerca"
+        android:background="@color/colorGrisClaro"
+        android:textStyle="bold"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:onClick="cambiarCerca"
+        />
+    <Button
+        android:id="@+id/mainbtnfterfavoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/main_button_footer_favoritos"
+        android:background="@color/colorGrisClaro"
+        android:textStyle="bold"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:onClick="cambiarFavoritos"
+        />
+    <Button
+        android:id="@+id/mainbtnfterrecomendaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/main_button_footer_recomendaciones"
+        android:background="@color/colorGrisClaro"
+        android:textStyle="bold"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="1dp"
+        android:onClick="cambiarRecomendaciones"
+        />
+
+</LinearLayout>

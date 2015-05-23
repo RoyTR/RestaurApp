@@ -73,11 +73,13 @@ public class PantallaInicioActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     public void Registro(View v){
-        Intent intent = new Intent(this,RegistroActivity.class);
+        Intent intent = new Intent(this,IniciarSesionActivity.class);
+        intent.putExtra("Destino","Registro");
         startActivity(intent);
     }
     public void Login(View v){
         Intent intent= new Intent(this,IniciarSesionActivity.class);
+        intent.putExtra("Destino","Login");
         startActivity(intent);
 
     }

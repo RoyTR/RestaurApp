@@ -14,8 +14,16 @@ public class IniciarSesionActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciar_sesion);
+
+        Intent intent = getIntent();
+        if(intent.getStringExtra("Destino").equals("Registro") ){
+            setContentView(R.layout.activity_registro);
+        }else{
+            setContentView(R.layout.activity_iniciar_sesion);
+        }
+
 
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.custom_action_bar);
@@ -24,6 +32,8 @@ public class IniciarSesionActivity extends ActionBarActivity {
         actionBar.setBackgroundDrawable(color);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
+
+
     }
 
 
@@ -49,9 +59,15 @@ public class IniciarSesionActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void irRegistrarse(View v){
-        Intent intent = new Intent(this,RegistroActivity.class);
-        startActivity(intent);
+    public void CambiarRegistrarse(View v){
+        setContentView(R.layout.activity_registro);
+
+    }
+
+    public void CambiarIniciarSesion(View v) {
+
+        setContentView(R.layout.activity_iniciar_sesion);
+
     }
 
     public void IniciarSesion(View v) {

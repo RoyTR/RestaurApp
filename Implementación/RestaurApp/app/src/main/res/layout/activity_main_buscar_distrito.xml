@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="upc.edu.pe.restaurapp.MainActivity"
     android:background="@color/colorBlanco"
     >
@@ -12,28 +13,30 @@
         android:layout_alignParentTop="true"
         android:id="@+id/layoutmaincercatop"
         >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Más Recomendados"
-            android:id="@+id/mainRecomBtnRecom"
-            android:background="@color/colorGrisClaro"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:onClick="cambiarRecomendaciones"
-             />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preferencias"
-            android:clickable="false"
-            android:id="@+id/mainRecomBtnPrefer"
+            android:text="Distrito"
+            android:id="@+id/mainBuscarBtnDistrito"
             android:background="@color/restaurapptheme_color"
+            android:clickable="false"
             android:textStyle="bold"
             android:layout_weight="1"
-            android:onClick="cambiarRecomendacionesPreferencias"
-             />
+            android:onClick="cambiarBuscar"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Comida"
+            android:id="@+id/mainBuscarBtnTipoComida"
+            android:background="@color/colorGrisClaro"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:onClick="cambiarBuscarTipoComida"
+            />
+
     </LinearLayout>
 
     <LinearLayout
@@ -42,14 +45,19 @@
         android:orientation="vertical"
         android:layout_below="@+id/layoutmaincercatop"
         android:layout_above="@+id/layoutmaincercabot"
-
         >
+
         <ListView
+            android:id="@+id/ExpdList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listViewRecomendacionesPreferencias"
-        />
+            android:entries="@array/listaDemo"
+            >
+
+            </ListView>
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -66,6 +74,5 @@
             android:id="@+id/mainbotonfooter"
             />
     </LinearLayout>
-
 
 </RelativeLayout>
