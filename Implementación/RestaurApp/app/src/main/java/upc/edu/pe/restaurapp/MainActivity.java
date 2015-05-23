@@ -7,15 +7,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import upc.edu.pe.restaurapp.Adapter.RestauranteAdapter;
+import upc.edu.pe.restaurapp.Entidades.Restaurante;
 
 
 public class MainActivity extends ActionBarActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main_buscar_distrito);
+
+        //Action Bar personalizado
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.custom_action_bar);
         ColorDrawable color = new ColorDrawable();
@@ -23,6 +34,11 @@ public class MainActivity extends ActionBarActivity {
         actionBar.setBackgroundDrawable(color);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
+
+        //Generales
+        Button btnbuscar = (Button) findViewById(R.id.mainbtnfterbuscar);
+        btnbuscar.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+
     }
 
 
@@ -50,41 +66,166 @@ public class MainActivity extends ActionBarActivity {
 
     public void cambiarBuscar(View v){
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_buscar_distrito);
+        Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
+        //TODO expandedList
+    }
+    public void cambiarBuscarTipoComida(View v){
+
+        setContentView(R.layout.activity_main_buscar_tipocomida);
+        Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+
+        //TODO expandedList
     }
 
     public void cambiarCerca(View v){
 
         setContentView(R.layout.activity_main_cerca_lista);
+        Button btn = (Button) findViewById(R.id.mainbtnftercerca);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
+        //Lista
+        ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaCerca(),this);
+        lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
     }
-
-    public void cambiarFavoritos(View v){
-
-        setContentView(R.layout.activity_main_favoritos);
-
-    }
-
-    public void cambiarRecomendaciones(View v){
-        setContentView(R.layout.activity_main_recomendaciones_recomendados);
-
-    }
-
-
-
-
-
     public void cambiarCercaMap(View v){
 
         setContentView(R.layout.activity_main_cerca_mapa);
+        Button btn = (Button) findViewById(R.id.mainbtnftercerca);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+    }
+    public void cambiarFavoritos(View v){
 
+        setContentView(R.layout.activity_main_favoritos);
+        Button btn = (Button) findViewById(R.id.mainbtnfterfavoritos);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+
+        //Lista
+        ListView lstVwRestaurantesFavoritos = (ListView) findViewById(R.id.listViewFavoritos);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaFavoritos(),this);
+        lstVwRestaurantesFavoritos.setAdapter(restauranteAdapter);
+
+    }
+    public void cambiarRecomendaciones(View v){
+
+        setContentView(R.layout.activity_main_recomendaciones_recomendados);
+        Button btn = (Button) findViewById(R.id.mainbtnfterrecomendaciones);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+
+        //Lista
+        ListView lstVwRestaurantesRecomRecomendados = (ListView) findViewById(R.id.listViewRecomendacionesRecomendados);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomRecomendados(),this);
+        lstVwRestaurantesRecomRecomendados.setAdapter(restauranteAdapter);
     }
 
     public void cambiarRecomendacionesPreferencias(View v){
 
         setContentView(R.layout.activity_main_recomendaciones_preferencias);
+        Button btn = (Button) findViewById(R.id.mainbtnfterrecomendaciones);
+        btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
+        //Lista
+        ListView lstVwRestaurantesRecomPreferencias = (ListView) findViewById(R.id.listViewRecomendacionesPreferencias);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomPreferencias(),this);
+        lstVwRestaurantesRecomPreferencias.setAdapter(restauranteAdapter);
+
+    }
+
+
+
+
+
+    private List<Restaurante> ObtenerListaCerca() {
+        List<Restaurante> lst = new ArrayList<Restaurante>();
+
+        //TODO cambiar esta funcion por la real de BD
+        lst = generarDatosPrueba();
+
+        return lst;
+    }
+
+    private List<Restaurante> ObtenerListaFavoritos() {
+        List<Restaurante> lst = new ArrayList<Restaurante>();
+
+        //TODO cambiar esta funcion por la real de BD
+        lst = generarDatosPrueba();
+
+        return lst;
+    }
+
+    private List<Restaurante> ObtenerListaRecomPreferencias() {
+        List<Restaurante> lst = new ArrayList<Restaurante>();
+
+        //TODO cambiar esta funcion por la real de BD
+        lst = generarDatosPrueba();
+
+        return lst;
+    }
+
+    private List<Restaurante> ObtenerListaRecomRecomendados() {
+        List<Restaurante> lst = new ArrayList<Restaurante>();
+
+        //TODO cambiar esta funcion por la real de BD
+        lst = generarDatosPrueba();
+
+        return lst;
+    }
+
+
+
+
+
+
+
+    //TODO: Borrar esta funcion de prueba
+    private List<Restaurante> generarDatosPrueba() {
+        List<Restaurante> lstRest = new ArrayList<Restaurante>();
+
+        Restaurante r1 = new Restaurante();
+        r1.setNombre("Ultima Cena");
+        r1.setDistrito("Ate");
+        r1.setTipoComida("Criolla");
+        r1.setPuntuacionTotal(3.5);
+
+        Restaurante r2 = new Restaurante();
+        r2.setNombre("La tia Veneno");
+        r2.setDistrito("Miraflores");
+        r2.setTipoComida("Mariscos");
+        r2.setPuntuacionTotal(7.3);
+
+        Restaurante r3 = new Restaurante();
+        r3.setNombre("Baigon");
+        r3.setDistrito("Los Olivos");
+        r3.setTipoComida("China");
+        r3.setPuntuacionTotal(5.5);
+
+        Restaurante r4 = new Restaurante();
+        r4.setNombre("Cucarachita");
+        r4.setDistrito("Lince");
+        r4.setTipoComida("Pan");
+        r4.setPuntuacionTotal(8.9);
+
+        Restaurante r5 = new Restaurante();
+        r5.setNombre("Pantalones Fritos");
+        r5.setDistrito("San Miguel");
+        r5.setTipoComida("Frituras");
+        r5.setPuntuacionTotal(7.4);
+
+        lstRest.add(r1);
+        lstRest.add(r2);
+        lstRest.add(r3);
+        lstRest.add(r4);
+        lstRest.add(r5);
+        lstRest.add(r1);
+        lstRest.add(r2);
+        lstRest.add(r3);
+        lstRest.add(r4);
+
+        return lstRest;
     }
 
 
