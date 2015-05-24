@@ -1,42 +1,27 @@
 package upc.edu.pe.restaurapp;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.os.Handler;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
+import android.view.View;
 
 
-public class SplashScreenActivity extends Activity {
+public class LoginMainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        setContentView(R.layout.activity_splash_screen);
-
-        int delay = 3000;
-
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public  void run(){
-                startActivity(new Intent(SplashScreenActivity.this,LoginMainActivity.class));
-                finish();
-            }
-        }, delay );
-
+        setContentView(R.layout.activity_login_main);
+        getSupportActionBar().hide();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash_screen, menu);
+        getMenuInflater().inflate(R.menu.menu_login_main, menu);
         return true;
     }
 
@@ -53,5 +38,17 @@ public class SplashScreenActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void Registro(View v){
+        Intent intent = new Intent(this,IniciarSesionActivity.class);
+        intent.putExtra("Destino","Registro");
+        startActivity(intent);
+    }
+    public void Login(View v){
+        Intent intent= new Intent(this,IniciarSesionActivity.class);
+        intent.putExtra("Destino","Login");
+        startActivity(intent);
+
     }
 }

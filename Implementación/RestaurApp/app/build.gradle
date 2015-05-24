@@ -4,6 +4,10 @@ android {
     compileSdkVersion 21
     buildToolsVersion "22.0.0"
 
+    repositories{
+        mavenCentral()
+    }
+
     defaultConfig {
         applicationId "upc.edu.pe.restaurapp"
         minSdkVersion 15
@@ -17,10 +21,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
-//NUEVO
-repositories{
-    mavenCentral()
 }
 
 dependencies {
