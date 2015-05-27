@@ -13,15 +13,10 @@
     <string name="main_button_footer_favoritos">Favs</string>
     <string name="main_button_footer_recomendaciones">Recom</string>
 
-
-
-
-
-
-
-
-
-
+    <string name="action_search">Buscar</string>
+    <string name="action_perfil">Perfil</string>
+    <string name="action_contactos">Contactos</string>
+    <string name="action_about">About</string>
 
     <string-array name="listaDemo">
         <item>Shuttle Badminton</item>
@@ -60,5 +55,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_restaurante">Restaurante</string>
     <string name="title_activity_login_main">LoginMainActivity</string>
+    <string name="title_activity_usuario">UsuarioActivity</string>
+    <string name="title_activity_contactos">ContactosActivity</string>
 
 </resources>
