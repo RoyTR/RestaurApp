@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.edu.pe.restaurapp.RestauranteActivity"
+    android:background="@color/colorBlanco">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_top_layout"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/imgrestaurantedemo"/>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_info_layout"
+        android:layout_below="@+id/restaurante_top_layout"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/restaurante_txt_nombre"
+                android:text="DATOS"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/restaurante_txt_distrito"
+                android:text="DATOS"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurante_txt_tipocomida"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="DATOS"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/restaurante_txt_puntaje"
+                android:textColor="@color/colorVerdePuntaje"
+                android:textStyle="bold"
+                android:text="DATOS"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Puntuación"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal">
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_comentarios_layout"
+        android:layout_below="@+id/restaurante_info_layout"
+        android:layout_above="@+id/restaurante_bot_layout"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/restaurante_lista_comentarios"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/listaDemo"/>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_bot_layout"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Recomendar"
+            android:textStyle="bold"
+            android:background="@color/restaurapptheme_color"
+            android:onClick="irRecomendar"/>
+
+        </LinearLayout>
+
+</RelativeLayout>
