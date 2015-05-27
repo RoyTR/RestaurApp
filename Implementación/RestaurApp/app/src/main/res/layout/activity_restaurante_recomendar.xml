@@ -1,0 +1,249 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.edu.pe.restaurapp.RestauranteActivity"
+    android:background="@color/colorBlanco">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_top_layout"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/imgrestaurantedemo"/>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_info_layout"
+        android:layout_below="@+id/restaurante_top_layout"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/restaurante_txt_nombre"
+                android:text="DATOS"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/restaurante_txt_distrito"
+                android:text="DATOS"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurante_txt_tipocomida"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="DATOS"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/restaurante_txt_puntaje"
+                android:textColor="@color/colorVerdePuntaje"
+                android:textStyle="bold"
+                android:text="DATOS"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Puntuación"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal">
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_comentarios_layout"
+        android:layout_below="@+id/restaurante_info_layout"
+        android:layout_above="@+id/restaurante_bot_layout"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/restaurante_rec_separador"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurante_rec_layout_recomendar"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/restaurante_rec_separador">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Recomendar:"
+                android:gravity="center_horizontal"
+                android:id="@+id/restaurante_txtvw_recomendar"/>
+            </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Calificacion:"
+            android:id="@+id/restaurante_txtvw_calificacion"
+            android:layout_below="@+id/restaurante_rec_layout_recomendar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurante_rec_ratingBar"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:layout_alignTop="@+id/restaurante_txtvw_calificacion"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Comentarios:"
+            android:id="@+id/restaurante_txtvw_comentario"
+            android:layout_below="@+id/restaurante_rec_ratingBar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/restaurante_rec_comentarios"
+            android:layout_alignTop="@+id/restaurante_txtvw_comentario"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Fotografia:"
+            android:id="@+id/restaurante_txtvw_foto"
+            android:layout_below="@+id/restaurante_rec_comentarios"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurante_rec_layout_foto"
+            android:orientation="horizontal"
+            android:layout_alignTop="@+id/restaurante_txtvw_foto"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Foto"
+                android:id="@+id/restaurante_rec_btn_foto"
+                android:onClick="AbrirCamara"
+                />
+            </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Visibilidad"
+            android:id="@+id/restaurante_txtvw_visibilidad"
+            android:layout_below="@+id/restaurante_rec_layout_foto"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurante_rec_layout_visibilidad"
+            android:layout_alignTop="@+id/restaurante_txtvw_visibilidad"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurante_rec_rdiogroup_visibilidad">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurante_rec_rdiobtn_publica"
+                    android:text="Publica"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurante_rec_rdiobtn_contactos"
+                    android:text="Contactos"/>
+                </RadioGroup>
+            </LinearLayout>
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_bot_layout"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Postear en Facebook"
+            android:background="@color/colorFacebook"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eviar Recomendacion"
+            android:id="@+id/restaurante_btn_enviar_recomend"
+            android:background="@color/restaurapptheme_color"/>
+
+        </LinearLayout>
+
+</RelativeLayout>

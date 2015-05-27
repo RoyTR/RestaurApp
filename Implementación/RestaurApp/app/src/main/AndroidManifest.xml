@@ -3,6 +3,9 @@
     package="upc.edu.pe.restaurapp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera2"/>
+
 
     <application
         android:allowBackup="true"
@@ -44,6 +47,15 @@
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:label="@string/app_name" />
+        </activity>
+        <activity
+            android:name=".UsuarioActivity"
+            android:label="@string/title_activity_usuario" >
+        </activity>
+        <activity
+            android:name=".ContactosActivity"
+            android:label="@string/title_activity_contactos" >
+        </activity>
     </application>
 
 </manifest>

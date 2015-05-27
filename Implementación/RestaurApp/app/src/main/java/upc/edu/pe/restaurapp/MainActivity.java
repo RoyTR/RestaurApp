@@ -1,5 +1,7 @@
 package upc.edu.pe.restaurapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -23,7 +26,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main_buscar_distrito);
 
         //Action Bar personalizado
@@ -54,14 +56,18 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()){
+            case R.id.action_settings:
+                return true;
+            case R.id.action_perfil:
+                irUsuario(findViewById(R.id.action_perfil));
+                return true;
+            case R.id.action_contactos:
+                irContactos(findViewById(R.id.action_contactos));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void cambiarBuscar(View v){
@@ -80,7 +86,6 @@ public class MainActivity extends ActionBarActivity {
 
         //TODO expandedList
     }
-
     public void cambiarCerca(View v){
 
         setContentView(R.layout.activity_main_cerca_lista);
@@ -91,6 +96,25 @@ public class MainActivity extends ActionBarActivity {
         ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
         RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaCerca(),this);
         lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
+
+        //Listener
+        lstVwRestaurantesCerca.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Distrito",restaurante.getDistrito());
+                bundle.putString("TipoComida",restaurante.getTipoComida());
+                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
     }
     public void cambiarCercaMap(View v){
 
@@ -109,6 +133,24 @@ public class MainActivity extends ActionBarActivity {
         RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaFavoritos(),this);
         lstVwRestaurantesFavoritos.setAdapter(restauranteAdapter);
 
+        //Listener
+        lstVwRestaurantesFavoritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Distrito",restaurante.getDistrito());
+                bundle.putString("TipoComida",restaurante.getTipoComida());
+                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
     }
     public void cambiarRecomendaciones(View v){
 
@@ -120,8 +162,25 @@ public class MainActivity extends ActionBarActivity {
         ListView lstVwRestaurantesRecomRecomendados = (ListView) findViewById(R.id.listViewRecomendacionesRecomendados);
         RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomRecomendados(),this);
         lstVwRestaurantesRecomRecomendados.setAdapter(restauranteAdapter);
-    }
 
+        //Listener
+        lstVwRestaurantesRecomRecomendados.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Distrito",restaurante.getDistrito());
+                bundle.putString("TipoComida",restaurante.getTipoComida());
+                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+    }
     public void cambiarRecomendacionesPreferencias(View v){
 
         setContentView(R.layout.activity_main_recomendaciones_preferencias);
@@ -130,13 +189,43 @@ public class MainActivity extends ActionBarActivity {
 
         //Lista
         ListView lstVwRestaurantesRecomPreferencias = (ListView) findViewById(R.id.listViewRecomendacionesPreferencias);
-        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomPreferencias(),this);
+        final RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomPreferencias(),this);
         lstVwRestaurantesRecomPreferencias.setAdapter(restauranteAdapter);
+
+        //Listener
+        lstVwRestaurantesRecomPreferencias.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Distrito",restaurante.getDistrito());
+                bundle.putString("TipoComida",restaurante.getTipoComida());
+                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
-
-
+    public void irRestaurante(View v){
+        Intent intent = new Intent(this, RestauranteActivity.class);
+        startActivity(intent);
+    }
+    public void irContactos(View v){
+        Intent intent = new Intent(this, ContactosActivity.class);
+        startActivity(intent);
+    }
+    public  void irUsuario(View v){
+        Intent intent = new Intent(this, UsuarioActivity.class);
+        startActivity(intent);
+    }
 
 
     private List<Restaurante> ObtenerListaCerca() {
@@ -174,6 +263,8 @@ public class MainActivity extends ActionBarActivity {
 
         return lst;
     }
+
+
 
 
 

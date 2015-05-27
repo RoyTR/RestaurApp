@@ -7,4 +7,5 @@
     <color name="colorGris">#939393</color>
     <color name="colorGrisClaro">#c3c3c3</color>
     <color name="colorBtnPresionado">#0096bb</color>
+    <color name="colorVerdePuntaje">#00FF00</color>
 </resources>
