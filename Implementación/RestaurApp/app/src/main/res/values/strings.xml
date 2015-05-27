@@ -12,11 +12,11 @@
     <string name="main_button_footer_cerca">Cerca</string>
     <string name="main_button_footer_favoritos">Favs</string>
     <string name="main_button_footer_recomendaciones">Recom</string>
-
     <string name="action_search">Buscar</string>
     <string name="action_perfil">Perfil</string>
     <string name="action_contactos">Contactos</string>
     <string name="action_about">About</string>
+
 
     <string-array name="listaDemo">
         <item>Shuttle Badminton</item>
