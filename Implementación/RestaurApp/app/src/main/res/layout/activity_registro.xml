@@ -28,7 +28,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-
+        android:textStyle="bold"
         android:background="@color/restaurapptheme_color"
         />
 
@@ -111,7 +111,7 @@
         android:layout_below="@+id/regTextUserName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="asdasd"
+        android:text="123123"
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist" />
 
@@ -124,7 +124,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/regTextConfirmPassword"
-        android:text="asdasd"
+        android:text="123123"
         android:layout_below="@+id/regTextPassword"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

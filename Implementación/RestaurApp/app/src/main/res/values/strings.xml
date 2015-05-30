@@ -3,15 +3,25 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_search">IconoBuscar</string>
+    <string name="action_perfil">Perfil</string>
+    <string name="action_contactos">Contactos</string>
+    <string name="action_about">Acerca de</string>
     <string name="title_activity_splash_screen">RestaurApp</string>
     
     <string name="facebook_app_id">852909771483749</string>
     <string name="title_activity_registro">RegistroActivity</string>
     <string name="title_activity_iniciar_sesion">IniciarSesionActivity</string>
+
     <string name="main_button_footer_buscar">Buscar</string>
     <string name="main_button_footer_cerca">Cerca</string>
     <string name="main_button_footer_favoritos">Favs</string>
     <string name="main_button_footer_recomendaciones">Recom</string>
+    <string name="footer_Usuario_boton_Perfil">Perfil</string>
+    <string name="footer_Usuario_boton_Preferencia">Preferencia</string>
+
+    <string name="footer_Contacto_boton_Amigos">Amigos</string>
+    <string name="footer_Contacto_boton_Grupos">Grupos</string>
 
 
 
@@ -60,5 +70,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_restaurante">Restaurante</string>
     <string name="title_activity_login_main">LoginMainActivity</string>
+    <string name="title_activity_contactos">ContactosActivity</string>
+    <string name="title_activity_usuario">UsuarioActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
 
 </resources>
