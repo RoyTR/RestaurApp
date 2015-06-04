@@ -9,7 +9,7 @@
   </style>
 
   <style name="ButtonRestaurAppTheme" parent="android:Widget.Holo.Light.Button">
-	  <item name="android:background">#666666</item>
+	  <item name="android:background">@drawable/shape</item>
       <item name="android:textColor">#ffffff</item>
   </style>
 

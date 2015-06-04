@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_above="@+id/layoutmaincercabot"
 
         >
@@ -30,7 +32,7 @@
         android:layout_alignParentBottom="true"
         >
         <include
-            layout="@layout/main_botones_footer"
+            layout="@layout/footer_botones_main"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mainbotonfooter"

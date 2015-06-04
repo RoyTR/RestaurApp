@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.edu.pe.restaurapp.UsuarioActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_above="@+id/usuario_lay_guardarpref">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usuario_pref_lstvw"
+            android:entries="@array/listaDemo"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/usuario_lay_footer"
+        android:orientation="vertical"
+        android:id="@+id/usuario_lay_guardarpref">
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/restaurante_rec_separador"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/pref_btn_Guardar"
+            android:text="Guardar Cambios"
+            android:textStyle="bold"
+            android:onClick="GuardarCambiosPreferencia"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/usuario_lay_footer">
+
+        <include
+            layout="@layout/footer_botones_usuario"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/usuariobotonfooter"
+            />
+        </LinearLayout>
+</RelativeLayout>

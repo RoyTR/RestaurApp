@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
@@ -62,6 +64,16 @@ public class RestauranteAdapter extends BaseAdapter {
         Distrito.setText(restaurante.getDistrito());
         TipoComida.setText(restaurante.getTipoComida());
         Puntuacion.setText(restaurante.getPuntuacionTotal().toString());
+
+        //se comen el click D:
+        Button boton = (Button) convertView.findViewById(R.id.restaurantelst_btn);
+        boton.setFocusable(false);
+        boton.setFocusableInTouchMode(false);
+        boton.setClickable(true);
+        CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.restaurantelst_chkbx);
+        checkBox.setFocusable(false);
+        checkBox.setFocusableInTouchMode(false);
+        checkBox.setClickable(true);
 
         return convertView;
     }

@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.edu.pe.restaurapp.ContactosActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactos_amigos_lay_amigos"
+        android:orientation="vertical"
+        android:layout_above="@+id/contactos_amigos_lay_agregar">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contactos_amigos_listview"
+            android:entries="@array/listaDemo"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/contactos_amigos_lay_footer"
+        android:orientation="vertical"
+        android:id="@+id/contactos_amigos_lay_agregar">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/contactos_amigos_separador"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/amigos_btn_Agregar"
+            android:text="Agregar Amigos"
+            android:textStyle="bold"
+            android:onClick="AgregarAmigos"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactos_amigos_lay_footer"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/footer_botones_contactos"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contactobotonfooter"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

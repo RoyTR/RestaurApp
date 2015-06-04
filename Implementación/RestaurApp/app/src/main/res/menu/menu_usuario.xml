@@ -1,14 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="upc.edu.pe.restaurapp.RestauranteActivity">
+    tools:context="upc.edu.pe.restaurapp.UsuarioActivity">
+
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="70"
-        app:showAsAction="never" />
-    <item android:id="@+id/action_perfil"
-        android:title="@string/action_perfil"
-        android:orderInCategory="10"
         app:showAsAction="never" />
     <item android:id="@+id/action_contactos"
         android:title="@string/action_contactos"
@@ -18,4 +16,5 @@
         android:title="@string/action_about"
         android:orderInCategory="80"
         app:showAsAction="never" />
+
 </menu>
