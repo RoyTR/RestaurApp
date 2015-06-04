@@ -1,6 +1,5 @@
 package upc.edu.pe.restaurapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_buscar_distrito);
 
         //Action Bar personalizado
@@ -58,13 +58,15 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()){
             case R.id.action_settings:
-                return true;
+                irSettings(findViewById(R.id.action_settings));
             case R.id.action_perfil:
                 irUsuario(findViewById(R.id.action_perfil));
                 return true;
             case R.id.action_contactos:
                 irContactos(findViewById(R.id.action_contactos));
                 return true;
+            case R.id.action_about:
+                irAbout(findViewById((R.id.action_about)));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -86,6 +88,7 @@ public class MainActivity extends ActionBarActivity {
 
         //TODO expandedList
     }
+
     public void cambiarCerca(View v){
 
         setContentView(R.layout.activity_main_cerca_lista);
@@ -122,6 +125,7 @@ public class MainActivity extends ActionBarActivity {
         Button btn = (Button) findViewById(R.id.mainbtnftercerca);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
     }
+
     public void cambiarFavoritos(View v){
 
         setContentView(R.layout.activity_main_favoritos);
@@ -152,6 +156,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
     }
+
     public void cambiarRecomendaciones(View v){
 
         setContentView(R.layout.activity_main_recomendaciones_recomendados);
@@ -189,7 +194,7 @@ public class MainActivity extends ActionBarActivity {
 
         //Lista
         ListView lstVwRestaurantesRecomPreferencias = (ListView) findViewById(R.id.listViewRecomendacionesPreferencias);
-        final RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomPreferencias(),this);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(ObtenerListaRecomPreferencias(),this);
         lstVwRestaurantesRecomPreferencias.setAdapter(restauranteAdapter);
 
         //Listener
@@ -209,9 +214,6 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 
     public void irRestaurante(View v){
@@ -226,6 +228,15 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, UsuarioActivity.class);
         startActivity(intent);
     }
+    public  void irSettings(View v){
+    }
+    public  void irAbout(View v){
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+
+
 
 
     private List<Restaurante> ObtenerListaCerca() {
@@ -263,8 +274,6 @@ public class MainActivity extends ActionBarActivity {
 
         return lst;
     }
-
-
 
 
 

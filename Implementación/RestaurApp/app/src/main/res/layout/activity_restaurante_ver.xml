@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/imgrestaurantedemo"/>
-        </LinearLayout>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -49,7 +49,7 @@
                 android:id="@+id/restaurante_txt_tipocomida"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="DATOS"/>
-            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -69,18 +69,19 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Puntuación"/>
-            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical"
+            android:layout_marginRight="5dp"
             android:gravity="center_vertical|center_horizontal">
             <CheckBox
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
-            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -89,14 +90,24 @@
         android:id="@+id/restaurante_comentarios_layout"
         android:layout_below="@+id/restaurante_info_layout"
         android:layout_above="@+id/restaurante_bot_layout"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="vertical">
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/restaurante_rec_separador"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            />
         <ListView
             android:id="@+id/restaurante_lista_comentarios"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:entries="@array/listaDemo"/>
 
-        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -112,6 +123,6 @@
             android:background="@color/restaurapptheme_color"
             android:onClick="irRecomendar"/>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

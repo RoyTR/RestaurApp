@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.edu.pe.restaurapp.UsuarioActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_above="@+id/usuario_lay_guardarperf">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Nombre"
+            android:ems="10"
+            android:id="@+id/perfTextNombre"
+            android:layout_marginTop="38dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:inputType="textPersonName"
+            android:text="Apellidos"
+            android:ems="10"
+            android:id="@+id/perfTextApellido" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/perfTextEmail"
+            android:text="email" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:inputType="textPersonName"
+            android:text="UserName"
+            android:ems="10"
+            android:id="@+id/perfTextUserName" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/perfTextPassword"
+            android:text="123123" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/perfTextConfirmPassword"
+            android:text="123123"
+            />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/usuario_lay_footer"
+        android:orientation="vertical"
+        android:id="@+id/usuario_lay_guardarperf">
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/pref_btn_Guardar"
+            android:text="Guardar Cambios"
+            android:textStyle="bold"
+            android:onClick="GuardarCambiosPerfil"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:id="@+id/usuario_lay_footer">
+
+        <include
+            layout="@layout/footer_botones_usuario"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/usuariobotonfooter"
+            />
+        </LinearLayout>
+
+</RelativeLayout>

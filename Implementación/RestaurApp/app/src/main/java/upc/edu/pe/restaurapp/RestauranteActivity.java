@@ -19,7 +19,6 @@ public class RestauranteActivity extends ActionBarActivity {
     String TipoComida ;
     Double PuntuacionTotal ;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +75,8 @@ public class RestauranteActivity extends ActionBarActivity {
             case R.id.action_contactos:
                 irContactos(findViewById(R.id.action_contactos));
                 return true;
+            case R.id.action_about:
+                irAbout(findViewById((R.id.action_about)));
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -88,6 +89,12 @@ public class RestauranteActivity extends ActionBarActivity {
     }
     public  void irUsuario(View v){
         Intent intent = new Intent(this, UsuarioActivity.class);
+        startActivity(intent);
+    }
+    public  void irSettings(View v){
+    }
+    public  void irAbout(View v){
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
@@ -111,4 +118,6 @@ public class RestauranteActivity extends ActionBarActivity {
         startActivity(intent);
 
     }
+
+
 }

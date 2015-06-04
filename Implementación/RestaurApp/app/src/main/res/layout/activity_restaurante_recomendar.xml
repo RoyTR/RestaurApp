@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="upc.edu.pe.restaurapp.RestauranteActivity"
     android:background="@color/colorBlanco">
@@ -15,7 +16,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/imgrestaurantedemo"/>
 
-        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -73,6 +74,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical"
+            android:layout_marginRight="5dp"
             android:gravity="center_vertical|center_horizontal">
             <CheckBox
                 android:layout_width="fill_parent"
@@ -87,6 +89,7 @@
         android:layout_below="@+id/restaurante_info_layout"
         android:layout_above="@+id/restaurante_bot_layout"
         android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="vertical">
         <View
             android:layout_width="fill_parent"
@@ -112,7 +115,7 @@
                 android:text="Recomendar:"
                 android:gravity="center_horizontal"
                 android:id="@+id/restaurante_txtvw_recomendar"/>
-            </LinearLayout>
+        </LinearLayout>
 
 
         <TextView
@@ -182,7 +185,7 @@
                 android:id="@+id/restaurante_rec_btn_foto"
                 android:onClick="AbrirCamara"
                 />
-            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -217,8 +220,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/restaurante_rec_rdiobtn_contactos"
                     android:text="Contactos"/>
-                </RadioGroup>
-            </LinearLayout>
+            </RadioGroup>
+        </LinearLayout>
     </RelativeLayout>
 
 
@@ -244,6 +247,6 @@
             android:id="@+id/restaurante_btn_enviar_recomend"
             android:background="@color/restaurapptheme_color"/>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
