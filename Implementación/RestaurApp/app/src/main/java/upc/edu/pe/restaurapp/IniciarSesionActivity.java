@@ -8,6 +8,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import upc.edu.pe.restaurapp.Servicios.RestaurAppis;
 
 
 public class IniciarSesionActivity extends ActionBarActivity {
@@ -71,8 +82,54 @@ public class IniciarSesionActivity extends ActionBarActivity {
     }
 
     public void IniciarSesion(View v) {
+
+        //Verificar Login
+        RequestParams params = new RequestParams();
+        params.put("username", "abaquerizo");
+        params.put("password", "12435");
+
+
+        /*
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.post("http://52.25.159.62/api/usuarios/verificar", params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    if (obj.getJSONObject("data").getString("nombres").equals("Andres")) {
+                        Toast.makeText(getApplicationContext(), "You are successfully logged in!", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        */
+
+        RestaurAppis restaurAppis = new RestaurAppis();
+        JSONObject obj = restaurAppis.Request(params,"http://52.25.159.62/api/usuarios/verificar","post");
+
+
+
+        //INGRESAR
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        //startActivity(intent);
 
     }
 }
