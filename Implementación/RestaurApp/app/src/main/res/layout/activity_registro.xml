@@ -36,7 +36,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Nombre"
+        android:hint="Ingresa tu Nombre"
         android:ems="10"
         android:id="@+id/regTextNombre"
         android:layout_marginTop="38dp"
@@ -55,7 +55,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:inputType="textPersonName"
-        android:text="Apellidos"
+        android:hint="Ingresa tus Apellidos"
         android:ems="10"
         android:id="@+id/regTextApellido"
         android:layout_below="@+id/regTextNombre"
@@ -79,7 +79,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist"
-        android:text="email" />
+        android:hint="Ingresa tu Correo" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -89,7 +89,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:inputType="textPersonName"
-        android:text="UserName"
+        android:hint="Ingresa tu Usuario"
         android:ems="10"
         android:id="@+id/regTextUserName"
         android:layout_below="@+id/regTextEmail"
@@ -111,7 +111,7 @@
         android:layout_below="@+id/regTextUserName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="123123"
+        android:hint="Ingresa tu Contraseña"
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist" />
 
@@ -124,7 +124,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/regTextConfirmPassword"
-        android:text="123123"
+        android:hint="Repite tu Contraseña"
         android:layout_below="@+id/regTextPassword"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -140,6 +140,7 @@
         android:textStyle="bold"
         android:layout_below="@+id/regTextConfirmPassword"
         android:layout_alignRight="@+id/regTextConfirmPassword"
-        android:layout_alignEnd="@+id/regTextConfirmPassword" />
+        android:layout_alignEnd="@+id/regTextConfirmPassword"
+        android:onClick="Registrarse"/>
 
 </RelativeLayout>

@@ -128,15 +128,21 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <RatingBar
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/restaurante_rec_ratingBar"
-            android:numStars="5"
-            android:stepSize="1.0"
+            android:id="@+id/restaurante_rec_ratng_layout"
             android:layout_alignTop="@+id/restaurante_txtvw_calificacion"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true">
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurante_rec_ratingBar"
+                android:numStars="5"
+                android:stepSize="1.0"
+                 />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -144,7 +150,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Comentarios:"
             android:id="@+id/restaurante_txtvw_comentario"
-            android:layout_below="@+id/restaurante_rec_ratingBar"
+            android:layout_below="@+id/restaurante_rec_ratng_layout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
