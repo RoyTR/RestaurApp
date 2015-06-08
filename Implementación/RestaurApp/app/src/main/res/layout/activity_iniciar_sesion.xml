@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Nombre de Usuario"
+        android:hint="Ingresa tu usuario"
         android:ems="10"
         android:id="@+id/inisesTextNombre"
         android:layout_marginTop="75dp"
@@ -62,21 +62,11 @@
         android:layout_below="@+id/inisesTextNombre"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="asdasd"
+        android:hint="Ingresa tu Contraseña"
         android:layout_alignRight="@+id/inisesBtnRegist"
         android:layout_alignEnd="@+id/inisesBtnRegist" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recordar"
-        android:id="@+id/checkBox"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@+id/inisesTextPassword"
-        android:layout_alignLeft="@+id/inisesTextPassword"
-        android:layout_alignStart="@+id/inisesTextPassword"
-        android:checked="false" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,16 +74,15 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="¿Olvidaste tu Contraseña?"
         android:id="@+id/textView"
-        android:layout_marginBottom="30dp"
-        android:layout_alignTop="@+id/checkBox"
-        android:layout_alignRight="@+id/inisesTextPassword"
-        android:layout_alignEnd="@+id/inisesTextPassword" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/redBtnLogin"
+        android:layout_alignEnd="@+id/redBtnLogin" />
 
     <Button
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:text="Iniciar Sesión"
-        android:id="@+id/redBtnRegistrarse"
+        android:id="@+id/redBtnLogin"
         android:layout_marginTop="75dp"
         android:textStyle="bold"
         android:layout_below="@+id/inisesTextPassword"

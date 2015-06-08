@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -72,24 +73,34 @@ public class IniciarSesionActivity extends ActionBarActivity {
 
     public void CambiarRegistrarse(View v){
         setContentView(R.layout.activity_registro);
-
     }
 
     public void CambiarIniciarSesion(View v) {
 
         setContentView(R.layout.activity_iniciar_sesion);
+    }
+    public void CambiarIniciarSesion() {
 
+        setContentView(R.layout.activity_iniciar_sesion);
     }
 
     public void IniciarSesion(View v) {
 
-        //Verificar Login
+        EditText txtusuario = (EditText)findViewById(R.id.inisesTextNombre);
+        String usuario = String.valueOf(txtusuario.getText());
+        EditText txtpass = (EditText)findViewById(R.id.inisesTextPassword);
+        String pwd = String.valueOf(txtpass.getText());
+
         RequestParams params = new RequestParams();
-        params.put("username", "abaquerizo");
-        params.put("password", "12435");
+        params.put("username", usuario);
+        params.put("password", pwd);
+
+        /* //Clase restaurapis
+        RestaurAppis restaurAppis = new RestaurAppis();
+        JSONObject obj = restaurAppis.Request(params,"http://52.25.159.62/api/usuarios/verificar","post");
+        */
 
 
-        /*
         AsyncHttpClient client = new AsyncHttpClient();
         client.post("http://52.25.159.62/api/usuarios/verificar", params, new AsyncHttpResponseHandler() {
             @Override
@@ -97,17 +108,17 @@ public class IniciarSesionActivity extends ActionBarActivity {
                 String response = new String(responseBody);
                 try {
                     JSONObject obj = new JSONObject(response);
-                    if (obj.getJSONObject("data").getString("nombres").equals("Andres")) {
-                        Toast.makeText(getApplicationContext(), "You are successfully logged in!", Toast.LENGTH_LONG).show();
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Te Has Identificado Correctamente", Toast.LENGTH_LONG).show();
+                        IrMainIniciarSesion();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 if (statusCode == 404) {
@@ -120,16 +131,68 @@ public class IniciarSesionActivity extends ActionBarActivity {
             }
         });
 
-        */
+        //INGRESAR CUANDO INSTANCIA APAGADA
+        //IrMainIniciarSesion();
+    }
 
-        RestaurAppis restaurAppis = new RestaurAppis();
-        JSONObject obj = restaurAppis.Request(params,"http://52.25.159.62/api/usuarios/verificar","post");
+    public void Registrarse(View v){
+
+        EditText txtnombre = (EditText)findViewById(R.id.regTextNombre);
+        String nombres = String.valueOf(txtnombre.getText());
+        EditText txtapellido = (EditText)findViewById(R.id.regTextApellido);
+        String apellidos = String.valueOf(txtapellido.getText());
+        EditText txtemail = (EditText)findViewById(R.id.regTextEmail);
+        String email = String.valueOf(txtemail.getText());
+        EditText txtusuario = (EditText)findViewById(R.id.regTextUserName);
+        String usuario = String.valueOf(txtusuario.getText());
+        EditText txtpwd = (EditText)findViewById(R.id.regTextPassword);
+        String pwd = String.valueOf(txtpwd.getText());
+
+        RequestParams params = new RequestParams();
+        params.put("nombres", nombres);
+        params.put("apellidos", apellidos);
+        params.put("username", usuario);
+        params.put("password",pwd);
+        params.put("email", email);
+        params.put("facebook_id", "1");
+        params.put("is_admin", "No");
+        params.put("created_by","1");
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.post("http://52.25.159.62/api/usuarios/create", params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Te Has Registrado Correctamente, por favor Accede", Toast.LENGTH_LONG).show();
+                        CambiarIniciarSesion();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
+    }
 
-        //INGRESAR
+    public void IrMainIniciarSesion(){
         Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
-
+        startActivity(intent);
     }
 }
