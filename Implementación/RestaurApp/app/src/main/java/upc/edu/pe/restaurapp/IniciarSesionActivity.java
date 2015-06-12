@@ -1,6 +1,7 @@
 package upc.edu.pe.restaurapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
@@ -23,6 +24,9 @@ import upc.edu.pe.restaurapp.Servicios.RestaurAppis;
 
 
 public class IniciarSesionActivity extends ActionBarActivity {
+
+    private SharedPreferences sharedpreferences;
+    public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,12 +99,6 @@ public class IniciarSesionActivity extends ActionBarActivity {
         params.put("username", usuario);
         params.put("password", pwd);
 
-        /* //Clase restaurapis
-        RestaurAppis restaurAppis = new RestaurAppis();
-        JSONObject obj = restaurAppis.Request(params,"http://52.25.159.62/api/usuarios/verificar","post");
-        */
-
-
         AsyncHttpClient client = new AsyncHttpClient();
         client.post("http://52.25.159.62/api/usuarios/verificar", params, new AsyncHttpResponseHandler() {
             @Override
@@ -111,7 +109,10 @@ public class IniciarSesionActivity extends ActionBarActivity {
                     if (response.contains("error")) {
                         Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Te Has Identificado Correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "¡Bienvenido a Restaurapp!", Toast.LENGTH_LONG).show();
+                        SharedPreferences.Editor editor = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE).edit();
+                        editor.putInt("USUARIO_ACTUAL_ID",obj.getJSONObject("data").getInt("id"));
+                        editor.commit();
                         IrMainIniciarSesion();
                     }
 

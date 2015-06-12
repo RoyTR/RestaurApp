@@ -44,7 +44,10 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/perfTextEmail"
-            android:text="email" />
+            android:text="email"
+            android:enabled="false"
+            android:editable="false"
+            android:clickable="true" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -56,7 +59,10 @@
             android:inputType="textPersonName"
             android:text="UserName"
             android:ems="10"
-            android:id="@+id/perfTextUserName" />
+            android:id="@+id/perfTextUserName"
+            android:clickable="true"
+            android:editable="false"
+            android:enabled="false" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -70,19 +76,7 @@
             android:id="@+id/perfTextPassword"
             android:text="123123" />
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/perfTextConfirmPassword"
-            android:text="123123"
-            />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"

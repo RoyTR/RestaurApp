@@ -1,9 +1,5 @@
 package upc.edu.pe.restaurapp.Servicios;
 
-/**
- * Created by Rombo on 07/06/2015.
- */
-
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,24 +10,24 @@ import java.nio.charset.StandardCharsets;
 
 public class RestaurAppis {
 
-    JSONObject obj;
+    public JSONObject obj = null;
     String Error;
 
     public JSONObject Request(RequestParams params, String URL, String MetodoREST) {
 
         switch (MetodoREST){
-            case "post":
+            case "post":case "POST":
                 RequestPost(params,URL);
-                return obj;
-            case "get":
+                break;
+            case "get":case "GET":
                 RequestGet(params,URL);
-                return obj;
-            case "delete":
+                break;
+            case "delete":case "DELETE":
                 RequestDelete(params,URL);
-                return obj;
-            default:
-                return null;
+                break;
         }
+
+        return this.obj;
     }
 
 
@@ -98,10 +94,10 @@ public class RestaurAppis {
 
     private void RequestDelete(RequestParams params, String URL){}
 
-
     private void SetJSONobj(JSONObject JSONobj){
         this.obj = JSONobj;
     }
+
     private void SetError(String Error){
         this.Error = Error;
     }
