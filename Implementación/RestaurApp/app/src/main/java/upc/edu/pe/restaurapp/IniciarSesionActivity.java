@@ -107,7 +107,7 @@ public class IniciarSesionActivity extends ActionBarActivity {
             RequestParams params = new RequestParams();
             params.put("username", usuario);
             params.put("password", pwd);
-
+            prgDialog.setMessage("Iniciando Sesion...");
             prgDialog.show();
             RestaurAppisClient.post("usuarios/verificar", params, new AsyncHttpResponseHandler() {
                 @Override
@@ -180,6 +180,7 @@ public class IniciarSesionActivity extends ActionBarActivity {
                 params.put("is_admin", "No");
                 params.put("created_by", "1");
 
+                prgDialog.setMessage("Registrandote...");
                 prgDialog.show();
                 RestaurAppisClient.post("usuarios/create", params, new AsyncHttpResponseHandler() {
                     @Override
