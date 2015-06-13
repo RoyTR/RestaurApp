@@ -14,7 +14,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Nombre"
             android:ems="10"
             android:id="@+id/perfTextNombre"
             android:layout_marginTop="38dp"
@@ -30,7 +29,6 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:inputType="textPersonName"
-            android:text="Apellidos"
             android:ems="10"
             android:id="@+id/perfTextApellido" />
 
@@ -44,7 +42,6 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/perfTextEmail"
-            android:text="email"
             android:enabled="false"
             android:editable="false"
             android:clickable="true" />
@@ -57,7 +54,6 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:inputType="textPersonName"
-            android:text="UserName"
             android:ems="10"
             android:id="@+id/perfTextUserName"
             android:clickable="true"
@@ -115,6 +111,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/usuariobotonfooter"
             />
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
