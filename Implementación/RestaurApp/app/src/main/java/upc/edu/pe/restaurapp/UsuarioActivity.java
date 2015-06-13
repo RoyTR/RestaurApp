@@ -1,5 +1,6 @@
 package upc.edu.pe.restaurapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,17 +23,19 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import upc.edu.pe.restaurapp.Servicios.RestaurAppis;
-
 public class UsuarioActivity extends ActionBarActivity {
 
     private SharedPreferences sharedpreferences;
     public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES" ;
+    ProgressDialog prgDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_perfil);
+        prgDialog = new ProgressDialog(this);
+        prgDialog.setMessage("Cargando Perfil de Usuario");
+        prgDialog.show();
         Button btnPerfil = (Button)findViewById(R.id.footerusuariobtnperfil);
         btnPerfil.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
@@ -59,17 +62,20 @@ public class UsuarioActivity extends ActionBarActivity {
                 try {
                     JSONObject obj = new JSONObject(response);
                     if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
                     } else {
                         EditText nombres = (EditText) findViewById(R.id.perfTextNombre);
                         EditText apellidos = (EditText) findViewById(R.id.perfTextApellido);
                         EditText email = (EditText) findViewById(R.id.perfTextEmail);
                         EditText username = (EditText) findViewById(R.id.perfTextUserName);
+                        EditText password = (EditText) findViewById(R.id.perfTextPassword);
 
                         nombres.setText(obj.getJSONObject("data").getString("nombres"));
                         apellidos.setText(obj.getJSONObject("data").getString("apellidos"));
                         email.setText(obj.getJSONObject("data").getString("email"));
                         username.setText(obj.getJSONObject("data").getString("username"));
+                        password.setText("");
+                        prgDialog.hide();
                     }
 
                 } catch (JSONException e) {
@@ -78,12 +84,13 @@ public class UsuarioActivity extends ActionBarActivity {
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
                 if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
                 } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -132,20 +139,25 @@ public class UsuarioActivity extends ActionBarActivity {
         RequestParams params = new RequestParams();
         params.put("nombres", nombres.getText().toString());
         params.put("apellidos", apellidos.getText().toString());
-        params.put("password", password.getText().toString());
+        if(!(password.getText().toString().isEmpty()))//if the user added a password
+            params.put("password", password.getText().toString());
         params.put("updated_by", usuarioActualId);
         params.put("_method", "PATCH");
+
+        prgDialog.setMessage("Guardando...");
+        prgDialog.show();
 
         /*----------Llamada a nuestro servicio---------*/
         AsyncHttpClient client = new AsyncHttpClient();
         client.post("http://52.25.159.62/api/usuarios/"+usuarioActualId.toString(), params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                prgDialog.hide();
                 String response = new String(responseBody);
                 try {
                     JSONObject obj = new JSONObject(response);
                     if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(),"¡Cambios Guardados!",Toast.LENGTH_SHORT).show();
                     }
@@ -156,12 +168,13 @@ public class UsuarioActivity extends ActionBarActivity {
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
                 if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
                 } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
                 }
             }
         });

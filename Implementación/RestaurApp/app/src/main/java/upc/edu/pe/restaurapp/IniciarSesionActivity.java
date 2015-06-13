@@ -1,5 +1,6 @@
 package upc.edu.pe.restaurapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
+import com.andreabaccega.widget.FormEditText;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -20,13 +21,14 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import upc.edu.pe.restaurapp.Servicios.RestaurAppis;
+import upc.edu.pe.restaurapp.Servicios.RestaurAppisClient;
+import upc.edu.pe.restaurapp.Utilitario.Validar;
 
 
 public class IniciarSesionActivity extends ActionBarActivity {
 
-    private SharedPreferences sharedpreferences;
     public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES" ;
+    ProgressDialog prgDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,12 @@ public class IniciarSesionActivity extends ActionBarActivity {
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
 
-
+        // Instantiate Progress Dialog object
+        prgDialog = new ProgressDialog(this);
+        // Set Progress Dialog Text
+        prgDialog.setMessage("Procesando...");
+        // Set Cancelable as False
+        prgDialog.setCancelable(false);
     }
 
 
@@ -90,47 +97,55 @@ public class IniciarSesionActivity extends ActionBarActivity {
 
     public void IniciarSesion(View v) {
 
-        EditText txtusuario = (EditText)findViewById(R.id.inisesTextNombre);
-        String usuario = String.valueOf(txtusuario.getText());
-        EditText txtpass = (EditText)findViewById(R.id.inisesTextPassword);
-        String pwd = String.valueOf(txtpass.getText());
+        FormEditText etUsuario = (FormEditText)findViewById(R.id.inisesTextNombre);
+        String usuario = String.valueOf(etUsuario.getText());
+        FormEditText etContrasena = (FormEditText)findViewById(R.id.inisesTextPassword);
+        FormEditText[] allFields    = { etUsuario, etContrasena };
+        String pwd = String.valueOf(etContrasena.getText());
 
-        RequestParams params = new RequestParams();
-        params.put("username", usuario);
-        params.put("password", pwd);
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://52.25.159.62/api/usuarios/verificar", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "¡Bienvenido a Restaurapp!", Toast.LENGTH_LONG).show();
-                        SharedPreferences.Editor editor = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE).edit();
-                        editor.putInt("USUARIO_ACTUAL_ID",obj.getJSONObject("data").getInt("id"));
-                        editor.commit();
-                        IrMainIniciarSesion();
+        if (Validar.validarEditTexts(allFields)) {
+            RequestParams params = new RequestParams();
+            params.put("username", usuario);
+            params.put("password", pwd);
+            prgDialog.setMessage("Iniciando Sesion...");
+            prgDialog.show();
+            RestaurAppisClient.post("usuarios/verificar", params, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    prgDialog.hide();
+                    String response = new String(responseBody);
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        if (response.contains("error")) {
+                            Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                        } else {
+                            //Toast.makeText(getApplicationContext(), "Te Has Identificado Correctamente", Toast.LENGTH_SHORT).show();
+                            SharedPreferences.Editor editor = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE).edit();
+                            editor.putInt("USUARIO_ACTUAL_ID",obj.getJSONObject("data").getInt("id"));
+                            editor.commit();
+                            Toast.makeText(getApplicationContext(), "¡Bienvenido a Restaurapp!", Toast.LENGTH_SHORT).show();
+                            IrMainIniciarSesion();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+                }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    prgDialog.hide();
+                    if (statusCode == 404) {
+                        Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                    } else if (statusCode == 500) {
+                        Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
-                } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+            });
+        } else {
+            // EditText are going to appear with an exclamation mark and an explicative message.
+        }
 
         //INGRESAR CUANDO INSTANCIA APAGADA
         //IrMainIniciarSesion();
@@ -138,57 +153,73 @@ public class IniciarSesionActivity extends ActionBarActivity {
 
     public void Registrarse(View v){
 
-        EditText txtnombre = (EditText)findViewById(R.id.regTextNombre);
-        String nombres = String.valueOf(txtnombre.getText());
-        EditText txtapellido = (EditText)findViewById(R.id.regTextApellido);
-        String apellidos = String.valueOf(txtapellido.getText());
-        EditText txtemail = (EditText)findViewById(R.id.regTextEmail);
-        String email = String.valueOf(txtemail.getText());
-        EditText txtusuario = (EditText)findViewById(R.id.regTextUserName);
-        String usuario = String.valueOf(txtusuario.getText());
-        EditText txtpwd = (EditText)findViewById(R.id.regTextPassword);
-        String pwd = String.valueOf(txtpwd.getText());
+        FormEditText txtnombre = (FormEditText)findViewById(R.id.regTextNombre);
+        FormEditText txtapellido = (FormEditText)findViewById(R.id.regTextApellido);
+        FormEditText txtemail = (FormEditText)findViewById(R.id.regTextEmail);
+        FormEditText txtusuario = (FormEditText)findViewById(R.id.regTextUserName);
+        FormEditText txtpwd = (FormEditText)findViewById(R.id.regTextPassword);
+        FormEditText txtpwd2 = (FormEditText)findViewById(R.id.regTextConfirmPassword);
 
-        RequestParams params = new RequestParams();
-        params.put("nombres", nombres);
-        params.put("apellidos", apellidos);
-        params.put("username", usuario);
-        params.put("password",pwd);
-        params.put("email", email);
-        params.put("facebook_id", "1");
-        params.put("is_admin", "No");
-        params.put("created_by","1");
+        FormEditText[] allFields = {txtnombre, txtapellido, txtemail, txtusuario, txtpwd, txtpwd2};
+        if(Validar.validarEditTexts(allFields)) {
+            String nombres = String.valueOf(txtnombre.getText());
+            String apellidos = String.valueOf(txtapellido.getText());
+            String email = String.valueOf(txtemail.getText());
+            String usuario = String.valueOf(txtusuario.getText());
+            String pwd = String.valueOf(txtpwd.getText());
+            String pwd2 = String.valueOf(txtpwd2.getText());
+            //  Ver si las contraseñas hacen match
+            if(pwd.equals(pwd2)) {
+                RequestParams params = new RequestParams();
+                params.put("nombres", nombres);
+                params.put("apellidos", apellidos);
+                params.put("username", usuario);
+                params.put("password", pwd);
+                params.put("email", email);
+                params.put("facebook_id", "1");
+                params.put("is_admin", "No");
+                params.put("created_by", "1");
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://52.25.159.62/api/usuarios/create", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Te Has Registrado Correctamente, por favor Accede", Toast.LENGTH_LONG).show();
-                        CambiarIniciarSesion();
+                prgDialog.setMessage("Registrandote...");
+                prgDialog.show();
+                RestaurAppisClient.post("usuarios/create", params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        prgDialog.hide();
+                        String response = new String(responseBody);
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            if (response.contains("error")) {
+                                Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Te Has Registrado Correctamente, por favor Accede", Toast.LENGTH_SHORT).show();
+                                CambiarIniciarSesion();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        prgDialog.hide();
+                        if (statusCode == 404) {
+                            Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                        } else if (statusCode == 500) {
+                            Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } else {
+                txtpwd.setError("Contraseñas no conciden");
+                txtpwd2.setError("Contraseñas no conciden");
             }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
-                } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
+        } else {
+            // EditText are going to appear with an exclamation mark and an explicative message.
+        }
 
     }
 

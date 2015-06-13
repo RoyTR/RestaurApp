@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     tools:context="upc.edu.pe.restaurapp.IniciarSesionActivity"
     android:background="#ffffff"
     >
@@ -32,11 +32,14 @@
         android:background="@color/restaurapptheme_color"
         />
 
-    <EditText
+    <com.andreabaccega.widget.FormEditText
+        whatever:testType="personName"
+        whatever:testErrorString="Nombre no valido"
+        whatever:emptyErrorString="Ingrese su Nombre"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Ingresa tu Nombre"
+        android:hint="Nombre"
         android:ems="10"
         android:id="@+id/regTextNombre"
         android:layout_marginTop="38dp"
@@ -47,7 +50,10 @@
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist" />
 
-    <EditText
+    <com.andreabaccega.widget.FormEditText
+        whatever:testType="personFullName"
+        whatever:testErrorString="Apellidos no validos"
+        whatever:emptyErrorString="Ingrese sus Apellidos"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -55,7 +61,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:inputType="textPersonName"
-        android:hint="Ingresa tus Apellidos"
+        android:hint="Apellidos"
         android:ems="10"
         android:id="@+id/regTextApellido"
         android:layout_below="@+id/regTextNombre"
@@ -64,7 +70,10 @@
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist" />
 
-    <EditText
+    <com.andreabaccega.widget.FormEditText
+        whatever:testType="email"
+        whatever:testErrorString="Correo no valido"
+        whatever:emptyErrorString="Ingrese correo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -79,9 +88,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist"
-        android:hint="Ingresa tu Correo" />
+        android:hint="Correo" />
 
-    <EditText
+    <com.andreabaccega.widget.FormEditText
+        whatever:emptyErrorString="Ingrese usuario"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -89,7 +99,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:inputType="textPersonName"
-        android:hint="Ingresa tu Usuario"
+        android:hint="Usuario"
         android:ems="10"
         android:id="@+id/regTextUserName"
         android:layout_below="@+id/regTextEmail"
@@ -98,7 +108,8 @@
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist" />
 
-    <EditText
+    <com.andreabaccega.widget.FormEditText
+        whatever:emptyErrorString="Ingrese Contraseña"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -111,11 +122,12 @@
         android:layout_below="@+id/regTextUserName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="Ingresa tu Contraseña"
+        android:hint="Contraseña"
         android:layout_alignRight="@+id/regBtnInacRegist"
         android:layout_alignEnd="@+id/regBtnInacRegist" />
 
-    <EditText
+    <com.andreabaccega.widget.FormEditText
+        whatever:emptyErrorString="Ingrese Contraseña"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
