@@ -48,13 +48,10 @@
         >
 
         <ListView
-            android:id="@+id/ExpdList"
+            android:id="@+id/tipocomida_lst_tipocomida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/listaDemo2"
-            >
-
-            </ListView>
+            />
 
     </LinearLayout>
 

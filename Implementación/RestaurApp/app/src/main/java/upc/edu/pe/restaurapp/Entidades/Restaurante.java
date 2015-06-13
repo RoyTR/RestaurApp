@@ -6,13 +6,14 @@ package upc.edu.pe.restaurapp.Entidades;
 public class Restaurante {
     private Integer IdRestaurante;
     private String Nombre;
-    private String Distrito;
-    private String TipoComida;
-    private Double Latitud;
-    private Double Longitud;
+    private String Latitud;
+    private String Longitud;
     private String Descripcion;
     private Integer Foto_id;
     private Double PuntuacionTotal;
+
+    private String Distrito;
+    private String TipoComida;
     private Boolean EsFavorito;
 
     public Integer getIdRestaurante() {
@@ -31,19 +32,19 @@ public class Restaurante {
         Nombre = nombre;
     }
 
-    public Double getLatitud() {
+    public String getLatitud() {
         return Latitud;
     }
 
-    public void setLatitud(Double latitud) {
+    public void setLatitud(String latitud) {
         Latitud = latitud;
     }
 
-    public Double getLongitud() {
+    public String getLongitud() {
         return Longitud;
     }
 
-    public void setLongitud(Double longitud) {
+    public void setLongitud(String longitud) {
         Longitud = longitud;
     }
 

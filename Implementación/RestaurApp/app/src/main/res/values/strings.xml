@@ -73,5 +73,6 @@
     <string name="title_activity_contactos">ContactosActivity</string>
     <string name="title_activity_usuario">UsuarioActivity</string>
     <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_lista_restaurantes">ListaRestaurantesActivity</string>
 
 </resources>

@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="upc.edu.pe.restaurapp.ListaRestaurantesActivity"
+    android:id="@+id/lst_restaurantes_main_layout">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lst_restaurantes_layout_top"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Restaurantes:"
+            android:id="@+id/lst_restaurantes_BtnDistrito"
+            android:background="@color/restaurapptheme_color"
+            android:clickable="false"
+            android:textStyle="bold"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lst_restaurantes_layout_bot"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/lst_restaurantes_layout_top"
+        >
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lst_restaurantes_list_view"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
