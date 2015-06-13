@@ -22,8 +22,6 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import upc.edu.pe.restaurapp.Servicios.RestaurAppis;
-
 public class UsuarioActivity extends ActionBarActivity {
 
     private SharedPreferences sharedpreferences;
