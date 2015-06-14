@@ -29,8 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+import upc.edu.pe.restaurapp.Adapter.CategoriaAdapter;
 import upc.edu.pe.restaurapp.Adapter.DistritoAdapter;
 import upc.edu.pe.restaurapp.Adapter.RestauranteAdapter;
+import upc.edu.pe.restaurapp.Entidades.Categoria;
 import upc.edu.pe.restaurapp.Entidades.Distrito;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
 
@@ -40,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
     ProgressDialog prgDialog;
     public final List<Restaurante> lstRestCerca = new ArrayList<Restaurante>();
     public final List<Distrito> lstDistritos = new ArrayList<Distrito>();
+    public final List<Categoria> lstCategorias = new ArrayList<Categoria>();
     final List<Restaurante> lstRestFavoritos = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestPreferencias = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestRecomendados = new ArrayList<Restaurante>();
@@ -129,21 +132,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main_buscar_tipocomida);
         Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+        btn.setClickable(false);
 
-        //Lista
-        ListView lstVwTipoComida = (ListView) findViewById(R.id.tipocomida_lst_tipocomida);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ObtenerTipoComida());
-        lstVwTipoComida.setAdapter(adapter);
-
-        //Listener
-        lstVwTipoComida.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        ObtenerCategorias();
     }
 
     public void cambiarCerca(View v){
@@ -184,7 +175,6 @@ public class MainActivity extends ActionBarActivity {
         Button btn = (Button) findViewById(R.id.mainbtnftercerca);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
     }
-
     public void cambiarFavoritos(View v){
 
         setContentView(R.layout.activity_main_favoritos);
@@ -209,7 +199,7 @@ public class MainActivity extends ActionBarActivity {
                 bundle.putString("Latitud",restaurante.getLatitud());
                 bundle.putString("Longitud",restaurante.getLongitud());
                 bundle.putString("Descripcion",restaurante.getDescripcion());
-                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putInt("Foto_id", restaurante.getFoto_id());
                 bundle.putString("DistritoId",restaurante.getDistrito());
                 bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
@@ -219,7 +209,6 @@ public class MainActivity extends ActionBarActivity {
         });
 
     }
-
     public void cambiarRecomendaciones(View v){
 
         setContentView(R.layout.activity_main_recomendaciones_recomendados);
@@ -244,7 +233,7 @@ public class MainActivity extends ActionBarActivity {
                 bundle.putString("Latitud",restaurante.getLatitud());
                 bundle.putString("Longitud",restaurante.getLongitud());
                 bundle.putString("Descripcion",restaurante.getDescripcion());
-                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putInt("Foto_id", restaurante.getFoto_id());
                 bundle.putString("DistritoId",restaurante.getDistrito());
                 bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
@@ -277,7 +266,7 @@ public class MainActivity extends ActionBarActivity {
                 bundle.putString("Latitud",restaurante.getLatitud());
                 bundle.putString("Longitud",restaurante.getLongitud());
                 bundle.putString("Descripcion",restaurante.getDescripcion());
-                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putInt("Foto_id", restaurante.getFoto_id());
                 bundle.putString("DistritoId",restaurante.getDistrito());
                 bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
@@ -380,21 +369,21 @@ public class MainActivity extends ActionBarActivity {
         lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
 
         //Listener
-        lstVwRestaurantesCerca.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+        lstVwRestaurantesCerca.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
 
                 Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
-                bundle.putString("Nombre",restaurante.getNombre());
-                bundle.putString("Latitud",restaurante.getLatitud());
-                bundle.putString("Longitud",restaurante.getLongitud());
-                bundle.putString("Descripcion",restaurante.getDescripcion());
-                bundle.putInt("Foto_id",restaurante.getFoto_id());
-                bundle.putString("DistritoId",restaurante.getDistrito());
-                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
+                bundle.putInt("IdRestaurante", restaurante.getIdRestaurante());
+                bundle.putString("Nombre", restaurante.getNombre());
+                bundle.putString("Latitud", restaurante.getLatitud());
+                bundle.putString("Longitud", restaurante.getLongitud());
+                bundle.putString("Descripcion", restaurante.getDescripcion());
+                bundle.putInt("Foto_id", restaurante.getFoto_id());
+                bundle.putString("DistritoId", restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal", restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -432,6 +421,60 @@ public class MainActivity extends ActionBarActivity {
         lst = generarDatosPrueba();
 
         return lst;
+    }
+
+    //------------------------OBTENER CATEGORIAS--------------------//
+    private void ObtenerCategorias()
+    {
+        this.lstCategorias.clear();
+        //--------LOGICA DE LA LLAMADA A LA API----------//
+        AsyncHttpClient client = new AsyncHttpClient();
+        prgDialog.setMessage("Please wait...");
+        prgDialog.show();
+        client.get("http://52.25.159.62/api/categorias", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    JSONArray jArray = obj.getJSONArray("data");
+
+                    //TODO: revisar manejo del error
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Convertir JsonAray ---> List<Categoria>
+                        for(int i=0;i<jArray.length();i++){
+                            JSONObject jObj = jArray.getJSONObject(i);
+                            Categoria categoria = new Categoria();
+                            categoria.setId(jObj.getInt("id"));
+                            categoria.setNombre(jObj.getString("nombre"));
+                            categoria.setDescripcion(jObj.getString("descripcion"));
+
+                            llenarListaCategorias(categoria);
+                        }
+                    }
+                    actualizarListaConAdapterCategorias();
+                    prgDialog.hide();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+        //--------FIN LOGICA DE LA LLAMADA A LA API-------//
     }
 
     //-------------------------OBTENER DISTRITOS--------------------//
@@ -509,6 +552,31 @@ public class MainActivity extends ActionBarActivity {
     public void llenarListaDistritos(Distrito distrito)
     {
         lstDistritos.add(distrito);
+    }
+
+    private void actualizarListaConAdapterCategorias()    {
+        //Lista
+        ListView lstVwTipoComida = (ListView) findViewById(R.id.tipocomida_lst_tipocomida);
+        CategoriaAdapter adapter = new CategoriaAdapter(this.lstCategorias,this);
+        lstVwTipoComida.setAdapter(adapter);
+
+        //Listener
+        lstVwTipoComida.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Categoria categoria = (Categoria) parent.getItemAtPosition(position);
+                Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("categoriaId", categoria.getId());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void llenarListaCategorias(Categoria categoria)
+    {
+        this.lstCategorias.add(categoria);
     }
 
     //--------------------OBTENER TIPOS DE COMIDA-------------------//
