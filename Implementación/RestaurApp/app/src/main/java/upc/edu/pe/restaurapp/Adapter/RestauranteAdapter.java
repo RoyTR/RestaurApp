@@ -61,17 +61,17 @@ public class RestauranteAdapter extends BaseAdapter {
         //LLenar aqui todos los parametros TODO
         Nombre.setText(restaurante.getNombre());
         Descripcion.setText(restaurante.getDescripcion());
-        Puntuacion.setText("Puntuacion: " + restaurante.getPuntuacionTotal().toString());
+        Puntuacion.setText(restaurante.getPuntuacionTotal().toString());
 
         //se comen el click D:
         //Button boton = (Button) convertView.findViewById(R.id.restaurantelst_btn);
         //boton.setFocusable(false);
         //boton.setFocusableInTouchMode(false);
         //boton.setClickable(true);
-        CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.restaurantelst_chkbx);
-        checkBox.setFocusable(false);
-        checkBox.setFocusableInTouchMode(false);
-        checkBox.setClickable(true);
+        //CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.restaurantelst_chkbx);
+        //checkBox.setFocusable(false);
+        //checkBox.setFocusableInTouchMode(false);
+        //checkBox.setClickable(true);
 
         return convertView;
     }

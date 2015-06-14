@@ -7,6 +7,7 @@
     <string name="action_perfil">Perfil</string>
     <string name="action_contactos">Contactos</string>
     <string name="action_about">Acerca de</string>
+    <string name="action_logout">Cerrar Sesión</string>
     <string name="title_activity_splash_screen">RestaurApp</string>
     
     <string name="facebook_app_id">852909771483749</string>
@@ -16,13 +17,15 @@
     <string name="main_button_footer_buscar">Buscar</string>
     <string name="main_button_footer_cerca">Cerca</string>
     <string name="main_button_footer_favoritos">Favs</string>
-    <string name="main_button_footer_recomendaciones">Recom</string>
+    <string name="main_button_footer_recomendaciones">+ Rec</string>
     <string name="footer_Usuario_boton_Perfil">Perfil</string>
     <string name="footer_Usuario_boton_Preferencia">Preferencia</string>
 
     <string name="footer_Contacto_boton_Amigos">Amigos</string>
     <string name="footer_Contacto_boton_Grupos">Grupos</string>
 
+    <string name="masRec_btn_MayorPuntaje">Mejor Puntuados</string>
+    <string name="masRec_btn_MasRecomendaciones">Más Populares</string>
 
 
 

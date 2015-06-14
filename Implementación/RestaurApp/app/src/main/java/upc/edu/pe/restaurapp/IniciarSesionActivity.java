@@ -123,7 +123,7 @@ public class IniciarSesionActivity extends ActionBarActivity {
                             SharedPreferences.Editor editor = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE).edit();
                             editor.putInt("USUARIO_ACTUAL_ID",obj.getJSONObject("data").getInt("id"));
                             editor.commit();
-                            Toast.makeText(getApplicationContext(), "¡Bienvenido a Restaurapp!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "¡Bienvenido a Restaurapp, "+obj.getJSONObject("data").getString("nombres")+"!", Toast.LENGTH_SHORT).show();
                             IrMainIniciarSesion();
                         }
                     } catch (JSONException e) {

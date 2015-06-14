@@ -1,16 +1,21 @@
 package upc.edu.pe.restaurapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
 
 
 public class SplashScreenActivity extends Activity {
+    public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES" ;
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +25,35 @@ public class SplashScreenActivity extends Activity {
 
         setContentView(R.layout.activity_splash_screen);
 
-        int delay = 3000;
+        //Averiguar si ya existe un usuario logueado
 
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public  void run(){
-                startActivity(new Intent(SplashScreenActivity.this,LoginMainActivity.class));
-                finish();
-            }
-        }, delay );
+        sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
+        Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
 
+        if(usuarioActualId == 0) {
+
+            int delay = 3000;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(new Intent(SplashScreenActivity.this, LoginMainActivity.class));
+                    finish();
+                }
+            }, delay);
+        }
+        else{
+            int delay = 3000;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "¡Bienvenido de vuelta a Restaurapp!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                    finish();
+                }
+            }, delay);
+        }
     }
 
 

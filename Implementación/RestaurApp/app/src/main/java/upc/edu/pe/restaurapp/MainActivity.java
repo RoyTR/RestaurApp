@@ -1,6 +1,7 @@
 package upc.edu.pe.restaurapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -38,6 +39,9 @@ import upc.edu.pe.restaurapp.Entidades.Restaurante;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES" ;
+    private SharedPreferences sharedpreferences;
 
     ProgressDialog prgDialog;
     public final List<Restaurante> lstRestCerca = new ArrayList<Restaurante>();
@@ -98,7 +102,11 @@ public class MainActivity extends ActionBarActivity {
                 irContactos(findViewById(R.id.action_contactos));
                 return true;
             case R.id.action_about:
-                irAbout(findViewById((R.id.action_about)));
+                irAbout(findViewById(R.id.action_about));
+                return true;
+            case R.id.action_cerrarsesion:
+                cerrarSesion(findViewById(R.id.action_cerrarsesion));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -222,6 +230,18 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
+    public void cerrarSesion(View v){
+        SharedPreferences.Editor editor = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE).edit();
+        editor.putInt("USUARIO_ACTUAL_ID",0);
+        editor.commit();
+
+        Intent intent = new Intent(this, IniciarSesionActivity.class);
+        intent.putExtra("Destino","Login");
+        startActivity(intent);
+
+        finish();
+
+    }
 
 
 
@@ -341,7 +361,11 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes", new AsyncHttpResponseHandler() {
+        //Obtener Id del usuario
+        sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
+        Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
+
+        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId+"/favoritos", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -437,6 +461,7 @@ public class MainActivity extends ActionBarActivity {
         lstRestFavoritos.add(rest);
     }
 
+    //Ahora es Mas Recomendados
     private void ObtenerListaRecomPreferencias() {
 
         this.lstRestPreferencias.clear();
@@ -446,7 +471,7 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/restaurantes/toprecomendados", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -542,6 +567,7 @@ public class MainActivity extends ActionBarActivity {
         lstRestPreferencias.add(rest);
     }
 
+    //Ahora es Mejor Puntuados
     private void ObtenerListaRecomRecomendados() {
 
         this.lstRestRecomendados.clear();
@@ -551,7 +577,7 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/restaurantes/toppuntuados", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -824,7 +850,7 @@ public class MainActivity extends ActionBarActivity {
 
         Restaurante r1 = new Restaurante();
         r1.setIdRestaurante(1);
-        r1.setNombre("Ultima Cena");
+        r1.setNombre("Prueba1");
         r1.setLatitud("");
         r1.setLongitud("");
         r1.setDescripcion("desc1");
@@ -834,7 +860,7 @@ public class MainActivity extends ActionBarActivity {
 
         Restaurante r2 = new Restaurante();
         r2.setIdRestaurante(2);
-        r2.setNombre("Primera Cena");
+        r2.setNombre("Preueba2");
         r2.setLatitud("");
         r2.setLongitud("");
         r2.setDescripcion("desc2");

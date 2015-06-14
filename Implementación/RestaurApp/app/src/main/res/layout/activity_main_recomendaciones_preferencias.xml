@@ -15,7 +15,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Más Recomendados"
+            android:text="@string/masRec_btn_MayorPuntaje"
             android:id="@+id/mainRecomBtnRecom"
             android:background="@color/colorGrisClaro"
             android:textStyle="bold"
@@ -26,7 +26,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preferencias"
+            android:text="@string/masRec_btn_MasRecomendaciones"
             android:clickable="false"
             android:id="@+id/mainRecomBtnPrefer"
             android:background="@color/restaurapptheme_color"
