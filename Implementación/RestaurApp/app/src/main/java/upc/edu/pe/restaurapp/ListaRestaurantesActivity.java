@@ -1,5 +1,6 @@
 package upc.edu.pe.restaurapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,21 +10,37 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import upc.edu.pe.restaurapp.Adapter.RestauranteAdapter;
+import upc.edu.pe.restaurapp.Entidades.Distrito;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
 
 
 public class ListaRestaurantesActivity extends ActionBarActivity {
 
+    ProgressDialog prgDialog;
+    public final List<Restaurante> lstRestaurantes = new ArrayList<Restaurante>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_restaurantes);
+
+        prgDialog = new ProgressDialog(this);
 
         //Action Bar personalizado
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
@@ -33,6 +50,9 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
         actionBar.setBackgroundDrawable(color);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
+
+        Bundle bundle = getIntent().getExtras();
+        LlenarRestaurantesPorDistrito(bundle.getInt("distritoId"));
 
     /*
         //Lista
@@ -106,13 +126,63 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
 
 
 
-    private List<Restaurante> ObtenerListaRestaurantesDistrito() {
-        List<Restaurante> lst = new ArrayList<Restaurante>();
+    private void ObtenerListaRestaurantesPorDistrito_SW(Integer distritoId) {
 
-        //TODO cambiar esta funcion por la real de BD
-        lst = generarDatosPrueba();
+        this.lstRestaurantes.clear();
 
-        return lst;
+        //--------LOGICA DE LA LLAMADA A LA API----------//
+        AsyncHttpClient client = new AsyncHttpClient();
+        prgDialog.setMessage("Please wait...");
+        prgDialog.show();
+        client.get("http://52.25.159.62/api/distritos/"+distritoId.toString()+"/restaurantes", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    JSONArray jArray = obj.getJSONArray("data");
+
+                    //TODO: revisar manejo del error
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Convertir JsonAray ---> List<Restaurante>
+
+                        for(int i=0;i<jArray.length();i++){
+                            JSONObject jObj = jArray.getJSONObject(i);
+                            Restaurante restaurante = new Restaurante();
+                            restaurante.setIdRestaurante(jObj.getInt("id"));
+                            restaurante.setNombre(jObj.getString("nombre"));
+                            restaurante.setLatitud(jObj.getString("latitud"));
+                            restaurante.setLongitud(jObj.getString("longitud"));
+                            restaurante.setDescripcion(jObj.getString("descripcion"));
+                            restaurante.setFoto_id(Integer.parseInt(jObj.getString("foto_id")));
+                            restaurante.setPuntuacionTotal(Double.parseDouble(jObj.getString("puntuacion_total")));
+
+                            llenarListaRestaurantes(restaurante);
+                        }
+                    }
+                    actualizarListaDeRestaurantesPorDistrito();
+                    prgDialog.hide();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+        //--------FIN LOGICA DE LA LLAMADA A LA API-------//
     }
 
     private List<Restaurante> ObtenerListaRestaurantesTipoComida() {
@@ -125,6 +195,42 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
     }
 
 
+
+    private void LlenarRestaurantesPorDistrito(Integer idDistrito)
+    {
+        ObtenerListaRestaurantesPorDistrito_SW(idDistrito);
+    }
+
+    private void llenarListaRestaurantes(Restaurante restaurante)
+    {
+        this.lstRestaurantes.add(restaurante);
+    }
+
+    private void actualizarListaDeRestaurantesPorDistrito()
+    {
+        //Lista
+        ListView lstVwRestaurantesPorDistrito = (ListView) findViewById(R.id.lst_restaurantes_list_view);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(this.lstRestaurantes,this);
+        lstVwRestaurantesPorDistrito.setAdapter(restauranteAdapter);
+
+        //Listener
+        lstVwRestaurantesPorDistrito.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(ListaRestaurantesActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Distrito",restaurante.getDistrito());
+                bundle.putString("TipoComida",restaurante.getTipoComida());
+                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+    }
 
 
 
