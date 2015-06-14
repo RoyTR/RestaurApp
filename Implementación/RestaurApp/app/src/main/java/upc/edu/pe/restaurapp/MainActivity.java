@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import upc.edu.pe.restaurapp.Adapter.RestauranteAdapter;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
@@ -158,8 +159,9 @@ public class MainActivity extends ActionBarActivity {
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
         //Lista
-        ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
         ObtenerListaCerca();
+
+        ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
         RestauranteAdapter restauranteAdapter = new RestauranteAdapter(lstRestCerca,this);
         lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
 
@@ -307,7 +309,6 @@ public class MainActivity extends ActionBarActivity {
 
         //--------LOGICA DE LA LLAMADA A LA API----------//
         AsyncHttpClient client = new AsyncHttpClient();
-
         prgDialog.show();
         client.get("http://52.25.159.62/api/restaurantes", new AsyncHttpResponseHandler() {
             @Override
@@ -341,16 +342,14 @@ public class MainActivity extends ActionBarActivity {
 
                             llenarListaCerca(restaurante);
                         }
-                    }
-                    prgDialog.hide();
 
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                prgDialog.hide();
                 if (statusCode == 404) {
                     Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
                 } else if (statusCode == 500) {
@@ -358,7 +357,10 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
                 }
-
+            }
+            @Override
+            public void onFinish(){
+                prgDialog.hide();
             }
         });
         //--------FIN LOGICA DE LA LLAMADA A LA API-------//
