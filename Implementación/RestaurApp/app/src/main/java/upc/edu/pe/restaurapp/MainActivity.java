@@ -29,7 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+import upc.edu.pe.restaurapp.Adapter.DistritoAdapter;
 import upc.edu.pe.restaurapp.Adapter.RestauranteAdapter;
+import upc.edu.pe.restaurapp.Entidades.Distrito;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
 
 
@@ -37,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
 
     ProgressDialog prgDialog;
     public final List<Restaurante> lstRestCerca = new ArrayList<Restaurante>();
+    public final List<Distrito> lstDistritos = new ArrayList<Distrito>();
     final List<Restaurante> lstRestFavoritos = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestPreferencias = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestRecomendados = new ArrayList<Restaurante>();
@@ -65,18 +68,21 @@ public class MainActivity extends ActionBarActivity {
         //Generales
         Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
-            //Lista
-            ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ObtenerDistritos());
-            lstVwDistritos.setAdapter(adapter);
-            //Listener
-            lstVwDistritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
-                    startActivity(intent);
-                }
-            });
+
+        //Lista
+        //ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
+        ObtenerDistritos();
+        //DistritoAdapter distritosAdapter = new DistritoAdapter(lstDistritos,this);
+        //lstVwDistritos.setAdapter(distritosAdapter);
+
+        //Listener
+        /*lstVwDistritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
+                startActivity(intent);
+            }
+        });*/
 
     }
 
@@ -116,18 +122,19 @@ public class MainActivity extends ActionBarActivity {
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
         //Lista
-        ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ObtenerDistritos());
-        lstVwDistritos.setAdapter(adapter);
+        //ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
+        ObtenerDistritos();
+        //DistritoAdapter distritosAdapter = new DistritoAdapter(lstDistritos,this);
+        //lstVwDistritos.setAdapter(distritosAdapter);
 
-        //Listener
+        /*//Listener
         lstVwDistritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
     public void cambiarBuscarTipoComida(View v){
@@ -370,6 +377,11 @@ public class MainActivity extends ActionBarActivity {
         lstRestCerca.add(rest);
     }
 
+    public void llenarListaDistritos(Distrito distrito)
+    {
+        lstDistritos.add(distrito);
+    }
+
     private List<Restaurante> ObtenerListaFavoritos() {
         List<Restaurante> lst = new ArrayList<Restaurante>();
 
@@ -398,14 +410,76 @@ public class MainActivity extends ActionBarActivity {
     }
 
     //-------------------------OBTENER DISTRITOS--------------------//
-    private List<String> ObtenerDistritos(){
-        List<String> lst = new ArrayList<String>();
+    private void ObtenerDistritos(){
 
-        //TODO cambiar esta funcion por la real de BD
-        lst = generarDistritosPrueba();
+        this.lstDistritos.clear();
 
-        return lst;
+        //--------LOGICA DE LA LLAMADA A LA API----------//
+        AsyncHttpClient client = new AsyncHttpClient();
+        prgDialog.setMessage("Please wait...");
+        prgDialog.show();
+        client.get("http://52.25.159.62/api/distritos", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    JSONArray jArray = obj.getJSONArray("data");
+
+                    //TODO: revisar manejo del error
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Convertir JsonAray ---> List<Distrito>
+                        for(int i=0;i<jArray.length();i++){
+                            JSONObject jObj = jArray.getJSONObject(i);
+                            Distrito distrito = new Distrito();
+                            distrito.setId((Integer) jObj.getInt("id"));
+                            distrito.setNombre(jObj.getString("nombre"));
+
+                            llenarListaDistritos(distrito);
+                        }
+                    }
+                    actualizarListaConAdapter();
+                    prgDialog.hide();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+        //--------FIN LOGICA DE LA LLAMADA A LA API-------//
     }
+
+    private void actualizarListaConAdapter()
+    {
+        ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
+        DistritoAdapter distritosAdapter = new DistritoAdapter(this.lstDistritos,this);
+        lstVwDistritos.setAdapter(distritosAdapter);
+
+        //Listener
+        lstVwDistritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
     //--------------------OBTENER TIPOS DE COMIDA-------------------//
     private List<String> ObtenerTipoComida(){
         List<String> lst = new ArrayList<String>();

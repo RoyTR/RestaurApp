@@ -33,9 +33,6 @@ public class UsuarioActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_perfil);
-        prgDialog = new ProgressDialog(this);
-        prgDialog.setMessage("Cargando Perfil de Usuario");
-        prgDialog.show();
         Button btnPerfil = (Button)findViewById(R.id.footerusuariobtnperfil);
         btnPerfil.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
@@ -47,54 +44,7 @@ public class UsuarioActivity extends ActionBarActivity {
         actionBar.setBackgroundDrawable(color);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
-
-        /*--------------------------Seteando los datos del usuario actual-----------------------*/
-        //Obteniendo el Usuario Actual
-        sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
-        Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
-
-        //Llamada a nuestro servicio
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId.toString(), null, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
-                    } else {
-                        EditText nombres = (EditText) findViewById(R.id.perfTextNombre);
-                        EditText apellidos = (EditText) findViewById(R.id.perfTextApellido);
-                        EditText email = (EditText) findViewById(R.id.perfTextEmail);
-                        EditText username = (EditText) findViewById(R.id.perfTextUserName);
-                        EditText password = (EditText) findViewById(R.id.perfTextPassword);
-
-                        nombres.setText(obj.getJSONObject("data").getString("nombres"));
-                        apellidos.setText(obj.getJSONObject("data").getString("apellidos"));
-                        email.setText(obj.getJSONObject("data").getString("email"));
-                        username.setText(obj.getJSONObject("data").getString("username"));
-                        password.setText("");
-                        prgDialog.hide();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                prgDialog.hide();
-                if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
-                } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
+        this.cambiarPerfil(btnPerfil);
     }
 
 
@@ -188,11 +138,63 @@ public class UsuarioActivity extends ActionBarActivity {
         setContentView(R.layout.activity_usuario_perfil);
         Button btnPerfil = (Button)findViewById(R.id.footerusuariobtnperfil);
         btnPerfil.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+        btnPerfil.setClickable(false);
+
+        prgDialog = new ProgressDialog(this);
+        prgDialog.setMessage("Cargando Perfil de Usuario");
+        prgDialog.show();
+        /*--------------------------Seteando los datos del usuario actual-----------------------*/
+        //Obteniendo el Usuario Actual
+        sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
+        Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
+
+        //Llamada a nuestro servicio
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId.toString(), null, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                    } else {
+                        EditText nombres = (EditText) findViewById(R.id.perfTextNombre);
+                        EditText apellidos = (EditText) findViewById(R.id.perfTextApellido);
+                        EditText email = (EditText) findViewById(R.id.perfTextEmail);
+                        EditText username = (EditText) findViewById(R.id.perfTextUserName);
+                        EditText password = (EditText) findViewById(R.id.perfTextPassword);
+
+                        nombres.setText(obj.getJSONObject("data").getString("nombres"));
+                        apellidos.setText(obj.getJSONObject("data").getString("apellidos"));
+                        email.setText(obj.getJSONObject("data").getString("email"));
+                        username.setText(obj.getJSONObject("data").getString("username"));
+                        password.setText("");
+                        prgDialog.hide();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
     public void cambiarPreferencia(View v) {
         setContentView(R.layout.activity_usuario_preferencias);
         Button btnPref = (Button)findViewById(R.id.footerusuariobtnpreferencia);
         btnPref.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+        btnPref.setClickable(false);
     }
 
 
