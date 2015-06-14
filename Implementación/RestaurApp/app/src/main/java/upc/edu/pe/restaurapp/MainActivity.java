@@ -69,21 +69,7 @@ public class MainActivity extends ActionBarActivity {
         Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
-        //Lista
-        //ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
         ObtenerDistritos();
-        //DistritoAdapter distritosAdapter = new DistritoAdapter(lstDistritos,this);
-        //lstVwDistritos.setAdapter(distritosAdapter);
-
-        //Listener
-        /*lstVwDistritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
     }
 
 
@@ -119,6 +105,7 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main_buscar_distrito);
         Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
+        btn.setClickable(false);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
         //Lista
@@ -492,6 +479,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void actualizarListaConAdapter()
     {
+        //Lista
         ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
         DistritoAdapter distritosAdapter = new DistritoAdapter(this.lstDistritos,this);
         lstVwDistritos.setAdapter(distritosAdapter);
@@ -500,7 +488,11 @@ public class MainActivity extends ActionBarActivity {
         lstVwDistritos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Distrito distrito = (Distrito) parent.getItemAtPosition(position);
                 Intent intent = new Intent(MainActivity.this, ListaRestaurantesActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("distritoId", distrito.getId());
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
