@@ -14,10 +14,15 @@ import android.widget.TextView;
 
 public class RestauranteActivity extends ActionBarActivity {
 
+    int IdRestaurante;
     String Nombre ;
-    String Distrito ;
-    String TipoComida ;
-    Double PuntuacionTotal ;
+    String Latitud;
+    String Longitud;
+    String Descripcion ;
+    Integer Foto_id;
+    Double PuntuacionTotal;
+    String Distrito;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +42,22 @@ public class RestauranteActivity extends ActionBarActivity {
 
         Bundle bundle = getIntent().getExtras();
 
+        IdRestaurante = bundle.getInt("IdRestaurante");
         Nombre = bundle.getString("Nombre");
-        Distrito = bundle.getString("Distrito");
-        TipoComida = bundle.getString("TipoComida");
-        PuntuacionTotal = bundle.getDouble("Puntaje");
+        Latitud = bundle.getString("Latitud");
+        Longitud = bundle.getString("Longitud");
+        Descripcion = bundle.getString("Descripcion");
+        Foto_id = bundle.getInt("Foto_id");
+        Distrito = bundle.getString("DistritoId");
+        PuntuacionTotal = bundle.getDouble("PuntuacionTotal");
+
 
         TextView txtNombre = (TextView) findViewById(R.id.restaurante_txt_nombre);
-        TextView txtDistrito = (TextView) findViewById(R.id.restaurante_txt_distrito);
-        TextView txtTipoComida = (TextView) findViewById(R.id.restaurante_txt_tipocomida);
+        TextView txtDescripcion = (TextView) findViewById(R.id.restaurante_txt_descripcion);
         TextView txtPuntaje = (TextView) findViewById(R.id.restaurante_txt_puntaje);
 
         txtNombre.setText(Nombre);
-        txtDistrito.setText(Distrito);
-        txtTipoComida.setText(TipoComida);
+        txtDescripcion.setText(Descripcion);
         txtPuntaje.setText(PuntuacionTotal.toString());
     }
 
@@ -102,13 +110,11 @@ public class RestauranteActivity extends ActionBarActivity {
         setContentView(R.layout.activity_restaurante_recomendar);
 
         TextView txtNombre = (TextView) findViewById(R.id.restaurante_txt_nombre);
-        TextView txtDistrito = (TextView) findViewById(R.id.restaurante_txt_distrito);
-        TextView txtTipoComida = (TextView) findViewById(R.id.restaurante_txt_tipocomida);
+        TextView txtDescripcion = (TextView) findViewById(R.id.restaurante_txt_descripcion);
         TextView txtPuntaje = (TextView) findViewById(R.id.restaurante_txt_puntaje);
 
         txtNombre.setText(Nombre);
-        txtDistrito.setText(Distrito);
-        txtTipoComida.setText(TipoComida);
+        txtDescripcion.setText(Descripcion);
         txtPuntaje.setText(PuntuacionTotal.toString());
     }
 

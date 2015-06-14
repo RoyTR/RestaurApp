@@ -204,10 +204,14 @@ public class MainActivity extends ActionBarActivity {
 
                 Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
                 bundle.putString("Nombre",restaurante.getNombre());
-                bundle.putString("Distrito",restaurante.getDistrito());
-                bundle.putString("TipoComida",restaurante.getTipoComida());
-                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                bundle.putString("Latitud",restaurante.getLatitud());
+                bundle.putString("Longitud",restaurante.getLongitud());
+                bundle.putString("Descripcion",restaurante.getDescripcion());
+                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putString("DistritoId",restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -235,10 +239,14 @@ public class MainActivity extends ActionBarActivity {
 
                 Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
                 bundle.putString("Nombre",restaurante.getNombre());
-                bundle.putString("Distrito",restaurante.getDistrito());
-                bundle.putString("TipoComida",restaurante.getTipoComida());
-                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                bundle.putString("Latitud",restaurante.getLatitud());
+                bundle.putString("Longitud",restaurante.getLongitud());
+                bundle.putString("Descripcion",restaurante.getDescripcion());
+                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putString("DistritoId",restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -264,10 +272,14 @@ public class MainActivity extends ActionBarActivity {
 
                 Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
                 bundle.putString("Nombre",restaurante.getNombre());
-                bundle.putString("Distrito",restaurante.getDistrito());
-                bundle.putString("TipoComida",restaurante.getTipoComida());
-                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                bundle.putString("Latitud",restaurante.getLatitud());
+                bundle.putString("Longitud",restaurante.getLongitud());
+                bundle.putString("Descripcion",restaurante.getDescripcion());
+                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putString("DistritoId",restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -335,8 +347,6 @@ public class MainActivity extends ActionBarActivity {
                             restaurante.setDistrito(jObj.getString("distrito_id"));
                             restaurante.setPuntuacionTotal(Double.parseDouble(jObj.getString("puntuacion_total")));
 
-                            restaurante.setTipoComida("PRube");
-
                             llenarListaCerca(restaurante);
                         }
 
@@ -377,10 +387,14 @@ public class MainActivity extends ActionBarActivity {
 
                 Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
                 bundle.putString("Nombre",restaurante.getNombre());
-                bundle.putString("Distrito",restaurante.getDistrito());
-                bundle.putString("TipoComida",restaurante.getTipoComida());
-                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                bundle.putString("Latitud",restaurante.getLatitud());
+                bundle.putString("Longitud",restaurante.getLongitud());
+                bundle.putString("Descripcion",restaurante.getDescripcion());
+                bundle.putInt("Foto_id",restaurante.getFoto_id());
+                bundle.putString("DistritoId",restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -391,10 +405,7 @@ public class MainActivity extends ActionBarActivity {
         lstRestCerca.add(rest);
     }
 
-    public void llenarListaDistritos(Distrito distrito)
-    {
-        lstDistritos.add(distrito);
-    }
+
 
     private List<Restaurante> ObtenerListaFavoritos() {
         List<Restaurante> lst = new ArrayList<Restaurante>();
@@ -454,7 +465,7 @@ public class MainActivity extends ActionBarActivity {
                             llenarListaDistritos(distrito);
                         }
                     }
-                    actualizarListaConAdapter();
+                    actualizarListaConAdapterDistritos();
                     prgDialog.hide();
 
                 } catch (JSONException e) {
@@ -476,9 +487,7 @@ public class MainActivity extends ActionBarActivity {
         });
         //--------FIN LOGICA DE LA LLAMADA A LA API-------//
     }
-
-    private void actualizarListaConAdapter()
-    {
+    private void actualizarListaConAdapterDistritos()    {
         //Lista
         ListView lstVwDistritos = (ListView) findViewById(R.id.distrito_lst_distritos);
         DistritoAdapter distritosAdapter = new DistritoAdapter(this.lstDistritos,this);
@@ -497,7 +506,10 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
-
+    public void llenarListaDistritos(Distrito distrito)
+    {
+        lstDistritos.add(distrito);
+    }
 
     //--------------------OBTENER TIPOS DE COMIDA-------------------//
     private List<String> ObtenerTipoComida(){
@@ -515,51 +527,42 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-
-
     //TODO: Borrar estas funciones de prueba
     private List<Restaurante> generarDatosPrueba() {
         List<Restaurante> lstRest = new ArrayList<Restaurante>();
 
         Restaurante r1 = new Restaurante();
+        r1.setIdRestaurante(1);
         r1.setNombre("Ultima Cena");
-        r1.setDistrito("Ate");
-        r1.setTipoComida("Criolla");
+        r1.setLatitud("");
+        r1.setLongitud("");
+        r1.setDescripcion("desc1");
+        r1.setFoto_id(32);
         r1.setPuntuacionTotal(3.5);
+        r1.setDistrito("2");
 
         Restaurante r2 = new Restaurante();
-        r2.setNombre("La tia Veneno");
-        r2.setDistrito("Miraflores");
-        r2.setTipoComida("Mariscos");
-        r2.setPuntuacionTotal(7.3);
-
-        Restaurante r3 = new Restaurante();
-        r3.setNombre("Baigon");
-        r3.setDistrito("Los Olivos");
-        r3.setTipoComida("China");
-        r3.setPuntuacionTotal(5.5);
-
-        Restaurante r4 = new Restaurante();
-        r4.setNombre("Cucarachita");
-        r4.setDistrito("Lince");
-        r4.setTipoComida("Pan");
-        r4.setPuntuacionTotal(8.9);
-
-        Restaurante r5 = new Restaurante();
-        r5.setNombre("Pantalones Fritos");
-        r5.setDistrito("San Miguel");
-        r5.setTipoComida("Frituras");
-        r5.setPuntuacionTotal(7.4);
+        r2.setIdRestaurante(2);
+        r2.setNombre("Primera Cena");
+        r2.setLatitud("");
+        r2.setLongitud("");
+        r2.setDescripcion("desc2");
+        r2.setFoto_id(33);
+        r2.setPuntuacionTotal(5.5);
+        r2.setDistrito("1");
 
         lstRest.add(r1);
         lstRest.add(r2);
-        lstRest.add(r3);
-        lstRest.add(r4);
-        lstRest.add(r5);
         lstRest.add(r1);
         lstRest.add(r2);
-        lstRest.add(r3);
-        lstRest.add(r4);
+        lstRest.add(r1);
+        lstRest.add(r2);
+        lstRest.add(r1);
+        lstRest.add(r2);
+        lstRest.add(r1);
+        lstRest.add(r2);
+        lstRest.add(r1);
+        lstRest.add(r2);
 
         return lstRest;
     }

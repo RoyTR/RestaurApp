@@ -11,10 +11,8 @@ public class Restaurante {
     private String Descripcion;
     private Integer Foto_id;
     private Double PuntuacionTotal;
-
     private String Distrito;
-    private String TipoComida;
-    private Boolean EsFavorito;
+
 
     public Integer getIdRestaurante() {
         return IdRestaurante;
@@ -80,19 +78,5 @@ public class Restaurante {
         Distrito = distrito;
     }
 
-    public String getTipoComida() {
-        return TipoComida;
-    }
 
-    public void setTipoComida(String tipoComida) {
-        TipoComida = tipoComida;
-    }
-
-    public Boolean getEsFavorito() {
-        return EsFavorito;
-    }
-
-    public void setEsFavorito(Boolean esFavorito) {
-        EsFavorito = esFavorito;
-    }
 }

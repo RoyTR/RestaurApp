@@ -40,14 +40,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/restaurante_txt_distrito"
+                android:id="@+id/restaurante_txt_descripcion"
                 android:text="DATOS"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/restaurante_txt_tipocomida"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="DATOS"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"

@@ -53,17 +53,15 @@ public class RestauranteAdapter extends BaseAdapter {
 
         //Usar aqui todos los parametros necesarios a mostrar TODO
         TextView Nombre = (TextView) convertView.findViewById(R.id.restaurantelst_nombre);
-        TextView Distrito = (TextView) convertView.findViewById(R.id.restaurantelst_distrito);
-        TextView TipoComida = (TextView) convertView.findViewById(R.id.restaurantelst_tipocomida);
+        TextView Descripcion = (TextView) convertView.findViewById(R.id.restaurantelst_descripcion);
         TextView Puntuacion = (TextView) convertView.findViewById(R.id.restaurantelst_puntuacion);
 
         Restaurante restaurante = restaurantes.get(position);
 
         //LLenar aqui todos los parametros TODO
         Nombre.setText(restaurante.getNombre());
-        Distrito.setText(restaurante.getDistrito());
-        TipoComida.setText(restaurante.getTipoComida());
-        Puntuacion.setText(restaurante.getPuntuacionTotal().toString());
+        Descripcion.setText(restaurante.getDescripcion());
+        Puntuacion.setText("Puntuacion: " + restaurante.getPuntuacionTotal().toString());
 
         //se comen el click D:
         //Button boton = (Button) convertView.findViewById(R.id.restaurantelst_btn);
