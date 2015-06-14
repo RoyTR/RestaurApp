@@ -168,12 +168,12 @@ public class MainActivity extends ActionBarActivity {
         //Lista
         ObtenerListaCerca();
 
-        ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
-        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(lstRestCerca,this);
-        lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
+        //ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
+        //RestauranteAdapter restauranteAdapter = new RestauranteAdapter(lstRestCerca,this);
+        //lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
 
         //Listener
-        lstVwRestaurantesCerca.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+        /*lstVwRestaurantesCerca.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
@@ -188,7 +188,7 @@ public class MainActivity extends ActionBarActivity {
 
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
     public void cambiarCercaMap(View v){
@@ -314,8 +314,11 @@ public class MainActivity extends ActionBarActivity {
     //------------------------------OBTENER LISTAS DE RESTAURANTES-----------------------//
     private void ObtenerListaCerca() {
 
+        this.lstRestCerca.clear();
+
         //--------LOGICA DE LA LLAMADA A LA API----------//
         AsyncHttpClient client = new AsyncHttpClient();
+        prgDialog.setMessage("Please wait...");
         prgDialog.show();
         client.get("http://52.25.159.62/api/restaurantes", new AsyncHttpResponseHandler() {
             @Override
@@ -342,21 +345,24 @@ public class MainActivity extends ActionBarActivity {
                             restaurante.setLongitud(jObj.getString("longitud"));
                             restaurante.setDescripcion(jObj.getString("descripcion"));
                             restaurante.setFoto_id(Integer.parseInt(jObj.getString("foto_id")));
+                            restaurante.setDistrito(jObj.getString("distrito_id"));
                             restaurante.setPuntuacionTotal(Double.parseDouble(jObj.getString("puntuacion_total")));
 
                             restaurante.setTipoComida("PRube");
-                            restaurante.setDistrito("PRube");
 
                             llenarListaCerca(restaurante);
                         }
 
                     }
+                    actualizarListaConAdapterCerca();
+                    prgDialog.hide();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
                 if (statusCode == 404) {
                     Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
                 } else if (statusCode == 500) {
@@ -365,13 +371,34 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
                 }
             }
-            @Override
-            public void onFinish(){
-                prgDialog.hide();
-            }
+
         });
         //--------FIN LOGICA DE LA LLAMADA A LA API-------//
 
+    }
+    private void actualizarListaConAdapterCerca(){
+
+        ListView lstVwRestaurantesCerca = (ListView) findViewById(R.id.listViewCerca);
+        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(lstRestCerca,this);
+        lstVwRestaurantesCerca.setAdapter(restauranteAdapter);
+
+        //Listener
+        lstVwRestaurantesCerca.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Distrito",restaurante.getDistrito());
+                bundle.putString("TipoComida",restaurante.getTipoComida());
+                bundle.putDouble("Puntaje",restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
     }
     public void llenarListaCerca(Restaurante rest){
         lstRestCerca.add(rest);

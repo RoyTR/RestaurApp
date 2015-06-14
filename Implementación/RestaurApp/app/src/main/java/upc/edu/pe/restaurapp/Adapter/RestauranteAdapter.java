@@ -66,10 +66,10 @@ public class RestauranteAdapter extends BaseAdapter {
         Puntuacion.setText(restaurante.getPuntuacionTotal().toString());
 
         //se comen el click D:
-        Button boton = (Button) convertView.findViewById(R.id.restaurantelst_btn);
-        boton.setFocusable(false);
-        boton.setFocusableInTouchMode(false);
-        boton.setClickable(true);
+        //Button boton = (Button) convertView.findViewById(R.id.restaurantelst_btn);
+        //boton.setFocusable(false);
+        //boton.setFocusableInTouchMode(false);
+        //boton.setClickable(true);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.restaurantelst_chkbx);
         checkBox.setFocusable(false);
         checkBox.setFocusableInTouchMode(false);
