@@ -133,7 +133,7 @@ public class MainActivity extends ActionBarActivity {
         Button btn = (Button) findViewById(R.id.mainbtnfterbuscar);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
         btn.setClickable(false);
-
+        //llamada a categorias
         ObtenerCategorias();
     }
 
