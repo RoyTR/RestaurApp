@@ -5,6 +5,9 @@ public class Categoria {
     private String nombre;
     private String descripcion;
 
+    //solo se usara para las preferencias de usuario
+    private boolean pref = false;
+
 
     public Integer getId() {
         return id;
@@ -29,5 +32,17 @@ public class Categoria {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+
+    //solo se usara para las preferencias de usuario
+    public boolean isPref() {
+        return pref;
+    }
+    public void setPref(boolean pref) {
+        this.pref = pref;
+    }
+
+
+
 
 }
