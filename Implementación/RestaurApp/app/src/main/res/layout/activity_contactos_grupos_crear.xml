@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context="upc.edu.pe.restaurapp.ContactosActivity">
 
@@ -10,10 +11,46 @@
         android:orientation="vertical"
         android:layout_above="@+id/contactos_grupos_lay_crear">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Crear Nuevo Grupo:"
+            android:id="@+id/contactos_grupos_tv_titulo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <com.andreabaccega.widget.FormEditText
+            whatever:emptyErrorString="Asigne un nombre al grupo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contactos_crear_grupo_et_nombre_grupo"
+            android:hint="Nombre"
+            android:layout_above="@+id/contactos_grupos_lay_crear"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Integrantes del grupo"
+            android:id="@+id/textView3" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añadir"
+            android:id="@+id/contactos_crear_grupo_et_link_agregar"
+            android:layout_gravity="right"
+            android:onClick="irAgregarUsuariosParaGrupo"/>
+
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/contactos_grupos_listview" />
+            android:id="@+id/contactos_grupos_lv_lista_usuarios"
+            android:layout_above="@+id/contactos_grupos_lay_grupos"
+            android:layout_centerHorizontal="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,10 +77,10 @@
             android:layout_marginRight="40dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="30dp"
-            android:id="@+id/grupos_btn_Agregar"
+            android:id="@+id/grupos_btn_Crear_grupo"
             android:text="Crear Grupo"
             android:textStyle="bold"
-            android:onClick="AgregarGrupos"/>
+            android:onClick="CrearGrupo"/>
 
     </LinearLayout>
 

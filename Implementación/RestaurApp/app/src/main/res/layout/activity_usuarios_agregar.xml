@@ -1,33 +1,54 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context="upc.edu.pe.restaurapp.ContactosActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/contactos_amigos_lay_amigos"
+        android:id="@+id/contactos_grupos_lay_grupos"
         android:orientation="vertical"
-        android:layout_above="@+id/contactos_amigos_lay_agregar">
+        android:layout_above="@+id/contactos_grupos_lay_crear">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Agregar Usuarios"
+            android:textStyle="bold"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Marque los usuarios"
+            android:id="@+id/textView3" />
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/contactos_amigos_listview" />
+            android:id="@+id/contactos_agregar_lv_lista_usuarios"
+            android:layout_above="@+id/contactos_grupos_lay_grupos"
+            android:layout_centerHorizontal="true" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/contactos_amigos_lay_footer"
+        android:layout_above="@+id/contactos_grupos_lay_footer"
         android:orientation="vertical"
-        android:id="@+id/contactos_amigos_lay_agregar">
+        android:id="@+id/contactos_grupos_lay_crear">
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
-            android:id="@+id/contactos_amigos_separador"
+            android:id="@+id/contactos_grupos_separador"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
@@ -40,17 +61,17 @@
             android:layout_marginRight="40dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="30dp"
-            android:id="@+id/amigos_btn_Agregar"
-            android:text="Agregar Amigos"
+            android:id="@+id/grupos_btn_Crear"
+            android:text="Agregar Usuarios"
             android:textStyle="bold"
-            android:onClick="AgregarAmigos"/>
+            android:onClick="AgregarUsuariosParaCrear"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/contactos_amigos_lay_footer"
+        android:id="@+id/contactos_grupos_lay_footer"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
