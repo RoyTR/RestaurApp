@@ -13,6 +13,7 @@ public class Usuario {
     private String email;
     private BigDecimal facebook_id;
     private String password;
+    private Integer idGupo;
 
     public Integer getId() {
         return id;
@@ -68,5 +69,13 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getIdGupo() {
+        return idGupo;
+    }
+
+    public void setIdGupo(Integer idGupo) {
+        this.idGupo = idGupo;
     }
 }

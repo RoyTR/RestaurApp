@@ -55,6 +55,19 @@ public class ContactosActivity extends ActionBarActivity {
     public final Grupo grupoBean = new Grupo();
     public String nombreGrupo;
 
+    public final List<Integer> idsUsuariosAEliminar = new ArrayList<Integer>();
+    public final List<Integer> idsGruposDeUsuariosAEliminar = new ArrayList<Integer>();
+    public final List<Integer> idsUsuariosAAgregar = new ArrayList<Integer>();
+    public final List<Integer> idsGruposDeUsuariosAAgregar = new ArrayList<Integer>();
+
+    public final List<Integer> idsDeGrupos = new ArrayList<Integer>();
+    public final List<Integer> idsAuxiliarDeUsuarios = new ArrayList<Integer>();
+    public final List<Integer> idsAuxiliarDeGrupos = new ArrayList<Integer>();
+    public final List<Integer> idsAAgregar = new ArrayList<Integer>();
+    public final List<String> nombresAAgregar = new ArrayList<String>();
+    public final List<String> apellidosAAgregar = new ArrayList<String>();
+    public final List<Integer> idsAEliminar = new ArrayList<Integer>();
+    public final List<Integer> idsGruposAEliminar = new ArrayList<Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +138,17 @@ public class ContactosActivity extends ActionBarActivity {
     }
 
     public void AgregarAmigos(View v){
-
+        setContentView(R.layout.activity_usuarios_agregar);
+        Button btngrupos = (Button) findViewById(R.id.footercontactobtnamigos);
+        btngrupos.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+        redirigir = 1;
+        this.idsAuxiliarDeUsuarios.clear();
+        this.idsAuxiliarDeGrupos.clear();
+        for(int i = 0; i<this.idsUsuariosParaNuevoGrupo.size(); i++) {
+            this.idsAuxiliarDeUsuarios.add(this.idsUsuariosParaNuevoGrupo.get(i));
+            this.idsAuxiliarDeGrupos.add(this.idsDeGrupos.get(i));
+        }
+        llenarListaDeUsuariosAgregar();
     }
     public void AgregarGrupos(View v){
         setContentView(R.layout.activity_contactos_grupos_crear);
@@ -158,6 +181,9 @@ public class ContactosActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    private void llenarIdsAuxiliarDeUsuarios(int id) {
+        this.idsAuxiliarDeUsuarios.add(id);
+    }
     private void llenarListaAmigos(Usuario usuario)
     {
         this.lstAmigos.add(usuario);
@@ -168,10 +194,12 @@ public class ContactosActivity extends ActionBarActivity {
             this.idsUsuariosParaNuevoGrupo.add(usuario.getId());
             this.nombresUsuariosParaNuevoGrupo.add(usuario.getNombres());
             this.apellidosUsuariosParaNuevoGrupo.add(usuario.getApellidos());
+            this.idsDeGrupos.add(usuario.getIdGupo());
         } else {
             this.idsUsuariosParaNuevoGrupo.remove(usuario.getId());
             this.nombresUsuariosParaNuevoGrupo.remove(usuario.getNombres());
             this.apellidosUsuariosParaNuevoGrupo.remove(usuario.getApellidos());
+            this.idsDeGrupos.remove(usuario.getIdGupo());
         }
     }
     private void llenarListaGrupos(Grupo grupo)
@@ -188,11 +216,22 @@ public class ContactosActivity extends ActionBarActivity {
 
     public void llenarListaDeAmigos(){
         this.lstAmigos.clear();
+        this.idsUsuariosParaNuevoGrupo.clear();
+        this.nombresUsuariosParaNuevoGrupo.clear();
+        this.apellidosUsuariosParaNuevoGrupo.clear();
+
+        this.idsUsuariosAEliminar.clear();
+        this.idsGruposDeUsuariosAEliminar.clear();
+        this.idsUsuariosAAgregar.clear();
+        this.idsGruposDeUsuariosAAgregar.clear();
+
+        this.idsDeGrupos.clear();
         prgDialog.setMessage("Cargando Amigos...");
         prgDialog.show();
-        RestaurAppisClient.get("usuarios", null, new AsyncHttpResponseHandler() {
+        RestaurAppisClient.get("usuarios/" + idUsuarioLogueado + "/amigos?include=usuarios", null, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                prgDialog.hide();
                 String response = new String(responseBody);
                 try {
                     JSONObject obj = new JSONObject(response);
@@ -202,22 +241,25 @@ public class ContactosActivity extends ActionBarActivity {
                     if (response.contains("error")) {
                         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                     } else {
-                        for(int i=0;i<jArray.length();i++){
-                            JSONObject jObj = jArray.getJSONObject(i);
-                            Usuario usuario = new Usuario();
-                            usuario.setId(jObj.getInt("id"));
-                            usuario.setNombres(jObj.getString("nombres"));
-                            usuario.setApellidos(jObj.getString("apellidos"));
-                            llenarListaAmigos(usuario);
+                        for (int i = 0; i < jArray.length(); i++) {
+                            // obtengo usuarios
+                            JSONArray jUsuarioArray = jArray.getJSONObject(i).getJSONObject("usuarios").getJSONArray("data");
+                            //recorreo arreglo nuevo
+                            for(int j=0;j<jUsuarioArray.length();j++) {
+                                JSONObject jUsuarioObject = jUsuarioArray.getJSONObject(j);
+                                Usuario usuario = new Usuario();
+                                usuario.setId(jUsuarioObject.getInt("id"));
+                                usuario.setNombres(jUsuarioObject.getString("nombres"));
+                                usuario.setApellidos(jUsuarioObject.getString("apellidos"));
+                                usuario.setUsername(jUsuarioObject.getString("username"));
+                                usuario.setEmail(jUsuarioObject.getString("email"));
+                                usuario.setIdGupo(jArray.getJSONObject(i).getInt("id"));
+                                llenarListaAmigos(usuario);
+                                llenarListaIdsUsuarios(usuario);
+                            }
                         }
                     }
                     actualizarListaDeAmigos();
-                    /*
-                    Bundle bundle = getIntent().getExtras();
-                    bundle.remove("amigosId");
-                    */
-                    prgDialog.hide();
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -246,23 +288,8 @@ public class ContactosActivity extends ActionBarActivity {
         lstVwAmigos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*
-                Usuario usuario = (Restaurante) parent.getItemAtPosition(position);
-
-                Intent intent = new Intent(ListaRestaurantesActivity.this, RestauranteActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
-                bundle.putString("Nombre",restaurante.getNombre());
-                bundle.putString("Latitud",restaurante.getLatitud());
-                bundle.putString("Longitud",restaurante.getLongitud());
-                bundle.putString("Descripcion",restaurante.getDescripcion());
-                bundle.putInt("Foto_id",restaurante.getFoto_id());
-                bundle.putString("DistritoId",restaurante.getDistrito());
-                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
-                intent.putExtras(bundle);
-
-                startActivity(intent);
-                */
+                Usuario usuario = (Usuario) parent.getItemAtPosition(position);
+                Toast.makeText(ContactosActivity.this, usuario.getEmail() + " -> " + usuario.getUsername(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -432,7 +459,11 @@ public class ContactosActivity extends ActionBarActivity {
     }
     public void AgregarUsuariosParaCrear(View v) {
         if(redirigir == 1) {
-
+            setContentView(R.layout.activity_contactos_amigos);
+            Button btnamigos = (Button) findViewById(R.id.footercontactobtnamigos);
+            btnamigos.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+            CrearAmigosDelUsuario(v);
+            //llenarListaDeAmigos();
         } else {
             setContentView(R.layout.activity_contactos_grupos_crear);
             FormEditText tvNombreGrupo = (FormEditText) findViewById(R.id.contactos_crear_grupo_et_nombre_grupo);
@@ -590,4 +621,122 @@ public class ContactosActivity extends ActionBarActivity {
         });
     }
 
+    public void comprobarUsuariosParaAgregar() {
+        this.idsAAgregar.clear();
+        this.nombresAAgregar.clear();
+        this.apellidosAAgregar.clear();
+        this.idsAEliminar.clear();
+        this.idsGruposAEliminar.clear();
+        for(int i = 0 ;i <idsUsuariosParaNuevoGrupo.size();i++) {
+            if(! idsAuxiliarDeUsuarios.contains(idsUsuariosParaNuevoGrupo.get(i))) {
+                this.idsAAgregar.add(idsUsuariosParaNuevoGrupo.get(i));
+                this.nombresAAgregar.add(nombresUsuariosParaNuevoGrupo.get(i));
+                this.apellidosAAgregar.add(apellidosUsuariosParaNuevoGrupo.get(i));
+            }
+        }
+        for(int i = 0 ;i <idsAuxiliarDeUsuarios.size();i++) {
+            if(! idsUsuariosParaNuevoGrupo.contains(idsAuxiliarDeUsuarios.get(i))) {
+                this.idsAEliminar.add(idsAuxiliarDeUsuarios.get(i));
+                this.idsGruposAEliminar.add(idsAuxiliarDeGrupos.get(i));
+            }
+        }
+    }
+
+    public void CrearAmigosDelUsuario(View v) {
+        comprobarUsuariosParaAgregar();
+        prgDialog.setMessage("Creando...");
+        // Agregar USUARIOS
+        prgDialog.show();
+        for (int h = 0; h < idsAAgregar.size(); h++) {
+            prgDialog.show();
+            RequestParams requestParams = new RequestParams();
+            requestParams.add("nombre", nombresAAgregar.get(h).toString()+" "+ apellidosAAgregar.get(h).toString());
+            requestParams.add("created_by", String.valueOf(idUsuarioLogueado));
+            final Integer auxID = idsAAgregar.get(h);
+            RestaurAppisClient.post("grupos/create", requestParams, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    String response = new String(responseBody);
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        JSONObject jNuevoGrupo = obj.getJSONObject("data");
+
+                        //TODO: revisar manejo del error
+                        if (response.contains("error")) {
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                        } else {
+                            Grupo grupo = new Grupo();
+                            grupo.setId(jNuevoGrupo.getInt("id"));
+                            grupo.setNombre(jNuevoGrupo.getString("nombre"));
+                            llenarGrupoBean(grupo);
+                        }
+                        prgDialog.hide();
+                        RequestParams params = new RequestParams();
+                        //params.add("usuario_id", idsAAgregar.get(getVariableIteradorUsuario()).toString());
+                        params.add("usuario_id", auxID.toString());
+                        params.add("grupo_id", grupoBean.getId().toString());
+                        prgDialog.show();
+                        RestaurAppisClient.post("grupos/usuarios/agregar", params, new AsyncHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                prgDialog.hide();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                prgDialog.hide();
+                                if (statusCode == 404) {
+                                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                                } else if (statusCode == 500) {
+                                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    prgDialog.hide();
+                    if (statusCode == 404) {
+                        Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                    } else if (statusCode == 500) {
+                        Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }
+        // Elimnar USUARIOS
+        prgDialog.show();
+        for (int h = 0; h < this.idsAEliminar.size(); h++) {
+            prgDialog.show();
+            RestaurAppisClient.post("grupos/usuarios/eliminar?usuario_id=" + this.idsAEliminar.get(h).toString() + "&grupo_id=" + this.idsGruposAEliminar.get(h).toString(), null, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    prgDialog.hide();
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    prgDialog.hide();
+                    if (statusCode == 404) {
+                        Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                    } else if (statusCode == 500) {
+                        Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+        Toast.makeText(getApplicationContext(), "Amigos Agregados", Toast.LENGTH_SHORT).show();
+        cambiarAmigos(v);
+    }
 }
