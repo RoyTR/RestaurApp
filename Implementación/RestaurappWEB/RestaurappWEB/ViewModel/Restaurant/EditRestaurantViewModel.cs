@@ -13,6 +13,7 @@ namespace RestaurappWEB.ViewModel.Restaurant
         public Int32? RestaurantId { get; set; }
 
         public List<categoria> LstCategorias { get; set; }
+        public List<distrito> LstDistritos { get; set; }
 
         [Display(Name = "Categoría")]
         public Int32 CategoriaId { get; set; }
@@ -26,10 +27,14 @@ namespace RestaurappWEB.ViewModel.Restaurant
         public String Descripcion { get; set; }
 
         [Display(Name = "Latitud")]
-        public Decimal? Latitud { get; set; }
+        public String Latitud { get; set; }
 
         [Display(Name = "Longitud")]
-        public Decimal? Longitud { get; set; }
+        public String Longitud { get; set; }
+
+        [Display(Name = "Distrito")]
+        [Required(ErrorMessageResourceName = "CampoRequerido", ErrorMessageResourceType = typeof(i18n.ValidationStrings))]
+        public long? DistritoId { get; set; }
 
         public EditRestaurantViewModel()
         {
@@ -38,6 +43,7 @@ namespace RestaurappWEB.ViewModel.Restaurant
         public void CargarDatos(CargarDatosContext dataContext, Int32? RestaurantId)
         {
             LstCategorias = dataContext.context.categoria.Where(x => x.deleted_at == null).ToList();
+            LstDistritos = dataContext.context.distrito.ToList();
 
             if (RestaurantId.HasValue)
             {
@@ -49,6 +55,7 @@ namespace RestaurappWEB.ViewModel.Restaurant
                 this.Descripcion = rest.descripcion;
                 this.Longitud = rest.longitud;
                 this.Latitud = rest.latitud;
+                this.DistritoId = rest.distrito_id;
                 if(cat != null)
                     this.CategoriaId = Convert.ToInt32(cat.categoria_id);
             }

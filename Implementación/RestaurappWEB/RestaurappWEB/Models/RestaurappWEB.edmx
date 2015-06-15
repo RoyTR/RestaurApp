@@ -4,117 +4,122 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="restaurapp_devModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="restaurapp_devModelStoreContainer">
-          <EntitySet Name="categoria" EntityType="restaurapp_devModel.Store.categoria" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="foto" EntityType="restaurapp_devModel.Store.foto" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="grupo" EntityType="restaurapp_devModel.Store.grupo" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="grupo_usuario" EntityType="restaurapp_devModel.Store.grupo_usuario" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="migrations" EntityType="restaurapp_devModel.Store.migrations" store:Type="Tables" store:Schema="restaurapp" store:Name="migrations">
+      <Schema Namespace="RestaurappWEBModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RestaurappWEBModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="RestaurappWEBModel.Store.categoria" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="distrito" EntityType="RestaurappWEBModel.Store.distrito" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="foto" EntityType="RestaurappWEBModel.Store.foto" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="grupo" EntityType="RestaurappWEBModel.Store.grupo" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="grupo_usuario" EntityType="RestaurappWEBModel.Store.grupo_usuario" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="migrations" EntityType="RestaurappWEBModel.Store.migrations" store:Type="Tables" store:Schema="restaurapp" store:Name="migrations">
             <DefiningQuery>SELECT
       `migrations`.`migration`, 
       `migrations`.`batch`
       FROM `migrations` AS `migrations`</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="preferencia" EntityType="restaurapp_devModel.Store.preferencia" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="recomendacion" EntityType="restaurapp_devModel.Store.recomendacion" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="recomendacion_foto" EntityType="restaurapp_devModel.Store.recomendacion_foto" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="restaurante" EntityType="restaurapp_devModel.Store.restaurante" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="restaurante_categoria" EntityType="restaurapp_devModel.Store.restaurante_categoria" store:Type="Tables" Schema="restaurapp" />
-          <EntitySet Name="usuario" EntityType="restaurapp_devModel.Store.usuario" store:Type="Tables" Schema="restaurapp" />
-          <AssociationSet Name="categoria_created_by_foreign" Association="restaurapp_devModel.Store.categoria_created_by_foreign">
+          <EntitySet Name="preferencia" EntityType="RestaurappWEBModel.Store.preferencia" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="recomendacion" EntityType="RestaurappWEBModel.Store.recomendacion" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="recomendacion_foto" EntityType="RestaurappWEBModel.Store.recomendacion_foto" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="restaurante" EntityType="RestaurappWEBModel.Store.restaurante" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="restaurante_categoria" EntityType="RestaurappWEBModel.Store.restaurante_categoria" store:Type="Tables" Schema="restaurapp" />
+          <EntitySet Name="usuario" EntityType="RestaurappWEBModel.Store.usuario" store:Type="Tables" Schema="restaurapp" />
+          <AssociationSet Name="categoria_created_by_foreign" Association="RestaurappWEBModel.Store.categoria_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="categoria" EntitySet="categoria" />
           </AssociationSet>
-          <AssociationSet Name="categoria_updated_by_foreign" Association="restaurapp_devModel.Store.categoria_updated_by_foreign">
+          <AssociationSet Name="categoria_updated_by_foreign" Association="RestaurappWEBModel.Store.categoria_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="categoria" EntitySet="categoria" />
           </AssociationSet>
-          <AssociationSet Name="foto_created_by_foreign" Association="restaurapp_devModel.Store.foto_created_by_foreign">
+          <AssociationSet Name="foto_created_by_foreign" Association="RestaurappWEBModel.Store.foto_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="foto" EntitySet="foto" />
           </AssociationSet>
-          <AssociationSet Name="foto_updated_by_foreign" Association="restaurapp_devModel.Store.foto_updated_by_foreign">
+          <AssociationSet Name="foto_updated_by_foreign" Association="RestaurappWEBModel.Store.foto_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="foto" EntitySet="foto" />
           </AssociationSet>
-          <AssociationSet Name="grupo_created_by_foreign" Association="restaurapp_devModel.Store.grupo_created_by_foreign">
+          <AssociationSet Name="grupo_created_by_foreign" Association="RestaurappWEBModel.Store.grupo_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="grupo" EntitySet="grupo" />
           </AssociationSet>
-          <AssociationSet Name="grupo_updated_by_foreign" Association="restaurapp_devModel.Store.grupo_updated_by_foreign">
+          <AssociationSet Name="grupo_updated_by_foreign" Association="RestaurappWEBModel.Store.grupo_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="grupo" EntitySet="grupo" />
           </AssociationSet>
-          <AssociationSet Name="grupo_usuario_grupo_id_foreign" Association="restaurapp_devModel.Store.grupo_usuario_grupo_id_foreign">
+          <AssociationSet Name="grupo_usuario_grupo_id_foreign" Association="RestaurappWEBModel.Store.grupo_usuario_grupo_id_foreign">
             <End Role="grupo" EntitySet="grupo" />
             <End Role="grupo_usuario" EntitySet="grupo_usuario" />
           </AssociationSet>
-          <AssociationSet Name="grupo_usuario_usuario_id_foreign" Association="restaurapp_devModel.Store.grupo_usuario_usuario_id_foreign">
+          <AssociationSet Name="grupo_usuario_usuario_id_foreign" Association="RestaurappWEBModel.Store.grupo_usuario_usuario_id_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="grupo_usuario" EntitySet="grupo_usuario" />
           </AssociationSet>
-          <AssociationSet Name="preferencia_categoria_id_foreign" Association="restaurapp_devModel.Store.preferencia_categoria_id_foreign">
+          <AssociationSet Name="preferencia_categoria_id_foreign" Association="RestaurappWEBModel.Store.preferencia_categoria_id_foreign">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="preferencia" EntitySet="preferencia" />
           </AssociationSet>
-          <AssociationSet Name="preferencia_usuario_id_foreign" Association="restaurapp_devModel.Store.preferencia_usuario_id_foreign">
+          <AssociationSet Name="preferencia_usuario_id_foreign" Association="RestaurappWEBModel.Store.preferencia_usuario_id_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="preferencia" EntitySet="preferencia" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_created_by_foreign" Association="restaurapp_devModel.Store.recomendacion_created_by_foreign">
+          <AssociationSet Name="recomendacion_created_by_foreign" Association="RestaurappWEBModel.Store.recomendacion_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_foto_foto_id_foreign" Association="restaurapp_devModel.Store.recomendacion_foto_foto_id_foreign">
+          <AssociationSet Name="recomendacion_foto_foto_id_foreign" Association="RestaurappWEBModel.Store.recomendacion_foto_foto_id_foreign">
             <End Role="foto" EntitySet="foto" />
             <End Role="recomendacion_foto" EntitySet="recomendacion_foto" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_foto_recomendacion_id_foreign" Association="restaurapp_devModel.Store.recomendacion_foto_recomendacion_id_foreign">
+          <AssociationSet Name="recomendacion_foto_recomendacion_id_foreign" Association="RestaurappWEBModel.Store.recomendacion_foto_recomendacion_id_foreign">
             <End Role="recomendacion" EntitySet="recomendacion" />
             <End Role="recomendacion_foto" EntitySet="recomendacion_foto" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_grupo_id_foreign" Association="restaurapp_devModel.Store.recomendacion_grupo_id_foreign">
+          <AssociationSet Name="recomendacion_grupo_id_foreign" Association="RestaurappWEBModel.Store.recomendacion_grupo_id_foreign">
             <End Role="grupo" EntitySet="grupo" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_restaurante_id_foreign" Association="restaurapp_devModel.Store.recomendacion_restaurante_id_foreign">
+          <AssociationSet Name="recomendacion_restaurante_id_foreign" Association="RestaurappWEBModel.Store.recomendacion_restaurante_id_foreign">
             <End Role="restaurante" EntitySet="restaurante" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_updated_by_foreign" Association="restaurapp_devModel.Store.recomendacion_updated_by_foreign">
+          <AssociationSet Name="recomendacion_updated_by_foreign" Association="RestaurappWEBModel.Store.recomendacion_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_usuario_id_foreign" Association="restaurapp_devModel.Store.recomendacion_usuario_id_foreign">
+          <AssociationSet Name="recomendacion_usuario_id_foreign" Association="RestaurappWEBModel.Store.recomendacion_usuario_id_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_categoria_categoria_id_foreign" Association="restaurapp_devModel.Store.restaurante_categoria_categoria_id_foreign">
+          <AssociationSet Name="restaurante_categoria_categoria_id_foreign" Association="RestaurappWEBModel.Store.restaurante_categoria_categoria_id_foreign">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="restaurante_categoria" EntitySet="restaurante_categoria" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_categoria_restaurante_id_foreign" Association="restaurapp_devModel.Store.restaurante_categoria_restaurante_id_foreign">
+          <AssociationSet Name="restaurante_categoria_restaurante_id_foreign" Association="RestaurappWEBModel.Store.restaurante_categoria_restaurante_id_foreign">
             <End Role="restaurante" EntitySet="restaurante" />
             <End Role="restaurante_categoria" EntitySet="restaurante_categoria" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_created_by_foreign" Association="restaurapp_devModel.Store.restaurante_created_by_foreign">
+          <AssociationSet Name="restaurante_created_by_foreign" Association="RestaurappWEBModel.Store.restaurante_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="restaurante" EntitySet="restaurante" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_foto_id_foreign" Association="restaurapp_devModel.Store.restaurante_foto_id_foreign">
+          <AssociationSet Name="restaurante_distrito_id_foreign" Association="RestaurappWEBModel.Store.restaurante_distrito_id_foreign">
+            <End Role="distrito" EntitySet="distrito" />
+            <End Role="restaurante" EntitySet="restaurante" />
+          </AssociationSet>
+          <AssociationSet Name="restaurante_foto_id_foreign" Association="RestaurappWEBModel.Store.restaurante_foto_id_foreign">
             <End Role="foto" EntitySet="foto" />
             <End Role="restaurante" EntitySet="restaurante" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_updated_by_foreign" Association="restaurapp_devModel.Store.restaurante_updated_by_foreign">
+          <AssociationSet Name="restaurante_updated_by_foreign" Association="RestaurappWEBModel.Store.restaurante_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="restaurante" EntitySet="restaurante" />
           </AssociationSet>
-          <AssociationSet Name="usuario_created_by_foreign" Association="restaurapp_devModel.Store.usuario_created_by_foreign">
+          <AssociationSet Name="usuario_created_by_foreign" Association="RestaurappWEBModel.Store.usuario_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="usuario1" EntitySet="usuario" />
           </AssociationSet>
-          <AssociationSet Name="usuario_updated_by_foreign" Association="restaurapp_devModel.Store.usuario_updated_by_foreign">
+          <AssociationSet Name="usuario_updated_by_foreign" Association="RestaurappWEBModel.Store.usuario_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="usuario1" EntitySet="usuario" />
           </AssociationSet>
@@ -131,6 +136,13 @@
           <Property Name="created_at" Type="timestamp" Nullable="false" />
           <Property Name="updated_at" Type="timestamp" Nullable="false" />
           <Property Name="deleted_at" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="distrito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="64" />
         </EntityType>
         <EntityType Name="foto">
           <Key>
@@ -216,9 +228,10 @@
           </Key>
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="latitud" Type="decimal" Scale="2" />
-          <Property Name="longitud" Type="decimal" Scale="2" />
+          <Property Name="latitud" Type="varchar" MaxLength="255" />
+          <Property Name="longitud" Type="varchar" MaxLength="255" />
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="distrito_id" Type="uint" />
           <Property Name="foto_id" Type="uint" />
           <Property Name="puntuacion_total" Type="decimal" Scale="2" />
           <Property Name="created_by" Type="uint" Nullable="false" />
@@ -255,8 +268,8 @@
           <Property Name="deleted_at" Type="timestamp" />
         </EntityType>
         <Association Name="categoria_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="categoria" Type="restaurapp_devModel.Store.categoria" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="categoria" Type="RestaurappWEBModel.Store.categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -267,8 +280,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="categoria_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="categoria" Type="restaurapp_devModel.Store.categoria" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="categoria" Type="RestaurappWEBModel.Store.categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -279,8 +292,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="foto_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="foto" Type="restaurapp_devModel.Store.foto" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="foto" Type="RestaurappWEBModel.Store.foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -291,8 +304,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="foto_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="foto" Type="restaurapp_devModel.Store.foto" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="foto" Type="RestaurappWEBModel.Store.foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -303,8 +316,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="grupo" Type="restaurapp_devModel.Store.grupo" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="grupo" Type="RestaurappWEBModel.Store.grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -315,8 +328,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="grupo" Type="restaurapp_devModel.Store.grupo" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="grupo" Type="RestaurappWEBModel.Store.grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -327,8 +340,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_usuario_grupo_id_foreign">
-          <End Role="grupo" Type="restaurapp_devModel.Store.grupo" Multiplicity="1" />
-          <End Role="grupo_usuario" Type="restaurapp_devModel.Store.grupo_usuario" Multiplicity="*" />
+          <End Role="grupo" Type="RestaurappWEBModel.Store.grupo" Multiplicity="1" />
+          <End Role="grupo_usuario" Type="RestaurappWEBModel.Store.grupo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="grupo">
               <PropertyRef Name="id" />
@@ -339,8 +352,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_usuario_usuario_id_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="grupo_usuario" Type="restaurapp_devModel.Store.grupo_usuario" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="grupo_usuario" Type="RestaurappWEBModel.Store.grupo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -351,8 +364,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="preferencia_categoria_id_foreign">
-          <End Role="categoria" Type="restaurapp_devModel.Store.categoria" Multiplicity="1" />
-          <End Role="preferencia" Type="restaurapp_devModel.Store.preferencia" Multiplicity="*" />
+          <End Role="categoria" Type="RestaurappWEBModel.Store.categoria" Multiplicity="1" />
+          <End Role="preferencia" Type="RestaurappWEBModel.Store.preferencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id" />
@@ -363,8 +376,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="preferencia_usuario_id_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="preferencia" Type="restaurapp_devModel.Store.preferencia" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="preferencia" Type="RestaurappWEBModel.Store.preferencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -375,8 +388,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.Store.recomendacion" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.Store.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -387,8 +400,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_foto_foto_id_foreign">
-          <End Role="foto" Type="restaurapp_devModel.Store.foto" Multiplicity="1" />
-          <End Role="recomendacion_foto" Type="restaurapp_devModel.Store.recomendacion_foto" Multiplicity="*" />
+          <End Role="foto" Type="RestaurappWEBModel.Store.foto" Multiplicity="1" />
+          <End Role="recomendacion_foto" Type="RestaurappWEBModel.Store.recomendacion_foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="foto">
               <PropertyRef Name="id" />
@@ -399,8 +412,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_foto_recomendacion_id_foreign">
-          <End Role="recomendacion" Type="restaurapp_devModel.Store.recomendacion" Multiplicity="1" />
-          <End Role="recomendacion_foto" Type="restaurapp_devModel.Store.recomendacion_foto" Multiplicity="*" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.Store.recomendacion" Multiplicity="1" />
+          <End Role="recomendacion_foto" Type="RestaurappWEBModel.Store.recomendacion_foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="recomendacion">
               <PropertyRef Name="id" />
@@ -411,8 +424,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_grupo_id_foreign">
-          <End Role="grupo" Type="restaurapp_devModel.Store.grupo" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.Store.recomendacion" Multiplicity="*" />
+          <End Role="grupo" Type="RestaurappWEBModel.Store.grupo" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.Store.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="grupo">
               <PropertyRef Name="id" />
@@ -423,8 +436,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_restaurante_id_foreign">
-          <End Role="restaurante" Type="restaurapp_devModel.Store.restaurante" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.Store.recomendacion" Multiplicity="*" />
+          <End Role="restaurante" Type="RestaurappWEBModel.Store.restaurante" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.Store.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="restaurante">
               <PropertyRef Name="id" />
@@ -435,8 +448,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.Store.recomendacion" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.Store.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -447,8 +460,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_usuario_id_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="recomendacion" Type="restaurapp_devModel.Store.recomendacion" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.Store.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -459,8 +472,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_categoria_categoria_id_foreign">
-          <End Role="categoria" Type="restaurapp_devModel.Store.categoria" Multiplicity="1" />
-          <End Role="restaurante_categoria" Type="restaurapp_devModel.Store.restaurante_categoria" Multiplicity="*" />
+          <End Role="categoria" Type="RestaurappWEBModel.Store.categoria" Multiplicity="1" />
+          <End Role="restaurante_categoria" Type="RestaurappWEBModel.Store.restaurante_categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id" />
@@ -471,8 +484,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_categoria_restaurante_id_foreign">
-          <End Role="restaurante" Type="restaurapp_devModel.Store.restaurante" Multiplicity="1" />
-          <End Role="restaurante_categoria" Type="restaurapp_devModel.Store.restaurante_categoria" Multiplicity="*" />
+          <End Role="restaurante" Type="RestaurappWEBModel.Store.restaurante" Multiplicity="1" />
+          <End Role="restaurante_categoria" Type="RestaurappWEBModel.Store.restaurante_categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="restaurante">
               <PropertyRef Name="id" />
@@ -483,8 +496,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="restaurante" Type="restaurapp_devModel.Store.restaurante" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.Store.restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -494,9 +507,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="restaurante_distrito_id_foreign">
+          <End Role="distrito" Type="RestaurappWEBModel.Store.distrito" Multiplicity="0..1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.Store.restaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distrito">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="restaurante">
+              <PropertyRef Name="distrito_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="restaurante_foto_id_foreign">
-          <End Role="foto" Type="restaurapp_devModel.Store.foto" Multiplicity="0..1" />
-          <End Role="restaurante" Type="restaurapp_devModel.Store.restaurante" Multiplicity="*" />
+          <End Role="foto" Type="RestaurappWEBModel.Store.foto" Multiplicity="0..1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.Store.restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="foto">
               <PropertyRef Name="id" />
@@ -507,8 +532,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="restaurante" Type="restaurapp_devModel.Store.restaurante" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.Store.restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -519,8 +544,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="usuario_created_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="usuario1" Type="restaurapp_devModel.Store.usuario" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="usuario1" Type="RestaurappWEBModel.Store.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -531,8 +556,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="usuario_updated_by_foreign">
-          <End Role="usuario" Type="restaurapp_devModel.Store.usuario" Multiplicity="1" />
-          <End Role="usuario1" Type="restaurapp_devModel.Store.usuario" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.Store.usuario" Multiplicity="1" />
+          <End Role="usuario1" Type="RestaurappWEBModel.Store.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -542,115 +567,121 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="restaurapp_devModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RestaurappWEBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="RestaurappWEBEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="categoria" EntityType="restaurapp_devModel.categoria" />
-          <EntitySet Name="foto" EntityType="restaurapp_devModel.foto" />
-          <EntitySet Name="grupo" EntityType="restaurapp_devModel.grupo" />
-          <EntitySet Name="grupo_usuario" EntityType="restaurapp_devModel.grupo_usuario" />
-          <EntitySet Name="migrations" EntityType="restaurapp_devModel.migrations" />
-          <EntitySet Name="preferencia" EntityType="restaurapp_devModel.preferencia" />
-          <EntitySet Name="recomendacion" EntityType="restaurapp_devModel.recomendacion" />
-          <EntitySet Name="recomendacion_foto" EntityType="restaurapp_devModel.recomendacion_foto" />
-          <EntitySet Name="restaurante" EntityType="restaurapp_devModel.restaurante" />
-          <EntitySet Name="restaurante_categoria" EntityType="restaurapp_devModel.restaurante_categoria" />
-          <EntitySet Name="usuario" EntityType="restaurapp_devModel.usuario" />
-          <AssociationSet Name="categoria_created_by_foreign" Association="restaurapp_devModel.categoria_created_by_foreign">
+          <EntitySet Name="categoria" EntityType="RestaurappWEBModel.categoria" />
+          <EntitySet Name="distrito" EntityType="RestaurappWEBModel.distrito" />
+          <EntitySet Name="foto" EntityType="RestaurappWEBModel.foto" />
+          <EntitySet Name="grupo" EntityType="RestaurappWEBModel.grupo" />
+          <EntitySet Name="grupo_usuario" EntityType="RestaurappWEBModel.grupo_usuario" />
+          <EntitySet Name="migrations" EntityType="RestaurappWEBModel.migrations" />
+          <EntitySet Name="preferencia" EntityType="RestaurappWEBModel.preferencia" />
+          <EntitySet Name="recomendacion" EntityType="RestaurappWEBModel.recomendacion" />
+          <EntitySet Name="recomendacion_foto" EntityType="RestaurappWEBModel.recomendacion_foto" />
+          <EntitySet Name="restaurante" EntityType="RestaurappWEBModel.restaurante" />
+          <EntitySet Name="restaurante_categoria" EntityType="RestaurappWEBModel.restaurante_categoria" />
+          <EntitySet Name="usuario" EntityType="RestaurappWEBModel.usuario" />
+          <AssociationSet Name="categoria_created_by_foreign" Association="RestaurappWEBModel.categoria_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="categoria" EntitySet="categoria" />
           </AssociationSet>
-          <AssociationSet Name="categoria_updated_by_foreign" Association="restaurapp_devModel.categoria_updated_by_foreign">
+          <AssociationSet Name="categoria_updated_by_foreign" Association="RestaurappWEBModel.categoria_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="categoria" EntitySet="categoria" />
           </AssociationSet>
-          <AssociationSet Name="preferencia_categoria_id_foreign" Association="restaurapp_devModel.preferencia_categoria_id_foreign">
+          <AssociationSet Name="preferencia_categoria_id_foreign" Association="RestaurappWEBModel.preferencia_categoria_id_foreign">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="preferencia" EntitySet="preferencia" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_categoria_categoria_id_foreign" Association="restaurapp_devModel.restaurante_categoria_categoria_id_foreign">
+          <AssociationSet Name="restaurante_categoria_categoria_id_foreign" Association="RestaurappWEBModel.restaurante_categoria_categoria_id_foreign">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="restaurante_categoria" EntitySet="restaurante_categoria" />
           </AssociationSet>
-          <AssociationSet Name="foto_created_by_foreign" Association="restaurapp_devModel.foto_created_by_foreign">
+          <AssociationSet Name="restaurante_distrito_id_foreign" Association="RestaurappWEBModel.restaurante_distrito_id_foreign">
+            <End Role="distrito" EntitySet="distrito" />
+            <End Role="restaurante" EntitySet="restaurante" />
+          </AssociationSet>
+          <AssociationSet Name="foto_created_by_foreign" Association="RestaurappWEBModel.foto_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="foto" EntitySet="foto" />
           </AssociationSet>
-          <AssociationSet Name="foto_updated_by_foreign" Association="restaurapp_devModel.foto_updated_by_foreign">
+          <AssociationSet Name="foto_updated_by_foreign" Association="RestaurappWEBModel.foto_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="foto" EntitySet="foto" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_foto_foto_id_foreign" Association="restaurapp_devModel.recomendacion_foto_foto_id_foreign">
+          <AssociationSet Name="recomendacion_foto_foto_id_foreign" Association="RestaurappWEBModel.recomendacion_foto_foto_id_foreign">
             <End Role="foto" EntitySet="foto" />
             <End Role="recomendacion_foto" EntitySet="recomendacion_foto" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_foto_id_foreign" Association="restaurapp_devModel.restaurante_foto_id_foreign">
+          <AssociationSet Name="restaurante_foto_id_foreign" Association="RestaurappWEBModel.restaurante_foto_id_foreign">
             <End Role="foto" EntitySet="foto" />
             <End Role="restaurante" EntitySet="restaurante" />
           </AssociationSet>
-          <AssociationSet Name="grupo_created_by_foreign" Association="restaurapp_devModel.grupo_created_by_foreign">
+          <AssociationSet Name="grupo_created_by_foreign" Association="RestaurappWEBModel.grupo_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="grupo" EntitySet="grupo" />
           </AssociationSet>
-          <AssociationSet Name="grupo_updated_by_foreign" Association="restaurapp_devModel.grupo_updated_by_foreign">
+          <AssociationSet Name="grupo_updated_by_foreign" Association="RestaurappWEBModel.grupo_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="grupo" EntitySet="grupo" />
           </AssociationSet>
-          <AssociationSet Name="grupo_usuario_grupo_id_foreign" Association="restaurapp_devModel.grupo_usuario_grupo_id_foreign">
+          <AssociationSet Name="grupo_usuario_grupo_id_foreign" Association="RestaurappWEBModel.grupo_usuario_grupo_id_foreign">
             <End Role="grupo" EntitySet="grupo" />
             <End Role="grupo_usuario" EntitySet="grupo_usuario" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_grupo_id_foreign" Association="restaurapp_devModel.recomendacion_grupo_id_foreign">
+          <AssociationSet Name="recomendacion_grupo_id_foreign" Association="RestaurappWEBModel.recomendacion_grupo_id_foreign">
             <End Role="grupo" EntitySet="grupo" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="grupo_usuario_usuario_id_foreign" Association="restaurapp_devModel.grupo_usuario_usuario_id_foreign">
+          <AssociationSet Name="grupo_usuario_usuario_id_foreign" Association="RestaurappWEBModel.grupo_usuario_usuario_id_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="grupo_usuario" EntitySet="grupo_usuario" />
           </AssociationSet>
-          <AssociationSet Name="preferencia_usuario_id_foreign" Association="restaurapp_devModel.preferencia_usuario_id_foreign">
+          <AssociationSet Name="preferencia_usuario_id_foreign" Association="RestaurappWEBModel.preferencia_usuario_id_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="preferencia" EntitySet="preferencia" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_created_by_foreign" Association="restaurapp_devModel.recomendacion_created_by_foreign">
+          <AssociationSet Name="recomendacion_created_by_foreign" Association="RestaurappWEBModel.recomendacion_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_foto_recomendacion_id_foreign" Association="restaurapp_devModel.recomendacion_foto_recomendacion_id_foreign">
+          <AssociationSet Name="recomendacion_foto_recomendacion_id_foreign" Association="RestaurappWEBModel.recomendacion_foto_recomendacion_id_foreign">
             <End Role="recomendacion" EntitySet="recomendacion" />
             <End Role="recomendacion_foto" EntitySet="recomendacion_foto" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_restaurante_id_foreign" Association="restaurapp_devModel.recomendacion_restaurante_id_foreign">
+          <AssociationSet Name="recomendacion_restaurante_id_foreign" Association="RestaurappWEBModel.recomendacion_restaurante_id_foreign">
             <End Role="restaurante" EntitySet="restaurante" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_updated_by_foreign" Association="restaurapp_devModel.recomendacion_updated_by_foreign">
+          <AssociationSet Name="recomendacion_updated_by_foreign" Association="RestaurappWEBModel.recomendacion_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="recomendacion_usuario_id_foreign" Association="restaurapp_devModel.recomendacion_usuario_id_foreign">
+          <AssociationSet Name="recomendacion_usuario_id_foreign" Association="RestaurappWEBModel.recomendacion_usuario_id_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="recomendacion" EntitySet="recomendacion" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_categoria_restaurante_id_foreign" Association="restaurapp_devModel.restaurante_categoria_restaurante_id_foreign">
+          <AssociationSet Name="restaurante_categoria_restaurante_id_foreign" Association="RestaurappWEBModel.restaurante_categoria_restaurante_id_foreign">
             <End Role="restaurante" EntitySet="restaurante" />
             <End Role="restaurante_categoria" EntitySet="restaurante_categoria" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_created_by_foreign" Association="restaurapp_devModel.restaurante_created_by_foreign">
+          <AssociationSet Name="restaurante_created_by_foreign" Association="RestaurappWEBModel.restaurante_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="restaurante" EntitySet="restaurante" />
           </AssociationSet>
-          <AssociationSet Name="restaurante_updated_by_foreign" Association="restaurapp_devModel.restaurante_updated_by_foreign">
+          <AssociationSet Name="restaurante_updated_by_foreign" Association="RestaurappWEBModel.restaurante_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="restaurante" EntitySet="restaurante" />
           </AssociationSet>
-          <AssociationSet Name="usuario_created_by_foreign" Association="restaurapp_devModel.usuario_created_by_foreign">
+          <AssociationSet Name="usuario_created_by_foreign" Association="RestaurappWEBModel.usuario_created_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="usuario1" EntitySet="usuario" />
           </AssociationSet>
-          <AssociationSet Name="usuario_updated_by_foreign" Association="restaurapp_devModel.usuario_updated_by_foreign">
+          <AssociationSet Name="usuario_updated_by_foreign" Association="RestaurappWEBModel.usuario_updated_by_foreign">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="usuario1" EntitySet="usuario" />
           </AssociationSet>
@@ -659,185 +690,195 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="created_by" Nullable="false" />
-          <Property Type="Int64" Name="updated_by" Nullable="false" />
-          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="deleted_at" Precision="0" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.categoria_created_by_foreign" FromRole="categoria" ToRole="usuario" />
-          <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.categoria_updated_by_foreign" FromRole="categoria" ToRole="usuario" />
-          <NavigationProperty Name="preferencia" Relationship="restaurapp_devModel.preferencia_categoria_id_foreign" FromRole="categoria" ToRole="preferencia" />
-          <NavigationProperty Name="restaurante_categoria" Relationship="restaurapp_devModel.restaurante_categoria_categoria_id_foreign" FromRole="categoria" ToRole="restaurante_categoria" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_by" Type="Int64" Nullable="false" />
+          <Property Name="updated_by" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.categoria_created_by_foreign" FromRole="categoria" ToRole="usuario" />
+          <NavigationProperty Name="usuario1" Relationship="RestaurappWEBModel.categoria_updated_by_foreign" FromRole="categoria" ToRole="usuario" />
+          <NavigationProperty Name="preferencia" Relationship="RestaurappWEBModel.preferencia_categoria_id_foreign" FromRole="categoria" ToRole="preferencia" />
+          <NavigationProperty Name="restaurante_categoria" Relationship="RestaurappWEBModel.restaurante_categoria_categoria_id_foreign" FromRole="categoria" ToRole="restaurante_categoria" />
+        </EntityType>
+        <EntityType Name="distrito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="restaurante" Relationship="RestaurappWEBModel.restaurante_distrito_id_foreign" FromRole="distrito" ToRole="restaurante" />
         </EntityType>
         <EntityType Name="foto">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="url" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="url_min" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="formato" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="created_by" Nullable="false" />
-          <Property Type="Int64" Name="updated_by" Nullable="false" />
-          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="deleted_at" Precision="0" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.foto_created_by_foreign" FromRole="foto" ToRole="usuario" />
-          <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.foto_updated_by_foreign" FromRole="foto" ToRole="usuario" />
-          <NavigationProperty Name="recomendacion_foto" Relationship="restaurapp_devModel.recomendacion_foto_foto_id_foreign" FromRole="foto" ToRole="recomendacion_foto" />
-          <NavigationProperty Name="restaurante" Relationship="restaurapp_devModel.restaurante_foto_id_foreign" FromRole="foto" ToRole="restaurante" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="url" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="url_min" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="formato" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="created_by" Type="Int64" Nullable="false" />
+          <Property Name="updated_by" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.foto_created_by_foreign" FromRole="foto" ToRole="usuario" />
+          <NavigationProperty Name="usuario1" Relationship="RestaurappWEBModel.foto_updated_by_foreign" FromRole="foto" ToRole="usuario" />
+          <NavigationProperty Name="recomendacion_foto" Relationship="RestaurappWEBModel.recomendacion_foto_foto_id_foreign" FromRole="foto" ToRole="recomendacion_foto" />
+          <NavigationProperty Name="restaurante" Relationship="RestaurappWEBModel.restaurante_foto_id_foreign" FromRole="foto" ToRole="restaurante" />
         </EntityType>
         <EntityType Name="grupo">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="created_by" Nullable="false" />
-          <Property Type="Int64" Name="updated_by" Nullable="false" />
-          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="deleted_at" Precision="0" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.grupo_created_by_foreign" FromRole="grupo" ToRole="usuario" />
-          <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.grupo_updated_by_foreign" FromRole="grupo" ToRole="usuario" />
-          <NavigationProperty Name="grupo_usuario" Relationship="restaurapp_devModel.grupo_usuario_grupo_id_foreign" FromRole="grupo" ToRole="grupo_usuario" />
-          <NavigationProperty Name="recomendacion" Relationship="restaurapp_devModel.recomendacion_grupo_id_foreign" FromRole="grupo" ToRole="recomendacion" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="created_by" Type="Int64" Nullable="false" />
+          <Property Name="updated_by" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.grupo_created_by_foreign" FromRole="grupo" ToRole="usuario" />
+          <NavigationProperty Name="usuario1" Relationship="RestaurappWEBModel.grupo_updated_by_foreign" FromRole="grupo" ToRole="usuario" />
+          <NavigationProperty Name="grupo_usuario" Relationship="RestaurappWEBModel.grupo_usuario_grupo_id_foreign" FromRole="grupo" ToRole="grupo_usuario" />
+          <NavigationProperty Name="recomendacion" Relationship="RestaurappWEBModel.recomendacion_grupo_id_foreign" FromRole="grupo" ToRole="recomendacion" />
         </EntityType>
         <EntityType Name="grupo_usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="grupo_id" Nullable="false" />
-          <Property Type="Int64" Name="usuario_id" Nullable="false" />
-          <NavigationProperty Name="grupo" Relationship="restaurapp_devModel.grupo_usuario_grupo_id_foreign" FromRole="grupo_usuario" ToRole="grupo" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.grupo_usuario_usuario_id_foreign" FromRole="grupo_usuario" ToRole="usuario" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="grupo_id" Type="Int64" Nullable="false" />
+          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="grupo" Relationship="RestaurappWEBModel.grupo_usuario_grupo_id_foreign" FromRole="grupo_usuario" ToRole="grupo" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.grupo_usuario_usuario_id_foreign" FromRole="grupo_usuario" ToRole="usuario" />
         </EntityType>
         <EntityType Name="migrations">
           <Key>
             <PropertyRef Name="migration" />
             <PropertyRef Name="batch" />
           </Key>
-          <Property Type="String" Name="migration" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="batch" Nullable="false" />
+          <Property Name="migration" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="batch" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="preferencia">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="usuario_id" Nullable="false" />
-          <Property Type="Int64" Name="categoria_id" Nullable="false" />
-          <NavigationProperty Name="categoria" Relationship="restaurapp_devModel.preferencia_categoria_id_foreign" FromRole="preferencia" ToRole="categoria" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.preferencia_usuario_id_foreign" FromRole="preferencia" ToRole="usuario" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <Property Name="categoria_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="categoria" Relationship="RestaurappWEBModel.preferencia_categoria_id_foreign" FromRole="preferencia" ToRole="categoria" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.preferencia_usuario_id_foreign" FromRole="preferencia" ToRole="usuario" />
         </EntityType>
         <EntityType Name="recomendacion">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="comentario" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="puntuacion" Nullable="false" />
-          <Property Type="Int64" Name="usuario_id" Nullable="false" />
-          <Property Type="Int64" Name="restaurante_id" Nullable="false" />
-          <Property Type="Int64" Name="grupo_id" Nullable="false" />
-          <Property Type="Int64" Name="created_by" Nullable="false" />
-          <Property Type="Int64" Name="updated_by" Nullable="false" />
-          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="deleted_at" Precision="0" />
-          <NavigationProperty Name="grupo" Relationship="restaurapp_devModel.recomendacion_grupo_id_foreign" FromRole="recomendacion" ToRole="grupo" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.recomendacion_created_by_foreign" FromRole="recomendacion" ToRole="usuario" />
-          <NavigationProperty Name="recomendacion_foto" Relationship="restaurapp_devModel.recomendacion_foto_recomendacion_id_foreign" FromRole="recomendacion" ToRole="recomendacion_foto" />
-          <NavigationProperty Name="restaurante" Relationship="restaurapp_devModel.recomendacion_restaurante_id_foreign" FromRole="recomendacion" ToRole="restaurante" />
-          <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.recomendacion_updated_by_foreign" FromRole="recomendacion" ToRole="usuario" />
-          <NavigationProperty Name="usuario2" Relationship="restaurapp_devModel.recomendacion_usuario_id_foreign" FromRole="recomendacion" ToRole="usuario" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="comentario" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="puntuacion" Type="Int32" Nullable="false" />
+          <Property Name="usuario_id" Type="Int64" Nullable="false" />
+          <Property Name="restaurante_id" Type="Int64" Nullable="false" />
+          <Property Name="grupo_id" Type="Int64" Nullable="false" />
+          <Property Name="created_by" Type="Int64" Nullable="false" />
+          <Property Name="updated_by" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="grupo" Relationship="RestaurappWEBModel.recomendacion_grupo_id_foreign" FromRole="recomendacion" ToRole="grupo" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.recomendacion_created_by_foreign" FromRole="recomendacion" ToRole="usuario" />
+          <NavigationProperty Name="recomendacion_foto" Relationship="RestaurappWEBModel.recomendacion_foto_recomendacion_id_foreign" FromRole="recomendacion" ToRole="recomendacion_foto" />
+          <NavigationProperty Name="restaurante" Relationship="RestaurappWEBModel.recomendacion_restaurante_id_foreign" FromRole="recomendacion" ToRole="restaurante" />
+          <NavigationProperty Name="usuario1" Relationship="RestaurappWEBModel.recomendacion_updated_by_foreign" FromRole="recomendacion" ToRole="usuario" />
+          <NavigationProperty Name="usuario2" Relationship="RestaurappWEBModel.recomendacion_usuario_id_foreign" FromRole="recomendacion" ToRole="usuario" />
         </EntityType>
         <EntityType Name="recomendacion_foto">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="recomendacion_id" Nullable="false" />
-          <Property Type="Int64" Name="foto_id" Nullable="false" />
-          <NavigationProperty Name="foto" Relationship="restaurapp_devModel.recomendacion_foto_foto_id_foreign" FromRole="recomendacion_foto" ToRole="foto" />
-          <NavigationProperty Name="recomendacion" Relationship="restaurapp_devModel.recomendacion_foto_recomendacion_id_foreign" FromRole="recomendacion_foto" ToRole="recomendacion" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="recomendacion_id" Type="Int64" Nullable="false" />
+          <Property Name="foto_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="foto" Relationship="RestaurappWEBModel.recomendacion_foto_foto_id_foreign" FromRole="recomendacion_foto" ToRole="foto" />
+          <NavigationProperty Name="recomendacion" Relationship="RestaurappWEBModel.recomendacion_foto_recomendacion_id_foreign" FromRole="recomendacion_foto" ToRole="recomendacion" />
         </EntityType>
         <EntityType Name="restaurante">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="Decimal" Name="latitud" Precision="10" Scale="2" />
-          <Property Type="Decimal" Name="longitud" Precision="10" Scale="2" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="foto_id" />
-          <Property Type="Decimal" Name="puntuacion_total" Precision="10" Scale="2" />
-          <Property Type="Int64" Name="created_by" Nullable="false" />
-          <Property Type="Int64" Name="updated_by" Nullable="false" />
-          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="deleted_at" Precision="0" />
-          <NavigationProperty Name="foto" Relationship="restaurapp_devModel.restaurante_foto_id_foreign" FromRole="restaurante" ToRole="foto" />
-          <NavigationProperty Name="recomendacion" Relationship="restaurapp_devModel.recomendacion_restaurante_id_foreign" FromRole="restaurante" ToRole="recomendacion" />
-          <NavigationProperty Name="restaurante_categoria" Relationship="restaurapp_devModel.restaurante_categoria_restaurante_id_foreign" FromRole="restaurante" ToRole="restaurante_categoria" />
-          <NavigationProperty Name="usuario" Relationship="restaurapp_devModel.restaurante_created_by_foreign" FromRole="restaurante" ToRole="usuario" />
-          <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.restaurante_updated_by_foreign" FromRole="restaurante" ToRole="usuario" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="latitud" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="longitud" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="distrito_id" Type="Int64" />
+          <Property Name="foto_id" Type="Int64" />
+          <Property Name="puntuacion_total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="created_by" Type="Int64" Nullable="false" />
+          <Property Name="updated_by" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="distrito" Relationship="RestaurappWEBModel.restaurante_distrito_id_foreign" FromRole="restaurante" ToRole="distrito" />
+          <NavigationProperty Name="foto" Relationship="RestaurappWEBModel.restaurante_foto_id_foreign" FromRole="restaurante" ToRole="foto" />
+          <NavigationProperty Name="recomendacion" Relationship="RestaurappWEBModel.recomendacion_restaurante_id_foreign" FromRole="restaurante" ToRole="recomendacion" />
+          <NavigationProperty Name="restaurante_categoria" Relationship="RestaurappWEBModel.restaurante_categoria_restaurante_id_foreign" FromRole="restaurante" ToRole="restaurante_categoria" />
+          <NavigationProperty Name="usuario" Relationship="RestaurappWEBModel.restaurante_created_by_foreign" FromRole="restaurante" ToRole="usuario" />
+          <NavigationProperty Name="usuario1" Relationship="RestaurappWEBModel.restaurante_updated_by_foreign" FromRole="restaurante" ToRole="usuario" />
         </EntityType>
         <EntityType Name="restaurante_categoria">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="restaurante_id" Nullable="false" />
-          <Property Type="Int64" Name="categoria_id" Nullable="false" />
-          <NavigationProperty Name="categoria" Relationship="restaurapp_devModel.restaurante_categoria_categoria_id_foreign" FromRole="restaurante_categoria" ToRole="categoria" />
-          <NavigationProperty Name="restaurante" Relationship="restaurapp_devModel.restaurante_categoria_restaurante_id_foreign" FromRole="restaurante_categoria" ToRole="restaurante" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="restaurante_id" Type="Int64" Nullable="false" />
+          <Property Name="categoria_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="categoria" Relationship="RestaurappWEBModel.restaurante_categoria_categoria_id_foreign" FromRole="restaurante_categoria" ToRole="categoria" />
+          <NavigationProperty Name="restaurante" Relationship="RestaurappWEBModel.restaurante_categoria_restaurante_id_foreign" FromRole="restaurante_categoria" ToRole="restaurante" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombres" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="apellidos" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="username" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="email" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="facebook_id" />
-          <Property Type="String" Name="password" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="is_admin" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="access_token" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="created_by" Nullable="false" />
-          <Property Type="Int64" Name="updated_by" Nullable="false" />
-          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="updated_at" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="deleted_at" Precision="0" />
-          <NavigationProperty Name="categoria" Relationship="restaurapp_devModel.categoria_created_by_foreign" FromRole="usuario" ToRole="categoria" />
-          <NavigationProperty Name="categoria1" Relationship="restaurapp_devModel.categoria_updated_by_foreign" FromRole="usuario" ToRole="categoria" />
-          <NavigationProperty Name="foto" Relationship="restaurapp_devModel.foto_created_by_foreign" FromRole="usuario" ToRole="foto" />
-          <NavigationProperty Name="foto1" Relationship="restaurapp_devModel.foto_updated_by_foreign" FromRole="usuario" ToRole="foto" />
-          <NavigationProperty Name="grupo" Relationship="restaurapp_devModel.grupo_created_by_foreign" FromRole="usuario" ToRole="grupo" />
-          <NavigationProperty Name="grupo1" Relationship="restaurapp_devModel.grupo_updated_by_foreign" FromRole="usuario" ToRole="grupo" />
-          <NavigationProperty Name="grupo_usuario" Relationship="restaurapp_devModel.grupo_usuario_usuario_id_foreign" FromRole="usuario" ToRole="grupo_usuario" />
-          <NavigationProperty Name="preferencia" Relationship="restaurapp_devModel.preferencia_usuario_id_foreign" FromRole="usuario" ToRole="preferencia" />
-          <NavigationProperty Name="recomendacion" Relationship="restaurapp_devModel.recomendacion_created_by_foreign" FromRole="usuario" ToRole="recomendacion" />
-          <NavigationProperty Name="recomendacion1" Relationship="restaurapp_devModel.recomendacion_updated_by_foreign" FromRole="usuario" ToRole="recomendacion" />
-          <NavigationProperty Name="recomendacion2" Relationship="restaurapp_devModel.recomendacion_usuario_id_foreign" FromRole="usuario" ToRole="recomendacion" />
-          <NavigationProperty Name="restaurante" Relationship="restaurapp_devModel.restaurante_created_by_foreign" FromRole="usuario" ToRole="restaurante" />
-          <NavigationProperty Name="restaurante1" Relationship="restaurapp_devModel.restaurante_updated_by_foreign" FromRole="usuario" ToRole="restaurante" />
-          <NavigationProperty Name="usuario1" Relationship="restaurapp_devModel.usuario_created_by_foreign" FromRole="usuario" ToRole="usuario1" />
-          <NavigationProperty Name="usuario2" Relationship="restaurapp_devModel.usuario_created_by_foreign" FromRole="usuario1" ToRole="usuario" />
-          <NavigationProperty Name="usuario11" Relationship="restaurapp_devModel.usuario_updated_by_foreign" FromRole="usuario" ToRole="usuario1" />
-          <NavigationProperty Name="usuario3" Relationship="restaurapp_devModel.usuario_updated_by_foreign" FromRole="usuario1" ToRole="usuario" />
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="facebook_id" Type="Int64" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="is_admin" Type="String" Nullable="false" MaxLength="65532" Unicode="true" FixedLength="false" />
+          <Property Name="access_token" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="created_by" Type="Int64" Nullable="false" />
+          <Property Name="updated_by" Type="Int64" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="categoria" Relationship="RestaurappWEBModel.categoria_created_by_foreign" FromRole="usuario" ToRole="categoria" />
+          <NavigationProperty Name="categoria1" Relationship="RestaurappWEBModel.categoria_updated_by_foreign" FromRole="usuario" ToRole="categoria" />
+          <NavigationProperty Name="foto" Relationship="RestaurappWEBModel.foto_created_by_foreign" FromRole="usuario" ToRole="foto" />
+          <NavigationProperty Name="foto1" Relationship="RestaurappWEBModel.foto_updated_by_foreign" FromRole="usuario" ToRole="foto" />
+          <NavigationProperty Name="grupo" Relationship="RestaurappWEBModel.grupo_created_by_foreign" FromRole="usuario" ToRole="grupo" />
+          <NavigationProperty Name="grupo1" Relationship="RestaurappWEBModel.grupo_updated_by_foreign" FromRole="usuario" ToRole="grupo" />
+          <NavigationProperty Name="grupo_usuario" Relationship="RestaurappWEBModel.grupo_usuario_usuario_id_foreign" FromRole="usuario" ToRole="grupo_usuario" />
+          <NavigationProperty Name="preferencia" Relationship="RestaurappWEBModel.preferencia_usuario_id_foreign" FromRole="usuario" ToRole="preferencia" />
+          <NavigationProperty Name="recomendacion" Relationship="RestaurappWEBModel.recomendacion_created_by_foreign" FromRole="usuario" ToRole="recomendacion" />
+          <NavigationProperty Name="recomendacion1" Relationship="RestaurappWEBModel.recomendacion_updated_by_foreign" FromRole="usuario" ToRole="recomendacion" />
+          <NavigationProperty Name="recomendacion2" Relationship="RestaurappWEBModel.recomendacion_usuario_id_foreign" FromRole="usuario" ToRole="recomendacion" />
+          <NavigationProperty Name="restaurante" Relationship="RestaurappWEBModel.restaurante_created_by_foreign" FromRole="usuario" ToRole="restaurante" />
+          <NavigationProperty Name="restaurante1" Relationship="RestaurappWEBModel.restaurante_updated_by_foreign" FromRole="usuario" ToRole="restaurante" />
+          <NavigationProperty Name="usuario1" Relationship="RestaurappWEBModel.usuario_created_by_foreign" FromRole="usuario" ToRole="usuario1" />
+          <NavigationProperty Name="usuario2" Relationship="RestaurappWEBModel.usuario_created_by_foreign" FromRole="usuario1" ToRole="usuario" />
+          <NavigationProperty Name="usuario11" Relationship="RestaurappWEBModel.usuario_updated_by_foreign" FromRole="usuario" ToRole="usuario1" />
+          <NavigationProperty Name="usuario3" Relationship="RestaurappWEBModel.usuario_updated_by_foreign" FromRole="usuario1" ToRole="usuario" />
         </EntityType>
         <Association Name="categoria_created_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="categoria" Type="RestaurappWEBModel.categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -848,8 +889,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="categoria_updated_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="categoria" Type="RestaurappWEBModel.categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -860,8 +901,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="preferencia_categoria_id_foreign">
-          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="1" />
-          <End Type="restaurapp_devModel.preferencia" Role="preferencia" Multiplicity="*" />
+          <End Role="categoria" Type="RestaurappWEBModel.categoria" Multiplicity="1" />
+          <End Role="preferencia" Type="RestaurappWEBModel.preferencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id" />
@@ -872,8 +913,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_categoria_categoria_id_foreign">
-          <End Type="restaurapp_devModel.categoria" Role="categoria" Multiplicity="1" />
-          <End Type="restaurapp_devModel.restaurante_categoria" Role="restaurante_categoria" Multiplicity="*" />
+          <End Role="categoria" Type="RestaurappWEBModel.categoria" Multiplicity="1" />
+          <End Role="restaurante_categoria" Type="RestaurappWEBModel.restaurante_categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="categoria">
               <PropertyRef Name="id" />
@@ -883,9 +924,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="restaurante_distrito_id_foreign">
+          <End Role="distrito" Type="RestaurappWEBModel.distrito" Multiplicity="0..1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.restaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distrito">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="restaurante">
+              <PropertyRef Name="distrito_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="foto_created_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="foto" Type="RestaurappWEBModel.foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -896,8 +949,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="foto_updated_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="foto" Type="RestaurappWEBModel.foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -908,8 +961,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_foto_foto_id_foreign">
-          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion_foto" Role="recomendacion_foto" Multiplicity="*" />
+          <End Role="foto" Type="RestaurappWEBModel.foto" Multiplicity="1" />
+          <End Role="recomendacion_foto" Type="RestaurappWEBModel.recomendacion_foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="foto">
               <PropertyRef Name="id" />
@@ -920,8 +973,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_foto_id_foreign">
-          <End Type="restaurapp_devModel.foto" Role="foto" Multiplicity="0..1" />
-          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="*" />
+          <End Role="foto" Type="RestaurappWEBModel.foto" Multiplicity="0..1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="foto">
               <PropertyRef Name="id" />
@@ -932,8 +985,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_created_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="grupo" Type="RestaurappWEBModel.grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -944,8 +997,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_updated_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="grupo" Type="RestaurappWEBModel.grupo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -956,8 +1009,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_usuario_grupo_id_foreign">
-          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="1" />
-          <End Type="restaurapp_devModel.grupo_usuario" Role="grupo_usuario" Multiplicity="*" />
+          <End Role="grupo" Type="RestaurappWEBModel.grupo" Multiplicity="1" />
+          <End Role="grupo_usuario" Type="RestaurappWEBModel.grupo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="grupo">
               <PropertyRef Name="id" />
@@ -968,8 +1021,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_grupo_id_foreign">
-          <End Type="restaurapp_devModel.grupo" Role="grupo" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
+          <End Role="grupo" Type="RestaurappWEBModel.grupo" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="grupo">
               <PropertyRef Name="id" />
@@ -980,8 +1033,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="grupo_usuario_usuario_id_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.grupo_usuario" Role="grupo_usuario" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="grupo_usuario" Type="RestaurappWEBModel.grupo_usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -992,8 +1045,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="preferencia_usuario_id_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.preferencia" Role="preferencia" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="preferencia" Type="RestaurappWEBModel.preferencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1004,8 +1057,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_created_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1016,8 +1069,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_foto_recomendacion_id_foreign">
-          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion_foto" Role="recomendacion_foto" Multiplicity="*" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.recomendacion" Multiplicity="1" />
+          <End Role="recomendacion_foto" Type="RestaurappWEBModel.recomendacion_foto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="recomendacion">
               <PropertyRef Name="id" />
@@ -1028,8 +1081,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_restaurante_id_foreign">
-          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
+          <End Role="restaurante" Type="RestaurappWEBModel.restaurante" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="restaurante">
               <PropertyRef Name="id" />
@@ -1040,8 +1093,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_updated_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1052,8 +1105,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="recomendacion_usuario_id_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.recomendacion" Role="recomendacion" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="recomendacion" Type="RestaurappWEBModel.recomendacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1064,8 +1117,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_categoria_restaurante_id_foreign">
-          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="1" />
-          <End Type="restaurapp_devModel.restaurante_categoria" Role="restaurante_categoria" Multiplicity="*" />
+          <End Role="restaurante" Type="RestaurappWEBModel.restaurante" Multiplicity="1" />
+          <End Role="restaurante_categoria" Type="RestaurappWEBModel.restaurante_categoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="restaurante">
               <PropertyRef Name="id" />
@@ -1076,8 +1129,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_created_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1088,8 +1141,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="restaurante_updated_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.restaurante" Role="restaurante" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="restaurante" Type="RestaurappWEBModel.restaurante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1100,8 +1153,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="usuario_created_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.usuario" Role="usuario1" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="usuario1" Type="RestaurappWEBModel.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1112,8 +1165,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="usuario_updated_by_foreign">
-          <End Type="restaurapp_devModel.usuario" Role="usuario" Multiplicity="1" />
-          <End Type="restaurapp_devModel.usuario" Role="usuario1" Multiplicity="*" />
+          <End Role="usuario" Type="RestaurappWEBModel.usuario" Multiplicity="1" />
+          <End Role="usuario1" Type="RestaurappWEBModel.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -1123,151 +1176,160 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="restaurapp_devModelStoreContainer" CdmEntityContainer="RestaurappWEBEntities">
+        <EntityContainerMapping StorageEntityContainer="RestaurappWEBModelStoreContainer" CdmEntityContainer="RestaurappWEBEntities">
           <EntitySetMapping Name="categoria">
-            <EntityTypeMapping TypeName="restaurapp_devModel.categoria">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.categoria">
               <MappingFragment StoreEntitySet="categoria">
-                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="distrito">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.distrito">
+              <MappingFragment StoreEntitySet="distrito">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="foto">
-            <EntityTypeMapping TypeName="restaurapp_devModel.foto">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.foto">
               <MappingFragment StoreEntitySet="foto">
-                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="formato" ColumnName="formato" />
-                <ScalarProperty Name="url_min" ColumnName="url_min" />
-                <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="url_min" ColumnName="url_min" />
+                <ScalarProperty Name="formato" ColumnName="formato" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="grupo">
-            <EntityTypeMapping TypeName="restaurapp_devModel.grupo">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.grupo">
               <MappingFragment StoreEntitySet="grupo">
-                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="grupo_usuario">
-            <EntityTypeMapping TypeName="restaurapp_devModel.grupo_usuario">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.grupo_usuario">
               <MappingFragment StoreEntitySet="grupo_usuario">
-                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
-                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="migrations">
-            <EntityTypeMapping TypeName="restaurapp_devModel.migrations">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.migrations">
               <MappingFragment StoreEntitySet="migrations">
-                <ScalarProperty Name="batch" ColumnName="batch" />
                 <ScalarProperty Name="migration" ColumnName="migration" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="preferencia">
-            <EntityTypeMapping TypeName="restaurapp_devModel.preferencia">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.preferencia">
               <MappingFragment StoreEntitySet="preferencia">
-                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
-                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="recomendacion">
-            <EntityTypeMapping TypeName="restaurapp_devModel.recomendacion">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.recomendacion">
               <MappingFragment StoreEntitySet="recomendacion">
-                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
-                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
-                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
-                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
-                <ScalarProperty Name="comentario" ColumnName="comentario" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
+                <ScalarProperty Name="grupo_id" ColumnName="grupo_id" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="recomendacion_foto">
-            <EntityTypeMapping TypeName="restaurapp_devModel.recomendacion_foto">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.recomendacion_foto">
               <MappingFragment StoreEntitySet="recomendacion_foto">
-                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
-                <ScalarProperty Name="recomendacion_id" ColumnName="recomendacion_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="recomendacion_id" ColumnName="recomendacion_id" />
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="restaurante">
-            <EntityTypeMapping TypeName="restaurapp_devModel.restaurante">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.restaurante">
               <MappingFragment StoreEntitySet="restaurante">
-                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="puntuacion_total" ColumnName="puntuacion_total" />
-                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="latitud" ColumnName="latitud" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="distrito_id" ColumnName="distrito_id" />
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="puntuacion_total" ColumnName="puntuacion_total" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="restaurante_categoria">
-            <EntityTypeMapping TypeName="restaurapp_devModel.restaurante_categoria">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.restaurante_categoria">
               <MappingFragment StoreEntitySet="restaurante_categoria">
-                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
-                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="restaurante_id" ColumnName="restaurante_id" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="restaurapp_devModel.usuario">
+            <EntityTypeMapping TypeName="RestaurappWEBModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="access_token" ColumnName="access_token" />
-                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="facebook_id" ColumnName="facebook_id" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="nombres" ColumnName="nombres" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="facebook_id" ColumnName="facebook_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="access_token" ColumnName="access_token" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

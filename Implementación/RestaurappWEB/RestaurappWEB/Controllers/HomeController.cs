@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DevOne.Security.Cryptography.BCrypt;
 
 namespace RestaurappWEB.Controllers
 {
@@ -25,8 +26,8 @@ namespace RestaurappWEB.Controllers
 
             var viewModel = new LoginViewModel();
 
-
             var usuario = context.usuario.FirstOrDefault(x => x.username == Codigo && x.password == Password);
+
 
             if (usuario == null || String.IsNullOrEmpty(usuario.password) || Password != usuario.password)
             {

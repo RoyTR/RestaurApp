@@ -39,10 +39,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="DevOne.Security.Cryptography.BCrypt">
+      <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.Entity.6.9.6\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\PagedList.dll</HintPath>
@@ -53,10 +69,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -152,6 +172,9 @@
     <Compile Include="Logic\PermisoAccesoLogic.cs" />
     <Compile Include="Logic\TemplateRender.cs" />
     <Compile Include="Models\categoria.cs">
+      <DependentUpon>RestaurappWEB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\distrito.cs">
       <DependentUpon>RestaurappWEB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\foto.cs">
@@ -994,7 +1017,9 @@
     <Content Include="Content\assets\plugins\switchery\switchery.min.css" />
     <Content Include="Content\assets\plugins\switchery\switchery.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1008,27 +1033,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\RestaurappWEB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RestaurappWEB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\RestaurappWEB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RestaurappWEB.edmx</DependentUpon>
-      <LastGenOutput>RestaurappWEB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\RestaurappWEB.edmx.diagram">
-      <DependentUpon>RestaurappWEB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\RestaurappWEB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RestaurappWEB.edmx</DependentUpon>
-      <LastGenOutput>RestaurappWEB.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1097,6 +1101,23 @@
     <Content Include="Views\Restaurant\EditRestaurant.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\RestaurappWEB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RestaurappWEB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\RestaurappWEB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RestaurappWEB.edmx</DependentUpon>
+      <LastGenOutput>RestaurappWEB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\RestaurappWEB.edmx.diagram">
+      <DependentUpon>RestaurappWEB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\RestaurappWEB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RestaurappWEB.edmx</DependentUpon>
+      <LastGenOutput>RestaurappWEB.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\RestaurappWEB.pubxml" />
   </ItemGroup>
   <PropertyGroup>
@@ -1115,7 +1136,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>56483</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:57712/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

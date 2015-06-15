@@ -26,6 +26,7 @@ namespace RestaurappWEB.Models
         }
     
         public DbSet<categoria> categoria { get; set; }
+        public DbSet<distrito> distrito { get; set; }
         public DbSet<foto> foto { get; set; }
         public DbSet<grupo> grupo { get; set; }
         public DbSet<grupo_usuario> grupo_usuario { get; set; }

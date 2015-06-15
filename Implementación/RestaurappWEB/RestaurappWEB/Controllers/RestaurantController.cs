@@ -57,6 +57,7 @@ namespace RestaurappWEB.Controllers
                         restaurant.created_at = DateTime.Now;
                         restaurant.updated_at = DateTime.Now;
                         restaurant.deleted_at = null;
+                        restaurant.distrito_id = model.DistritoId;
                         context.restaurante.Add(restaurant);
 
                         context.SaveChanges();
@@ -77,6 +78,7 @@ namespace RestaurappWEB.Controllers
                     restaurant.created_at = DateTime.Now;
                     restaurant.updated_at = DateTime.Now;
                     restaurant.deleted_at = null;
+                    restaurant.distrito_id = model.DistritoId;
                     context.SaveChanges();
 
                     categoryrestaurant.restaurante_id = restaurant.id;

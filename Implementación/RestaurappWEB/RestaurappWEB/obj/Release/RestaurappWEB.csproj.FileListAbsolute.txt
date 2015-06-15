@@ -24,3 +24,35 @@ C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Releas
 C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Release\en\RestaurappWEB.resources.dll
 C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.dll
 C:\Users\JoséM\Desktop\UPC\Nueva carpeta\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.pdb
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\RestaurappWEB.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\RestaurappWEB.pdb
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\en\RestaurappWEB.resources.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\EntityFramework.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\Microsoft.Web.Infrastructure.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\Newtonsoft.Json.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.Helpers.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.Mvc.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.Razor.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Deployment.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Razor.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\EntityFramework.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\Newtonsoft.Json.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.Helpers.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.Mvc.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.Razor.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Deployment.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Web.WebPages.Razor.xml
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.Globalization.Shared.ValidationStrings.resources
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.Globalization.Shared.ValidationStrings.en.resources
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.csproj.GenerateResource.Cache
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\obj\Release\en\RestaurappWEB.resources.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\obj\Release\RestaurappWEB.pdb
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\EntityFramework.SqlServer.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\MySql.Data.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\MySql.Data.Entity.EF6.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Data.Entity.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\System.Security.dll
+C:\GitHub_Local\Implementación\RestaurappWEB\RestaurappWEB\bin\EntityFramework.SqlServer.xml

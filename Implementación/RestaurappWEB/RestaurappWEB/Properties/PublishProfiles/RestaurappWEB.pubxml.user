@@ -17,13 +17,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2015 22:45:26</publishTime>
     </File>
     <File Include="bin/en/RestaurappWEB.resources.dll">
-      <publishTime>05/17/2015 20:10:52</publishTime>
+      <publishTime>06/14/2015 13:55:38</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>05/16/2015 21:52:27</publishTime>
+      <publishTime>06/14/2015 12:54:54</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>06/14/2015 12:54:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>05/16/2015 21:40:26</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>06/14/2015 12:54:53</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>06/14/2015 13:52:44</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>05/16/2015 21:40:25</publishTime>
@@ -35,7 +44,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/19/2015 10:30:12</publishTime>
     </File>
     <File Include="bin/RestaurappWEB.dll">
-      <publishTime>05/17/2015 20:10:52</publishTime>
+      <publishTime>06/14/2015 13:55:38</publishTime>
+    </File>
+    <File Include="bin/System.Data.Entity.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
+    </File>
+    <File Include="bin/System.Security.dll">
+      <publishTime>09/26/2012 03:16:08</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>05/16/2015 21:40:28</publishTime>
@@ -2453,19 +2468,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2015 21:39:58</publishTime>
     </File>
     <File Include="Models/RestaurappWEB.Context.tt">
-      <publishTime>05/16/2015 21:52:25</publishTime>
+      <publishTime>06/14/2015 13:14:02</publishTime>
     </File>
     <File Include="Models/RestaurappWEB.edmx.diagram">
-      <publishTime>05/17/2015 19:58:27</publishTime>
+      <publishTime>06/14/2015 13:16:25</publishTime>
     </File>
     <File Include="Models/RestaurappWEB.tt">
-      <publishTime>05/16/2015 21:52:31</publishTime>
+      <publishTime>06/14/2015 13:14:02</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>05/16/2015 21:52:30</publishTime>
+      <publishTime>06/14/2015 13:52:45</publishTime>
     </File>
     <File Include="Views/Category/EditCategory.cshtml">
-      <publishTime>05/17/2015 03:44:09</publishTime>
+      <publishTime>06/14/2015 00:52:35</publishTime>
     </File>
     <File Include="Views/Category/ListCategory.cshtml">
       <publishTime>05/17/2015 03:41:21</publishTime>
@@ -2477,7 +2492,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2015 23:26:53</publishTime>
     </File>
     <File Include="Views/Restaurant/EditRestaurant.cshtml">
-      <publishTime>05/17/2015 04:31:32</publishTime>
+      <publishTime>06/14/2015 00:52:48</publishTime>
     </File>
     <File Include="Views/Restaurant/ListRestaurant.cshtml">
       <publishTime>05/17/2015 04:00:56</publishTime>
@@ -2486,7 +2501,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2015 22:15:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/17/2015 02:52:00</publishTime>
+      <publishTime>06/13/2015 23:52:55</publishTime>
     </File>
     <File Include="Views/Shared/_Navigation.cshtml">
       <publishTime>05/17/2015 04:27:26</publishTime>
@@ -2504,7 +2519,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2015 22:29:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/17/2015 20:13:04</publishTime>
+      <publishTime>06/14/2015 13:55:39</publishTime>
     </File>
   </ItemGroup>
 </Project>

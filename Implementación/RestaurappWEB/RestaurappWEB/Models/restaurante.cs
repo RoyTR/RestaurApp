@@ -22,9 +22,10 @@ namespace RestaurappWEB.Models
     
         public long id { get; set; }
         public string nombre { get; set; }
-        public Nullable<decimal> latitud { get; set; }
-        public Nullable<decimal> longitud { get; set; }
+        public string latitud { get; set; }
+        public string longitud { get; set; }
         public string descripcion { get; set; }
+        public Nullable<long> distrito_id { get; set; }
         public Nullable<long> foto_id { get; set; }
         public Nullable<decimal> puntuacion_total { get; set; }
         public long created_by { get; set; }
@@ -33,6 +34,7 @@ namespace RestaurappWEB.Models
         public System.DateTime updated_at { get; set; }
         public Nullable<System.DateTime> deleted_at { get; set; }
     
+        public virtual distrito distrito { get; set; }
         public virtual foto foto { get; set; }
         public virtual ICollection<recomendacion> recomendacion { get; set; }
         public virtual ICollection<restaurante_categoria> restaurante_categoria { get; set; }

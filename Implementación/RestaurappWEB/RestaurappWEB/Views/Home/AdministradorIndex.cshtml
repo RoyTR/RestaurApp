@@ -67,7 +67,7 @@
             <div class="panel-heading">
                 <div class="panel-heading-btn">
                 </div>
-                <h4 class="panel-title"><i class="fa fa-users"></i> Últimos Usuarios Registrados</h4>
+                <h4 class="panel-title"><i class="fa fa-users"></i> Últimos 10 Usuarios Registrados</h4>
             </div>
             <div class="panel-body">
                 <table class="table table-hover">
@@ -100,7 +100,7 @@
             <div class="panel-heading">
                 <div class="panel-heading-btn">
                 </div>
-                <h4 class="panel-title"><i class="fa fa-building-o"></i> Últimos Restaurantes Registrados</h4>
+                <h4 class="panel-title"><i class="fa fa-building-o"></i> Últimos 10 Restaurantes Registrados</h4>
             </div>
             <div class="panel-body">
                 <table class="table table-hover">
@@ -112,13 +112,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @{int i = 1;}
                         @foreach(var restaurante in @Model.LstRestaurantes)
                         {
                             <tr>
-                                <td>@restaurante.id</td>
+                                <td>@i</td>
                                 <td>@restaurante.nombre</td>
                                 <td>@restaurante.descripcion</td>
                             </tr>
+                            i++;
                         }
                     </tbody>
                 </table>

@@ -4,42 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="44d4607f59914159a94b7e52757970a5" Name="Diagram1">
-        <EntityTypeShape EntityType="restaurapp_devModel.categoria" Width="1.5" PointX="4.1030805148664307" PointY="18.739923113370278" />
-        <EntityTypeShape EntityType="restaurapp_devModel.foto" Width="1.5" PointX="10.650940294680623" PointY="21.974400739173593" />
-        <EntityTypeShape EntityType="restaurapp_devModel.grupo" Width="1.5" PointX="1.7583153926573298" PointY="4.4437709769437888" />
-        <EntityTypeShape EntityType="restaurapp_devModel.grupo_usuario" Width="1.5" PointX="7.5068668609051343" PointY="6.5528799176928025" />
-        <EntityTypeShape EntityType="restaurapp_devModel.migrations" Width="1.5" PointX="3.7849925923091328" PointY="11.624390458513233" />
-        <EntityTypeShape EntityType="restaurapp_devModel.preferencia" Width="1.5" PointX="8.062325917213375" PointY="18.284847938588285" />
-        <EntityTypeShape EntityType="restaurapp_devModel.recomendacion" Width="1.5" PointX="4.2005139590243408" PointY="8.08277236301581" />
-        <EntityTypeShape EntityType="restaurapp_devModel.recomendacion_foto" Width="1.5" PointX="3.3760399275347774" PointY="3.3890770093487004" />
-        <EntityTypeShape EntityType="restaurapp_devModel.restaurante" Width="1.5" PointX="5.1881731735487344" PointY="22.547208051452046" />
-        <EntityTypeShape EntityType="restaurapp_devModel.restaurante_categoria" Width="1.5" PointX="0.96529171474524378" PointY="25.697536301658271" />
-        <EntityTypeShape EntityType="restaurapp_devModel.usuario" Width="1.5" PointX="0.751042088843436" PointY="31.93393702801966" />
-        <AssociationConnector Association="restaurapp_devModel.categoria_created_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.categoria_updated_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.preferencia_categoria_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.restaurante_categoria_categoria_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.foto_created_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.foto_updated_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_foto_foto_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.restaurante_foto_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.grupo_created_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.grupo_updated_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.grupo_usuario_grupo_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_grupo_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.grupo_usuario_usuario_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.preferencia_usuario_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_created_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_foto_recomendacion_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_restaurante_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_updated_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.recomendacion_usuario_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.restaurante_categoria_restaurante_id_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.restaurante_created_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.restaurante_updated_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.usuario_created_by_foreign" />
-        <AssociationConnector Association="restaurapp_devModel.usuario_updated_by_foreign" />
+      <Diagram DiagramId="4660c378bf5d4ce2901ccc7d8d95812b" Name="Diagram1">
+        <EntityTypeShape EntityType="RestaurappWEBModel.categoria" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.distrito" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.foto" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.grupo" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.grupo_usuario" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.migrations" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.preferencia" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.recomendacion" Width="1.5" PointX="10.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.recomendacion_foto" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.restaurante" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.restaurante_categoria" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurappWEBModel.usuario" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="RestaurappWEBModel.categoria_created_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.categoria_updated_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.preferencia_categoria_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.restaurante_categoria_categoria_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.restaurante_distrito_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.foto_created_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.foto_updated_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_foto_foto_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.restaurante_foto_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.grupo_created_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.grupo_updated_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.grupo_usuario_grupo_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_grupo_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.grupo_usuario_usuario_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.preferencia_usuario_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_created_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_foto_recomendacion_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_restaurante_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_updated_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.recomendacion_usuario_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.restaurante_categoria_restaurante_id_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.restaurante_created_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.restaurante_updated_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.usuario_created_by_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurappWEBModel.usuario_updated_by_foreign" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
