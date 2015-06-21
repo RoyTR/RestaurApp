@@ -56,6 +56,7 @@ public class UsuarioActivity extends ActionBarActivity {
         setContentView(R.layout.activity_usuario_perfil);
         Button btnPerfil = (Button)findViewById(R.id.footerusuariobtnperfil);
         btnPerfil.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+        this.prgDialog = new ProgressDialog(this);
 
         //Action Bar personalizado
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
@@ -176,6 +177,7 @@ public class UsuarioActivity extends ActionBarActivity {
         params.put("updated_by", usuarioActualId);
         params.put("_method", "PATCH");
 
+        prgDialog.setCancelable(false);
         prgDialog.setMessage("Guardando...");
         prgDialog.show();
 
@@ -191,6 +193,13 @@ public class UsuarioActivity extends ActionBarActivity {
                     if (response.contains("error")) {
                         Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
                     } else {
+                        SharedPreferences.Editor editor = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE).edit();
+                        editor.putInt("USUARIO_ACTUAL_ID",obj.getJSONObject("data").getInt("id"));
+                        editor.putString("USUARIO_ACTUAL_NOMBRES",obj.getJSONObject("data").getString("nombres"));
+                        editor.putString("USUARIO_ACTUAL_APELLIDOS",obj.getJSONObject("data").getString("apellidos"));
+                        editor.putString("USUARIO_ACTUAL_EMAIL",obj.getJSONObject("data").getString("email"));
+                        editor.putString("USUARIO_ACTUAL_USERNAME",obj.getJSONObject("data").getString("username"));
+                        editor.commit();
                         Toast.makeText(getApplicationContext(),"¡Cambios Guardados!",Toast.LENGTH_SHORT).show();
                     }
 
@@ -299,55 +308,26 @@ public class UsuarioActivity extends ActionBarActivity {
         btnPerfil.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
         btnPerfil.setClickable(false);
 
-        prgDialog = new ProgressDialog(this);
-        prgDialog.setMessage("Cargando Perfil de Usuario");
-        prgDialog.show();
         /*--------------------------Seteando los datos del usuario actual-----------------------*/
         //Obteniendo el Usuario Actual
         sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
         Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
+        String usuarioActualNombres = sharedpreferences.getString("USUARIO_ACTUAL_NOMBRES", "");
+        String usuarioActualApellidos = sharedpreferences.getString("USUARIO_ACTUAL_APELLIDOS", "");
+        String usuarioActualEmail = sharedpreferences.getString("USUARIO_ACTUAL_EMAIL", "");
+        String usuarioActualUsername = sharedpreferences.getString("USUARIO_ACTUAL_USERNAME", "");
 
-        //Llamada a nuestro servicio
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId.toString(), null, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
-                    } else {
-                        EditText nombres = (EditText) findViewById(R.id.perfTextNombre);
-                        EditText apellidos = (EditText) findViewById(R.id.perfTextApellido);
-                        EditText email = (EditText) findViewById(R.id.perfTextEmail);
-                        EditText username = (EditText) findViewById(R.id.perfTextUserName);
-                        EditText password = (EditText) findViewById(R.id.perfTextPassword);
+        EditText nombres = (EditText) findViewById(R.id.perfTextNombre);
+        EditText apellidos = (EditText) findViewById(R.id.perfTextApellido);
+        EditText email = (EditText) findViewById(R.id.perfTextEmail);
+        EditText username = (EditText) findViewById(R.id.perfTextUserName);
+        EditText password = (EditText) findViewById(R.id.perfTextPassword);
 
-                        nombres.setText(obj.getJSONObject("data").getString("nombres"));
-                        apellidos.setText(obj.getJSONObject("data").getString("apellidos"));
-                        email.setText(obj.getJSONObject("data").getString("email"));
-                        username.setText(obj.getJSONObject("data").getString("username"));
-                        password.setText("");
-                        prgDialog.hide();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                prgDialog.hide();
-                if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
-                } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        nombres.setText(usuarioActualNombres);
+        apellidos.setText(usuarioActualApellidos);
+        email.setText(usuarioActualEmail);
+        username.setText(usuarioActualUsername);
+        password.setText("");
     }
 
     public void cambiarPreferencia(View v) {
