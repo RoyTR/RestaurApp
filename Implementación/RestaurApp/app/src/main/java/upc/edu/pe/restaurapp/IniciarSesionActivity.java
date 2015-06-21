@@ -190,7 +190,16 @@ public class IniciarSesionActivity extends ActionBarActivity {
                         try {
                             JSONObject obj = new JSONObject(response);
                             if (response.contains("error")) {
-                                Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
+                                if(obj.getJSONObject("data").getJSONObject("message").has("username"))
+                                {
+                                    Toast.makeText(getApplicationContext(), "El Usuario ingresado ya fue tomado", Toast.LENGTH_SHORT).show();
+                                }
+
+                                if(obj.getJSONObject("data").getJSONObject("message").has("email"))
+                                {
+                                    Toast.makeText(getApplicationContext(), "El Correo ingresado ya fue tomado", Toast.LENGTH_SHORT).show();
+                                }
+                                //Toast.makeText(getApplicationContext(), obj.getJSONObject("data").getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Te Has Registrado Correctamente, por favor Accede", Toast.LENGTH_SHORT).show();
                                 CambiarIniciarSesion();
