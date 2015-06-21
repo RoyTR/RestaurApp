@@ -64,7 +64,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Puntuación"/>
         </LinearLayout>
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -74,7 +74,7 @@
             <CheckBox
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
-        </LinearLayout>
+        </LinearLayout>-->
     </LinearLayout>
 
     <RelativeLayout
@@ -188,7 +188,7 @@
                 />
         </LinearLayout>
 
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -197,9 +197,9 @@
             android:layout_below="@+id/restaurante_rec_layout_foto"
             android:layout_marginTop="5dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" />-->
 
-        <LinearLayout
+        <!--<LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -222,7 +222,7 @@
                     android:id="@+id/restaurante_rec_rdiobtn_contactos"
                     android:text="Contactos"/>
             </RadioGroup>
-        </LinearLayout>
+        </LinearLayout>-->
     </RelativeLayout>
 
 
