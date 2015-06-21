@@ -338,6 +338,7 @@ public class UsuarioActivity extends ActionBarActivity {
 
         prgDialog = new ProgressDialog(this);
         prgDialog.setMessage("Cargando Preferencias de Usuario");
+        prgDialog.setCancelable(false);
         prgDialog.show();
 
         lstCategoriasUsuario.clear();
