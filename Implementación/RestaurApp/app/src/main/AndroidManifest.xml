@@ -65,6 +65,10 @@
             android:name=".ListaRestaurantesActivity"
             android:label="@string/title_activity_lista_restaurantes" >
         </activity>
+        <activity
+            android:name=".AmigosGruposActivity"
+            android:label="@string/title_activity_amigosgrupos" >
+        </activity>
     </application>
 
 </manifest>

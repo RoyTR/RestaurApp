@@ -188,6 +188,27 @@
                 />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Destinatario(s):"
+            android:id="@+id/restaurante_txtvw_destinatario"
+            android:layout_below="@+id/restaurante_rec_layout_foto"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="50dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar Amigo/Grupos"
+            android:id="@+id/restaurante_rec_btn_destinatarios"
+            android:layout_alignTop="@+id/restaurante_txtvw_destinatario"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="irAgregarAmigoGrupo" />
+
         <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -244,8 +265,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eviar Recomendacion"
+            android:text="Enviar Recomendacion"
             android:id="@+id/restaurante_btn_enviar_recomend"
+            android:onClick="recomendarRestaurante"
             android:background="@color/restaurapptheme_color"/>
 
     </LinearLayout>
