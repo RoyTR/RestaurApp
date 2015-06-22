@@ -45,6 +45,8 @@
         android:orientation="vertical"
         android:layout_below="@+id/layoutmaincercatop"
         android:layout_above="@+id/layoutmaincercabot"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         >
 
         <ListView

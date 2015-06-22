@@ -13,6 +13,7 @@
     <string name="facebook_app_id">1613554272190807</string>
     <string name="title_activity_registro">RegistroActivity</string>
     <string name="title_activity_iniciar_sesion">IniciarSesionActivity</string>
+    <string name="title_activity_amigosgrupos">AmigosGruposActivity</string>
 
     <string name="main_button_footer_buscar">Buscar</string>
     <string name="main_button_footer_cerca">Cerca</string>
