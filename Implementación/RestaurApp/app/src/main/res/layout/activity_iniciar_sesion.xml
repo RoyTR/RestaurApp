@@ -50,7 +50,7 @@
         android:layout_below="@+id/inisesBtnInacIniciarSesion"
         android:layout_alignRight="@+id/inisesBtnRegist"
         android:layout_alignEnd="@+id/inisesBtnRegist"
-        android:text="abaquerizo" />
+        android:text="" />
 
     <com.andreabaccega.widget.FormEditText
         whatever:emptyErrorString="Ingrese contraseña"
@@ -69,7 +69,7 @@
         android:hint="Contraseña"
         android:layout_alignRight="@+id/inisesBtnRegist"
         android:layout_alignEnd="@+id/inisesBtnRegist"
-        android:text="12345" />
+        android:text="" />
 
 
 
