@@ -6,20 +6,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -28,7 +30,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 import upc.edu.pe.restaurapp.Adapter.CategoriaAdapter;
 import upc.edu.pe.restaurapp.Adapter.DistritoAdapter;
@@ -50,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
     final List<Restaurante> lstRestFavoritos = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestPreferencias = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestRecomendados = new ArrayList<Restaurante>();
+    GoogleMap mapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,6 +184,20 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main_cerca_mapa);
         Button btn = (Button) findViewById(R.id.mainbtnftercerca);
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
+
+        SupportMapFragment spmap = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapa = spmap.getMap();
+
+        //Establecer tipos de mapa
+        mapa.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mapa.setMyLocationEnabled(true);
+
+        for (int i=0; i<lstRestCerca.size(); i++) {
+            mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(i).getLatitud()), Double.parseDouble(lstRestCerca.get(i).getLongitud()))).title(lstRestCerca.get(i).getNombre()));
+        }
+
+        //mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(1).getLatitud()), Double.parseDouble(lstRestCerca.get(1).getLongitud()))).title(lstRestCerca.get(1).getNombre()));
+
     }
 
     public void cambiarFavoritos(View v){
