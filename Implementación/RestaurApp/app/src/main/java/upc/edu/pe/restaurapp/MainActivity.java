@@ -52,7 +52,6 @@ public class MainActivity extends ActionBarActivity {
     final List<Restaurante> lstRestPreferencias = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestRecomendados = new ArrayList<Restaurante>();
     GoogleMap mapa;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,11 +192,17 @@ public class MainActivity extends ActionBarActivity {
         mapa.setMyLocationEnabled(true);
 
         for (int i=0; i<lstRestCerca.size(); i++) {
-            mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(i).getLatitud()), Double.parseDouble(lstRestCerca.get(i).getLongitud()))).title(lstRestCerca.get(i).getNombre()));
+            mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(i).getLatitud()), Double.parseDouble(lstRestCerca.get(i).getLongitud()))).title(lstRestCerca.get(i).getNombre()).snippet(lstRestCerca.get(i).getDescripcion()));
         }
 
-        //mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(1).getLatitud()), Double.parseDouble(lstRestCerca.get(1).getLongitud()))).title(lstRestCerca.get(1).getNombre()));
-
+    /*    if(mapa.getMyLocation() != null)
+        {
+            mapa.addCircle(new CircleOptions()
+                    .center(new LatLng(mapa.getMyLocation().getLatitude(), mapa.getMyLocation().getLongitude()))
+                    .radius(500000000)
+                    .strokeColor(Color.RED)
+                    .fillColor(Color.BLUE));
+        }*/
     }
 
     public void cambiarFavoritos(View v){
