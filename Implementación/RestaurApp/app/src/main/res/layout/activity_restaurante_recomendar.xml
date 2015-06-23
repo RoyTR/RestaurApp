@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -123,21 +124,45 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/restaurante_rec_ratng_layout"
-            android:layout_alignTop="@+id/restaurante_txtvw_calificacion"
-            android:layout_alignParentRight="true"
+            android:layout_below="@+id/restaurante_txtvw_calificacion"
+
             android:layout_alignParentEnd="true">
-            <RatingBar
-                android:layout_width="255dp"
+            <!--<RatingBar
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/restaurante_rec_ratingBar"
-                android:numStars="5"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+
                 android:stepSize="1.0"
-                 />
-        </LinearLayout>
+                android:isIndicator="false"
+-->
+
+             />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/restaurante_txtvw_seekbar_valor"
+                android:layout_toStartOf="@+id/restaurante_txtvw_seekbar_valor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0"
+                android:id="@+id/restaurante_txtvw_seekbar_valor"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -149,7 +174,18 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <EditText
+        <!--<EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/restaurante_rec_comentarios"
+            android:layout_alignTop="@+id/restaurante_txtvw_comentario"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />-->
+
+        <com.andreabaccega.widget.FormEditText
+            whatever:emptyErrorString="Ingrese un comentario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
@@ -159,19 +195,19 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Fotografia:"
+            android:text=""
             android:id="@+id/restaurante_txtvw_foto"
             android:layout_below="@+id/restaurante_rec_comentarios"
             android:layout_marginTop="5dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" />-->
 
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/restaurante_rec_layout_foto"
@@ -179,14 +215,14 @@
             android:layout_alignTop="@+id/restaurante_txtvw_foto"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true">
-            <Button
+            &lt;!&ndash;<Button
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="Foto"
                 android:id="@+id/restaurante_rec_btn_foto"
                 android:onClick="AbrirCamara"
-                />
-        </LinearLayout>
+                />&ndash;&gt;
+        </LinearLayout>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -194,7 +230,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Destinatario(s):"
             android:id="@+id/restaurante_txtvw_destinatario"
-            android:layout_below="@+id/restaurante_rec_layout_foto"
+            android:layout_below="@+id/restaurante_txtvw_comentario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="50dp" />
@@ -204,10 +240,20 @@
             android:layout_height="wrap_content"
             android:text="Agregar Amigo/Grupos"
             android:id="@+id/restaurante_rec_btn_destinatarios"
-            android:layout_alignTop="@+id/restaurante_txtvw_destinatario"
+            android:onClick="irAgregarAmigoGrupo"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:onClick="irAgregarAmigoGrupo" />
+            android:layout_below="@+id/restaurante_txtvw_dest_resultado" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Seleccione un destinatario"
+            android:id="@+id/restaurante_txtvw_dest_resultado"
+            android:layout_alignTop="@+id/restaurante_txtvw_destinatario"
+            android:layout_alignParentEnd="true"
+        />
 
         <!--<TextView
             android:layout_width="wrap_content"
@@ -244,6 +290,7 @@
                     android:text="Contactos"/>
             </RadioGroup>
         </LinearLayout>-->
+
     </RelativeLayout>
 
 

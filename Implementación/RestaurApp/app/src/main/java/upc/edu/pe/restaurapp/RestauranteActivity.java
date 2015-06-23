@@ -15,9 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andreabaccega.widget.FormEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -33,6 +35,7 @@ import java.util.List;
 import upc.edu.pe.restaurapp.Adapter.ComentarioAdapter;
 import upc.edu.pe.restaurapp.Entidades.Comentario;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
+import upc.edu.pe.restaurapp.Utilitario.Validar;
 
 
 public class RestauranteActivity extends ActionBarActivity {
@@ -142,6 +145,7 @@ public class RestauranteActivity extends ActionBarActivity {
 
     public void irRecomendar(View v){
         setContentView(R.layout.activity_restaurante_recomendar);
+        this.recomendacion_grupoId = 0;
 
         Button btnRecomendar = (Button) findViewById(R.id.restaurante_btn_enviar_recomend);
         btnRecomendar.setClickable(true);
@@ -153,6 +157,27 @@ public class RestauranteActivity extends ActionBarActivity {
         txtNombre.setText(Nombre);
         txtDescripcion.setText(Descripcion);
         txtPuntaje.setText(PuntuacionTotal.toString());
+
+        SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
+        seekBar.setMax(10);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                TextView seekBarValue = (TextView)findViewById(R.id.restaurante_txtvw_seekbar_valor);
+                seekBarValue.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // something
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // something
+            }
+        });
     }
 
     public void AbrirCamara(View v)
@@ -176,6 +201,8 @@ public class RestauranteActivity extends ActionBarActivity {
         switch (requestCode)
         {
             case 1:
+                TextView dest_resultado = (TextView)findViewById(R.id.restaurante_txtvw_dest_resultado);
+                dest_resultado.setText(data.getStringExtra("GrupoNombre"));
                 this.recomendacion_grupoId = data.getIntExtra("GrupoId",0);
                 break;
         }
@@ -183,63 +210,70 @@ public class RestauranteActivity extends ActionBarActivity {
 
     public void recomendarRestaurante(View v)
     {
-        //sacar datos y llamar a la api para recomendar
-        RatingBar ratingBar = (RatingBar) findViewById(R.id.restaurante_rec_ratingBar);
-        EditText comentarioET = (EditText) findViewById(R.id.restaurante_rec_comentarios);
-        float numEstrellas = ratingBar.getRating();
-        int puntuacion =  ((int)numEstrellas)*2;
-        String comentario = comentarioET.getText().toString();
+        TextView seekBarValue = (TextView)findViewById(R.id.restaurante_txtvw_seekbar_valor);
+        FormEditText  comentarioET = (FormEditText) findViewById(R.id.restaurante_rec_comentarios);
+        FormEditText[] allFields = {comentarioET};
+        if (Validar.validarEditTexts(allFields)) {
 
-        //--------LOGICA DE LA LLAMADA A LA API----------//
-        AsyncHttpClient client = new AsyncHttpClient();
-        prgDialog.setMessage("Please wait...");
-        prgDialog.show();
+            if(this.recomendacion_grupoId == 0){
+                Toast.makeText(getApplicationContext(), "Seleccione un Amigo o Grupo", Toast.LENGTH_LONG).show();
+                return;
+            }
 
-        RequestParams params = new RequestParams();
-        params.put("comentario", comentario);
-        params.put("puntuacion", puntuacion);
-        params.put("usuario_id", idUsuarioLogueado);
-        params.put("restaurante_id", this.IdRestaurante);
-        params.put("grupo_id", this.recomendacion_grupoId);
-        params.put("created_by", idUsuarioLogueado);
+            Integer puntuacion = Integer.parseInt(seekBarValue.getText().toString());
+            String comentario = comentarioET.getText().toString();
 
-        client.post("http://52.25.159.62/api/recomendaciones/create", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    //JSONObject obj2 = obj.getJSONObject("data");
+            //--------LOGICA DE LA LLAMADA A LA API----------//
+            AsyncHttpClient client = new AsyncHttpClient();
+            prgDialog.setMessage("Please wait...");
+            prgDialog.show();
 
-                    //TODO: revisar manejo del error
-                    if (response.contains("error")) {
-                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Recomendacion Enviada!", Toast.LENGTH_LONG).show();
+            RequestParams params = new RequestParams();
+            params.put("comentario", comentario);
+            params.put("puntuacion", (int)puntuacion);
+            params.put("usuario_id", idUsuarioLogueado);
+            params.put("restaurante_id", this.IdRestaurante);
+            params.put("grupo_id", this.recomendacion_grupoId);
+            params.put("created_by", idUsuarioLogueado);
+
+            client.post("http://52.25.159.62/api/recomendaciones/create", params, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    String response = new String(responseBody);
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        //JSONObject obj2 = obj.getJSONObject("data");
+
+                        //TODO: revisar manejo del error
+                        if (response.contains("error")) {
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Recomendacion Enviada!", Toast.LENGTH_LONG).show();
+                        }
+                        Button btnRecomendar = (Button) findViewById(R.id.restaurante_btn_enviar_recomend);
+                        btnRecomendar.setClickable(false);
+                        prgDialog.hide();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    Button btnRecomendar = (Button) findViewById(R.id.restaurante_btn_enviar_recomend);
-                    btnRecomendar.setClickable(false);
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     prgDialog.hide();
+                    if (statusCode == 404) {
+                        Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                    } else if (statusCode == 500) {
+                        Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                    }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                prgDialog.hide();
-                if (statusCode == 404) {
-                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
-                } else if (statusCode == 500) {
-                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-        //--------FIN LOGICA DE LA LLAMADA A LA API-------//
+            });
+            //--------FIN LOGICA DE LA LLAMADA A LA API-------//
+        }
     }
 
     public void llenarListaRecomendaciones(){
