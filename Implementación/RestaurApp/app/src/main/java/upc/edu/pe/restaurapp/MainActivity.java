@@ -186,13 +186,14 @@ public class MainActivity extends ActionBarActivity {
         btn.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
 
         SupportMapFragment spmap = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
         mapa = spmap.getMap();
 
         //Establecer tipos de mapa
-        mapa.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mapa.setMyLocationEnabled(true);
 
-        for (int i=0; i<lstRestCerca.size(); i++) {
+        for (int i = 0; i < lstRestCerca.size(); i++) {
             mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(i).getLatitud()), Double.parseDouble(lstRestCerca.get(i).getLongitud()))).title(lstRestCerca.get(i).getNombre()).snippet(lstRestCerca.get(i).getDescripcion()));
         }
 
