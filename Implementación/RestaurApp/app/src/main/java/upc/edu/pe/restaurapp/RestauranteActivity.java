@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import upc.edu.pe.restaurapp.Adapter.ComentarioAdapter;
+import upc.edu.pe.restaurapp.Entidades.Comentario;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
 
 
@@ -41,6 +47,7 @@ public class RestauranteActivity extends ActionBarActivity {
     Double PuntuacionTotal;
     String Distrito;
     ProgressDialog prgDialog;
+    List<Comentario> listaComentarios = new ArrayList<Comentario>();
     public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES";
     public Integer idUsuarioLogueado;
 
@@ -84,6 +91,8 @@ public class RestauranteActivity extends ActionBarActivity {
         txtNombre.setText(Nombre);
         txtDescripcion.setText(Descripcion);
         txtPuntaje.setText(PuntuacionTotal.toString());
+
+        llenarListaRecomendaciones();
     }
 
 
@@ -231,5 +240,88 @@ public class RestauranteActivity extends ActionBarActivity {
             }
         });
         //--------FIN LOGICA DE LA LLAMADA A LA API-------//
+    }
+
+    public void llenarListaRecomendaciones(){
+
+        //--------LOGICA DE LA LLAMADA A LA API----------//
+        AsyncHttpClient client = new AsyncHttpClient();
+        prgDialog.setMessage("Please wait...");
+        prgDialog.show();
+
+        client.get("http://52.25.159.62/api/restaurantes/"+IdRestaurante+"/recomendaciones", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    //obtenemos el JSON
+                    JSONObject obj = new JSONObject(response);
+                    //Obtenemos el Array de restaurantes
+                    JSONArray jArray = obj.getJSONArray("data");
+
+                    //TODO: revisar manejo del error
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Convertir JsonAray ---> List<Restaurante>
+                        for (int i = 0; i < jArray.length(); i++) {
+                            JSONObject jObj = jArray.getJSONObject(i);
+                            Comentario comentario = new Comentario();
+                            comentario.setId(jObj.getInt("id"));
+                            comentario.setComentario(jObj.getString("comentario"));
+
+                            llenarListaComentarios(comentario);
+                        }
+                    }
+                    actualizarListaConAdapterComentarios();
+                    prgDialog.hide();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_LONG).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //--------FIN LOGICA DE LA LLAMADA A LA API-------//
+    }
+    public void llenarListaComentarios(Comentario comentario){
+        listaComentarios.add(comentario);
+    }
+    public void actualizarListaConAdapterComentarios(){
+        //Lista
+        ListView lstVwComentarios = (ListView) findViewById(R.id.restaurante_lista_comentarios);
+        ComentarioAdapter comentarioAdapter = new ComentarioAdapter(listaComentarios,this);
+        lstVwComentarios.setAdapter(comentarioAdapter);
+
+        //Listener
+        /*lstVwRestaurantesRecomRecomendados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("IdRestaurante", restaurante.getIdRestaurante());
+                bundle.putString("Nombre", restaurante.getNombre());
+                bundle.putString("Latitud", restaurante.getLatitud());
+                bundle.putString("Longitud", restaurante.getLongitud());
+                bundle.putString("Descripcion", restaurante.getDescripcion());
+                bundle.putInt("Foto_id", restaurante.getFoto_id());
+                bundle.putString("DistritoId", restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal", restaurante.getPuntuacionTotal());
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });*/
     }
 }

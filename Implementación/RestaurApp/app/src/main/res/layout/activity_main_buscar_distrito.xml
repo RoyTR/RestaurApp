@@ -53,7 +53,7 @@
             android:id="@+id/distrito_lst_distritos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:entries="@array/listaDistritosVacia"/>
 
     </LinearLayout>
 

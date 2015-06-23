@@ -89,7 +89,7 @@
             android:id="@+id/restaurante_lista_comentarios"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/listaDemo"/>
+            android:entries="@array/listaComentariosVacia"/>
 
     </LinearLayout>
     <LinearLayout

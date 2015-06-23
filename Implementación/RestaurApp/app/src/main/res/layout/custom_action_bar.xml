@@ -19,7 +19,8 @@
         android:focusable="false"
         android:longClickable="false"
 
-        android:src="@drawable/restaurappactionbar"        />
+        android:src="@drawable/restaurappactionbar"
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

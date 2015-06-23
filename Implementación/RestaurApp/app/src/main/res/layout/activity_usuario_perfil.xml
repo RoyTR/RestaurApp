@@ -6,9 +6,11 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:layout_above="@+id/usuario_lay_guardarperf">
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <EditText
             android:layout_width="fill_parent"
@@ -70,7 +72,7 @@
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/perfTextPassword"
-            android:hint="Password" />
+            android:hint="Contraseña" />
 
     </LinearLayout>
 
@@ -79,18 +81,21 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/usuario_lay_footer"
         android:orientation="vertical"
-        android:id="@+id/usuario_lay_guardarperf">
+        android:id="@+id/usuario_lay_guardarperf"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout2"
+        android:gravity="center|center_horizontal">
 
 
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="65dp"
+            android:layout_width="287dp"
+            android:layout_height="36dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="30dp"
             android:id="@+id/pref_btn_Guardar"
-            android:text="Guardar Cambios"
+            android:text="Actualizar"
             android:textStyle="bold"
             android:onClick="GuardarCambiosPerfil"/>
 
@@ -112,6 +117,28 @@
             android:layout_height="wrap_content"
             android:id="@+id/usuariobotonfooter"
             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Información Personal"
+            android:id="@+id/textView9"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:textColor="#666666" />
     </LinearLayout>
 
 </RelativeLayout>
