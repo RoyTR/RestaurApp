@@ -289,7 +289,7 @@ public class ContactosActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Usuario usuario = (Usuario) parent.getItemAtPosition(position);
-                Toast.makeText(ContactosActivity.this, usuario.getEmail() + " -> " + usuario.getUsername(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ContactosActivity.this, usuario.getEmail(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -473,7 +473,7 @@ public class ContactosActivity extends ActionBarActivity {
             llenarListaDeCrearGrupos();
         }
     }
-    public void CrearGrupo(View v) {
+    public void CrearGrupo(final View v) {
         FormEditText txtNombreGrupo = (FormEditText)findViewById(R.id.contactos_crear_grupo_et_nombre_grupo);
         FormEditText[] allFields = {txtNombreGrupo};
         if (Validar.validarEditTexts(allFields)) {
@@ -507,24 +507,11 @@ public class ContactosActivity extends ActionBarActivity {
                                 RequestParams params = new RequestParams();
                                 params.add("usuario_id", idsUsuariosParaNuevoGrupo.get(i).toString());
                                 params.add("grupo_id", grupoBean.getId().toString());
-                                prgDialog.show();
-                                RestaurAppisClient.post("grupos/usuarios/agregar", params, new AsyncHttpResponseHandler() {
-                                    @Override
-                                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                        prgDialog.hide();
-                                    }
-                                    @Override
-                                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                        prgDialog.hide();
-                                        if (statusCode == 404) {
-                                            Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
-                                        } else if (statusCode == 500) {
-                                            Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
+                                if(i == idsUsuariosParaNuevoGrupo.size() - 1) {
+                                    AgregarUsuarioAGrupoService(params, false, null);
+                                } else {
+                                    AgregarUsuarioAGrupoService(params, true, v);
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -543,11 +530,37 @@ public class ContactosActivity extends ActionBarActivity {
                         }
                     }
                 });
-                Toast.makeText(getApplicationContext(), "Grupo " + nombreGrupo + " Creado", Toast.LENGTH_SHORT).show();
-                cambiarGrupos(v);
+                //Toast.makeText(getApplicationContext(), "Grupo " + nombreGrupo + " Creado", Toast.LENGTH_SHORT).show();
+                //cambiarGrupos(v);
             }
         } else {
         }
+    }
+
+    public void AgregarUsuarioAGrupoService(RequestParams params, final boolean acabar, final View v) {
+        prgDialog.setMessage("Guardando..");
+        prgDialog.show();
+        RestaurAppisClient.post("grupos/usuarios/agregar", params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                prgDialog.hide();
+                if(acabar) {
+                    Toast.makeText(getApplicationContext(), "Grupo " + nombreGrupo + " Creado", Toast.LENGTH_SHORT).show();
+                    cambiarGrupos(v);
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
@@ -645,98 +658,133 @@ public class ContactosActivity extends ActionBarActivity {
     public void CrearAmigosDelUsuario(View v) {
         comprobarUsuariosParaAgregar();
         prgDialog.setMessage("Creando...");
-        // Agregar USUARIOS
-        prgDialog.show();
-        for (int h = 0; h < idsAAgregar.size(); h++) {
-            prgDialog.show();
-            RequestParams requestParams = new RequestParams();
-            requestParams.add("nombre", nombresAAgregar.get(h).toString()+" "+ apellidosAAgregar.get(h).toString());
-            requestParams.add("created_by", String.valueOf(idUsuarioLogueado));
-            final Integer auxID = idsAAgregar.get(h);
-            RestaurAppisClient.post("grupos/create", requestParams, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    String response = new String(responseBody);
-                    try {
-                        JSONObject obj = new JSONObject(response);
-                        JSONObject jNuevoGrupo = obj.getJSONObject("data");
+        if(idsAAgregar.size() != 0 && idsAEliminar.size() != 0) {
+            for (int h = 0; h < idsAAgregar.size(); h++) {
+                UsuarioAgregarAmigoService(nombresAAgregar.get(h), apellidosAAgregar.get(h), idsAAgregar.get(h), false, v);
+            }
+            for (int h = 0; h < this.idsAEliminar.size(); h++) {
+                if(h == this.idsAEliminar.size() - 1) {
+                    UsuarioEliminarAmigoService(this.idsAEliminar.get(h), this.idsGruposAEliminar.get(h), true, v);
+                } else {
+                    UsuarioEliminarAmigoService(this.idsAEliminar.get(h), this.idsGruposAEliminar.get(h), false, v);
+                }
+            }
+        } else if(idsAAgregar.size() != 0) {
+            for (int h = 0; h < idsAAgregar.size(); h++) {
+                if(h == this.idsAAgregar.size() - 1) {
+                    UsuarioAgregarAmigoService(nombresAAgregar.get(h), apellidosAAgregar.get(h), idsAAgregar.get(h), true, v);
+                } else {
+                    UsuarioAgregarAmigoService(nombresAAgregar.get(h), apellidosAAgregar.get(h), idsAAgregar.get(h), false, v);
+                }
+            }
+        } else if(idsAEliminar.size() != 0) {
+            for (int h = 0; h < this.idsAEliminar.size(); h++) {
+                if(h == this.idsAEliminar.size() - 1) {
+                    UsuarioEliminarAmigoService(this.idsAEliminar.get(h), this.idsGruposAEliminar.get(h), true, v);
+                } else {
+                    UsuarioEliminarAmigoService(this.idsAEliminar.get(h), this.idsGruposAEliminar.get(h), false, v);
+                }
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Amigos Agregados", Toast.LENGTH_SHORT).show();
+            cambiarAmigos(v);
+        }
+    }
 
-                        //TODO: revisar manejo del error
-                        if (response.contains("error")) {
-                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                        } else {
-                            Grupo grupo = new Grupo();
-                            grupo.setId(jNuevoGrupo.getInt("id"));
-                            grupo.setNombre(jNuevoGrupo.getString("nombre"));
-                            llenarGrupoBean(grupo);
+    public void UsuarioAgregarAmigoService(String nombre, String apellido, final Integer auxID, final boolean acabar, final View v){
+        prgDialog.setMessage("Guardando...");
+        prgDialog.show();
+        RequestParams requestParams = new RequestParams();
+        requestParams.add("nombre", nombre+" "+ apellido);
+        requestParams.add("created_by", String.valueOf(idUsuarioLogueado));
+        //final Integer auxID = idsAAgregar.get(h);
+        RestaurAppisClient.post("grupos/create", requestParams, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    JSONObject jNuevoGrupo = obj.getJSONObject("data");
+
+                    //TODO: revisar manejo del error
+                    if (response.contains("error")) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                    } else {
+                        Grupo grupo = new Grupo();
+                        grupo.setId(jNuevoGrupo.getInt("id"));
+                        grupo.setNombre(jNuevoGrupo.getString("nombre"));
+                        llenarGrupoBean(grupo);
+                    }
+                    prgDialog.hide();
+                    RequestParams params = new RequestParams();
+                    params.add("usuario_id", auxID.toString());
+                    params.add("grupo_id", grupoBean.getId().toString());
+                    prgDialog.show();
+                    RestaurAppisClient.post("grupos/usuarios/agregar", params, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            prgDialog.hide();
+                            if(acabar) {
+                                Toast.makeText(getApplicationContext(), "Amigos Agregados", Toast.LENGTH_SHORT).show();
+                                cambiarAmigos(v);
+                            }
                         }
-                        prgDialog.hide();
-                        RequestParams params = new RequestParams();
-                        //params.add("usuario_id", idsAAgregar.get(getVariableIteradorUsuario()).toString());
-                        params.add("usuario_id", auxID.toString());
-                        params.add("grupo_id", grupoBean.getId().toString());
-                        prgDialog.show();
-                        RestaurAppisClient.post("grupos/usuarios/agregar", params, new AsyncHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                prgDialog.hide();
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                            prgDialog.hide();
+                            if (statusCode == 404) {
+                                Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                            } else if (statusCode == 500) {
+                                Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
                             }
-
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                prgDialog.hide();
-                                if (statusCode == 404) {
-                                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
-                                } else if (statusCode == 500) {
-                                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    prgDialog.hide();
-                    if (statusCode == 404) {
-                        Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
-                    } else if (statusCode == 500) {
-                        Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
-                    }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
+        });
+    }
 
-        }
-        // Elimnar USUARIOS
+    public void UsuarioEliminarAmigoService(int idAEliminar, int idGrupoEliminar, final boolean acabar, final View v) {
+        prgDialog.setMessage("Guardando...");
         prgDialog.show();
-        for (int h = 0; h < this.idsAEliminar.size(); h++) {
-            prgDialog.show();
-            RestaurAppisClient.post("grupos/usuarios/eliminar?usuario_id=" + this.idsAEliminar.get(h).toString() + "&grupo_id=" + this.idsGruposAEliminar.get(h).toString(), null, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    prgDialog.hide();
+        RestaurAppisClient.post("grupos/usuarios/eliminar?usuario_id=" + idAEliminar + "&grupo_id=" + idGrupoEliminar, null, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                prgDialog.hide();
+                if(acabar) {
+                    Toast.makeText(getApplicationContext(), "Amigos Agregados", Toast.LENGTH_SHORT).show();
+                    cambiarAmigos(v);
                 }
+            }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    prgDialog.hide();
-                    if (statusCode == 404) {
-                        Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
-                    } else if (statusCode == 500) {
-                        Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
-                    }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                prgDialog.hide();
+                if (statusCode == 404) {
+                    Toast.makeText(getApplicationContext(), "No se encontro el resource", Toast.LENGTH_SHORT).show();
+                } else if (statusCode == 500) {
+                    Toast.makeText(getApplicationContext(), "Hubo un error en el servidor", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ocurrio un Error Inesperado [Puede que el dispositivo no esté conectado al Internet o que el servidor remoto no este funcionando]", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
-        Toast.makeText(getApplicationContext(), "Amigos Agregados", Toast.LENGTH_SHORT).show();
-        cambiarAmigos(v);
+            }
+        });
     }
 }
