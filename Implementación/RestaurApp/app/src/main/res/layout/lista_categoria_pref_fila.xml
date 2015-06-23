@@ -57,8 +57,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
-                android:id="@+id/categoria_pref_lst_fav"
-                android:text="Favorito"/>
+                android:id="@+id/categoria_pref_lst_fav" />
         </LinearLayout>
     </LinearLayout>
 

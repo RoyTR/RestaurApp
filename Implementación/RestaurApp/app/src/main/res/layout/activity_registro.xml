@@ -39,7 +39,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Nombre"
+        android:hint="Nombres"
         android:ems="10"
         android:id="@+id/regTextNombre"
         android:layout_marginTop="38dp"
@@ -144,8 +144,8 @@
         android:layout_alignEnd="@+id/regBtnInacRegist"/>
 
     <Button
-        android:layout_width="120dp"
-        android:layout_height="40dp"
+        android:layout_width="232dp"
+        android:layout_height="36dp"
         android:text="Registrarse"
         android:id="@+id/redBtnRegistrarse"
         android:layout_marginTop="44dp"
@@ -153,6 +153,8 @@
         android:layout_below="@+id/regTextConfirmPassword"
         android:layout_alignRight="@+id/regTextConfirmPassword"
         android:layout_alignEnd="@+id/regTextConfirmPassword"
-        android:onClick="Registrarse"/>
+        android:onClick="Registrarse"
+        android:layout_alignLeft="@+id/regTextConfirmPassword"
+        android:layout_alignStart="@+id/regTextConfirmPassword" />
 
 </RelativeLayout>
