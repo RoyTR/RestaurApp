@@ -34,6 +34,7 @@ import java.util.List;
 import upc.edu.pe.restaurapp.Adapter.CategoriaAdapter;
 import upc.edu.pe.restaurapp.Adapter.DistritoAdapter;
 import upc.edu.pe.restaurapp.Adapter.RestauranteAdapter;
+import upc.edu.pe.restaurapp.Adapter.RestaurantePopularesAdapter;
 import upc.edu.pe.restaurapp.Entidades.Categoria;
 import upc.edu.pe.restaurapp.Entidades.Distrito;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
@@ -516,6 +517,7 @@ public class MainActivity extends ActionBarActivity {
                             restaurante.setLatitud(jObj.getString("latitud"));
                             restaurante.setLongitud(jObj.getString("longitud"));
                             restaurante.setDescripcion(jObj.getString("descripcion"));
+                            restaurante.setNumeroReomendaciones(jObj.getInt("cantidad_recomendaciones"));
                             if(jObj.getString("foto_id") != null)
                                 restaurante.setFoto_id(Integer.parseInt(jObj.getString("foto_id")));
                             else{
@@ -559,7 +561,7 @@ public class MainActivity extends ActionBarActivity {
     private void actualizarListaConAdapterPreferencias(){
         //Lista
         ListView lstVwRestaurantesRecomPreferencias = (ListView) findViewById(R.id.listViewRecomendacionesPreferencias);
-        RestauranteAdapter restauranteAdapter = new RestauranteAdapter(lstRestPreferencias,this);
+        RestaurantePopularesAdapter restauranteAdapter = new RestaurantePopularesAdapter(lstRestPreferencias,this);
         lstVwRestaurantesRecomPreferencias.setAdapter(restauranteAdapter);
 
         //Listener
@@ -571,13 +573,13 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("IdRestaurante",restaurante.getIdRestaurante());
-                bundle.putString("Nombre",restaurante.getNombre());
+                bundle.putString("Nombre", restaurante.getNombre());
                 bundle.putString("Latitud",restaurante.getLatitud());
                 bundle.putString("Longitud",restaurante.getLongitud());
                 bundle.putString("Descripcion",restaurante.getDescripcion());
-                bundle.putInt("Foto_id",restaurante.getFoto_id());
-                bundle.putString("DistritoId",restaurante.getDistrito());
-                bundle.putDouble("PuntuacionTotal",restaurante.getPuntuacionTotal());
+                bundle.putInt("Foto_id", restaurante.getFoto_id());
+                bundle.putString("DistritoId", restaurante.getDistrito());
+                bundle.putDouble("PuntuacionTotal", restaurante.getPuntuacionTotal());
                 intent.putExtras(bundle);
 
                 startActivity(intent);

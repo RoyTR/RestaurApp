@@ -29,6 +29,32 @@
     <string name="masRec_btn_MasRecomendaciones">Más Populares</string>
 
 
+    <!--Listas default cuando no hay data-->
+    <string-array name="listaComentariosVacia">
+        <item>Aún no existen comentarios</item>
+    </string-array>
+    <string-array name="listaDistritosVacia">
+        <item>No existen distritos</item>
+    </string-array>
+    <string-array name="listaTiposComidaVacia">
+        <item>No existen tipos de comida</item>
+    </string-array>
+    <string-array name="listaCercaVacia">
+        <item>No existen restaurantes cercanos</item>
+    </string-array>
+    <string-array name="listaFavoritosVacia">
+        <item>No existen restaurantes favoritos</item>
+    </string-array>
+    <string-array name="listaRestaurantesVacia">
+        <item>No existen restaurantes</item>
+    </string-array>
+    <string-array name="listaPuntajeVacia">
+        <item>No existen restaurantes</item>
+    </string-array>
+    <string-array name="listaPopularesVacia">
+        <item>No existen restaurantes</item>
+    </string-array>
+
 
 
 
@@ -54,6 +80,8 @@
         <item>Chess</item>
         <item>Hockey</item>
     </string-array>
+
+
     <string-array name="listaDemo2">
         <item>Jugos</item>
         <item>Fresas</item>

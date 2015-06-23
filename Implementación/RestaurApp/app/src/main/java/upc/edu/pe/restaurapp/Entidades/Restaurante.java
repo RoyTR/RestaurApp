@@ -11,6 +11,7 @@ public class Restaurante {
     private String Descripcion;
     private Integer Foto_id;
     private Double PuntuacionTotal;
+    private Integer NumeroReomendaciones;
     private String Distrito;
 
 
@@ -68,6 +69,14 @@ public class Restaurante {
 
     public void setPuntuacionTotal(Double puntuacionTotal) {
         PuntuacionTotal = puntuacionTotal;
+    }
+
+    public Integer getNumeroReomendaciones() {
+        return NumeroReomendaciones;
+    }
+
+    public void setNumeroReomendaciones(Integer numeroReomendaciones) {
+        NumeroReomendaciones = numeroReomendaciones;
     }
 
     public String getDistrito() {
