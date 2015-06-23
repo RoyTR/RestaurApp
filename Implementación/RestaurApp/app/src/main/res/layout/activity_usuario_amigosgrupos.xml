@@ -8,14 +8,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:layout_above="@+id/usuario_lay_agregar_amigosgrupos">
+        android:layout_above="@+id/usuario_lay_footer">
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/usuario_amigosgrupos_lstvw"/>
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/usuario_lay_footer"
@@ -31,7 +31,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             />
-        <Button
+        &lt;!&ndash;<Button
             android:layout_width="fill_parent"
             android:layout_height="65dp"
             android:layout_marginLeft="40dp"
@@ -41,9 +41,9 @@
             android:id="@+id/amigosgrupos_btn_agregar"
             android:text="Agregar"
             android:textStyle="bold"
-            android:onClick="irAgregarAmigoGrupo"/>
+            android:onClick="irAgregarAmigoGrupo"/>&ndash;&gt;
 
-        </LinearLayout>
+        </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="fill_parent"

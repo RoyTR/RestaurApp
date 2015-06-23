@@ -198,6 +198,9 @@ public class RestauranteActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(data == null)
+            return;
+
         switch (requestCode)
         {
             case 1:
