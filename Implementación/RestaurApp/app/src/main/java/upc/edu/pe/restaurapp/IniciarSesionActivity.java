@@ -1,16 +1,21 @@
 package upc.edu.pe.restaurapp;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
@@ -40,6 +45,45 @@ public class IniciarSesionActivity extends ActionBarActivity {
             setContentView(R.layout.activity_registro);
         }else{
             setContentView(R.layout.activity_iniciar_sesion);
+            TextView tvForgotPassword = (TextView) findViewById(R.id.tv_forgot_password);
+            tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(IniciarSesionActivity.this);
+                    builder.setTitle("Recuperar contraseña");
+                    final EditText input = new EditText(IniciarSesionActivity.this);
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                    builder.setMessage("Ingrese su correo registrado, un email será enviado con una nueva contraseña.");
+                    builder.setView(input);
+                    builder.setPositiveButton("Enviar Nueva Contraseña", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            RequestParams requestParams = new RequestParams();
+                            requestParams.add("email", input.getText().toString());
+                            RestaurAppisClient.post("usuarios/resetPassword", requestParams, new AsyncHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                }
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                }
+                            });
+                            AlertDialog.Builder confirmationAlert = new AlertDialog.Builder(IniciarSesionActivity.this);
+                            confirmationAlert.setTitle("Recuperar contraseña");
+                            confirmationAlert.setMessage("Un mensaje ha sido enviado a " + input.getText().toString() + " con una nueva contraseña. Revise su correo.");
+                            confirmationAlert.setPositiveButton("OK",null);
+                            confirmationAlert.show();
+                        }
+                    });
+                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+                }
+            });
         }
 
 
