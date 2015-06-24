@@ -22,6 +22,30 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+        <LinearLayout
+            android:id="@+id/contactos_grupos_lay_grupos_buscar_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/contactos_grupos_lay_crear"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/contactos_usuarios_agregar_tv_buscar"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.79"
+                android:hint="Nombre o Apellido" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="buscarUsuarios"
+                android:text="Buscar" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

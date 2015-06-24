@@ -395,7 +395,8 @@ public class ContactosActivity extends ActionBarActivity {
         this.lstAmigos.clear();
         prgDialog.setMessage("Cargando Usuarios...");
         prgDialog.show();
-        RestaurAppisClient.get("usuarios", null, new AsyncHttpResponseHandler() {
+        TextView tvBuscar = (TextView) findViewById(R.id.contactos_usuarios_agregar_tv_buscar);
+        RestaurAppisClient.get("usuarios/util/buscar?buscar=" + tvBuscar.getText().toString() + "&excluir=" + idUsuarioLogueado, null, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -441,6 +442,12 @@ public class ContactosActivity extends ActionBarActivity {
             }
         });
     }
+
+    public void buscarUsuarios(View v){
+        llenarListaDeUsuariosAgregar();
+    }
+
+
     private void actualizarListaDeUsuariosAgregar() {
         //Lista
         ListView lstVwUsuarios = (ListView) findViewById(R.id.contactos_agregar_lv_lista_usuarios);
