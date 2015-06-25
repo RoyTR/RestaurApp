@@ -27,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/contactos_amigos_lay_footer"
         android:orientation="vertical"
-        android:id="@+id/contactos_amigos_lay_agregar">
+        android:id="@+id/contactos_amigos_lay_agregar"
+        android:gravity="center_horizontal">
 
         <View
             android:layout_width="fill_parent"
@@ -40,11 +41,9 @@
             android:layout_marginEnd="5dp"
             />
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="115dp"
-            android:layout_marginRight="115dp"
-            android:layout_marginBottom="5dp"
+            android:layout_width="287dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp"
             android:id="@+id/amigos_btn_Agregar"
             android:text="Agregar Amigos"
             android:textStyle="bold"

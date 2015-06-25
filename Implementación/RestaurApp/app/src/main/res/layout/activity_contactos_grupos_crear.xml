@@ -74,7 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/contactos_grupos_lay_footer"
         android:orientation="vertical"
-        android:id="@+id/contactos_grupos_lay_crear">
+        android:id="@+id/contactos_grupos_lay_crear"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="7dp">
 
         <View
             android:layout_width="fill_parent"
@@ -87,8 +89,8 @@
             android:layout_marginEnd="5dp"
             />
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_width="287dp"
+            android:layout_height="36dp"
             android:layout_marginLeft="120dp"
             android:layout_marginRight="120dp"
             android:layout_marginBottom="5dp"
