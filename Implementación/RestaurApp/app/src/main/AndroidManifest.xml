@@ -28,11 +28,13 @@
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="@string/facebook_app_id"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".SplashScreenActivity"
-            android:label="@string/title_activity_splash_screen" >
+            android:label="@string/title_activity_splash_screen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,50 +43,61 @@
         </activity>
         <activity
             android:name=".PantallaInicioActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".IniciarSesionActivity"
             android:label="@string/title_activity_iniciar_sesion"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".RestauranteActivity"
-            android:label="@string/title_activity_restaurante" >
+            android:label="@string/title_activity_restaurante"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".LoginMainActivity"
             android:label="LoginMainActivity"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ContactosActivity"
-            android:label="@string/title_activity_contactos" >
+            android:label="@string/title_activity_contactos"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".UsuarioActivity"
-            android:label="@string/title_activity_usuario" >
+            android:label="@string/title_activity_usuario"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about" >
+            android:label="@string/title_activity_about"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ListaRestaurantesActivity"
-            android:label="@string/title_activity_lista_restaurantes" >
+            android:label="@string/title_activity_lista_restaurantes"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".AmigosGruposActivity"
-            android:label="@string/title_activity_amigosgrupos" >
+            android:label="@string/title_activity_amigosgrupos"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -236,8 +236,8 @@
             android:layout_marginTop="50dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="210dp"
+            android:layout_height="25dp"
             android:text="Agregar Amigo/Grupos"
             android:id="@+id/restaurante_rec_btn_destinatarios"
             android:onClick="irAgregarAmigoGrupo"

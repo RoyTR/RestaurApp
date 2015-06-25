@@ -11,30 +11,39 @@
     style="@style/_RestaurAppTheme"
     >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <Button
         android:id="@+id/footercontactobtnamigos"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/footer_Contacto_boton_Amigos"
+        android:layout_weight="12"
         android:background="@color/colorGrisClaro"
         android:textStyle="bold"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="1dp"
         android:onClick="cambiarAmigos"
-
+        android:drawableStart="@drawable/amigos"
+        android:paddingLeft="78dp"
         />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <Button
         android:id="@+id/footercontactobtngrupos"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/footer_Contacto_boton_Grupos"
+        android:layout_weight="12"
         android:background="@color/colorGrisClaro"
         android:textStyle="bold"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="2dp"
         android:onClick="cambiarGrupos"
+        android:drawableStart="@drawable/grupos"
+        android:paddingLeft="78dp"
         />
-
+    </LinearLayout>
 </LinearLayout>
