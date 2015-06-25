@@ -515,9 +515,9 @@ public class ContactosActivity extends ActionBarActivity {
                                 params.add("usuario_id", idsUsuariosParaNuevoGrupo.get(i).toString());
                                 params.add("grupo_id", grupoBean.getId().toString());
                                 if(i == idsUsuariosParaNuevoGrupo.size() - 1) {
-                                    AgregarUsuarioAGrupoService(params, false, null);
-                                } else {
                                     AgregarUsuarioAGrupoService(params, true, v);
+                                } else {
+                                    AgregarUsuarioAGrupoService(params, false, v);
                                 }
                             }
                         } catch (JSONException e) {
@@ -552,7 +552,7 @@ public class ContactosActivity extends ActionBarActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
                 if(acabar) {
-                    Toast.makeText(getApplicationContext(), "Grupo " + nombreGrupo + " Creado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Grupo " + nombreGrupo + " creado!", Toast.LENGTH_SHORT).show();
                     cambiarGrupos(v);
                 }
             }
