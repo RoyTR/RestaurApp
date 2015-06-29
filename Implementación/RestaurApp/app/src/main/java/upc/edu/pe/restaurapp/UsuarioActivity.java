@@ -160,7 +160,7 @@ public class UsuarioActivity extends ActionBarActivity {
 
         EditText nombres = (EditText)  findViewById(R.id.perfTextNombre);
         EditText apellidos = (EditText)  findViewById(R.id.perfTextApellido);
-        //EditText email = (EditText)  findViewById(R.id.perfTextEmail);
+        EditText email = (EditText)  findViewById(R.id.perfTextEmail);
         //EditText username = (EditText)  findViewById(R.id.perfTextUserName);
         EditText password = (EditText) findViewById(R.id.perfTextPassword);
 
@@ -172,6 +172,7 @@ public class UsuarioActivity extends ActionBarActivity {
         RequestParams params = new RequestParams();
         params.put("nombres", nombres.getText().toString());
         params.put("apellidos", apellidos.getText().toString());
+        params.put("email", email.getText().toString());
         if(!(password.getText().toString().isEmpty()))//if the user added a password
             params.put("password", password.getText().toString());
         params.put("updated_by", usuarioActualId);

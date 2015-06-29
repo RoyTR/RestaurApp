@@ -42,9 +42,10 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:inputType="textEmailAddress"
+            android:text=""
             android:ems="10"
             android:id="@+id/perfTextEmail"
-            android:enabled="false"
+            android:enabled="true"
             android:editable="false"
             android:clickable="true" />
 
