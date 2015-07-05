@@ -49,13 +49,17 @@ public class ComentarioAdapter extends BaseAdapter {
 
         //Usar aqui todos los parametros necesarios a mostrar TODO
         TextView Nombre = (TextView) convertView.findViewById(R.id.Comentariolst_nombre);
+        TextView usuario = (TextView) convertView.findViewById(R.id.comentariolst_usuario);
+        TextView fecha = (TextView) convertView.findViewById(R.id.comentariolst_fecha);
+
 
         //aqui esta el objeto distrito
         Comentario comentario = comentarios.get(position);
 
         //LLenar aqui todos los parametros TODO
         Nombre.setText(comentario.getComentario());
-
+        usuario.setText(comentario.getNomusuario());
+        fecha.setText(comentario.getFecha());
         return convertView;
     }
 }

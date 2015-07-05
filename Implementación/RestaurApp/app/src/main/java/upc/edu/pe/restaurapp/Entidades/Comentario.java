@@ -8,6 +8,25 @@ public class Comentario {
     private Integer id;
     private String comentario;
 
+    private String nomusuario;
+    private String fecha;
+
+    public String getNomusuario() {
+        return nomusuario;
+    }
+
+    public void setNomusuario(String nomusuario) {
+        this.nomusuario = nomusuario;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
     public String getComentario() {
         return comentario;
     }

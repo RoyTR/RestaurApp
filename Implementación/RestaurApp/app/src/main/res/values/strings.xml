@@ -6,6 +6,7 @@
     <string name="action_search">IconoBuscar</string>
     <string name="action_perfil">Perfil</string>
     <string name="action_contactos">Contactos</string>
+    <string name="action_recomendaciones">Mis Recomendaciones</string>
     <string name="action_about">Acerca de</string>
     <string name="action_logout">Cerrar Sesión</string>
     <string name="title_activity_splash_screen">RestaurApp</string>
@@ -106,5 +107,6 @@
     <string name="title_activity_usuario">UsuarioActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_lista_restaurantes">ListaRestaurantesActivity</string>
+    <string name="title_activity_recomendaciones_para_mi">RecomendacionesParaMiActivity</string>
 
 </resources>

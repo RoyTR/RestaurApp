@@ -106,6 +106,9 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_contactos:
                 irContactos(findViewById(R.id.action_contactos));
                 return true;
+            case R.id.action_recomendaciones:
+                irRecomendaciones(findViewById(R.id.action_recomendaciones));
+                return true;
             case R.id.action_about:
                 irAbout(findViewById(R.id.action_about));
                 return true;
@@ -250,6 +253,10 @@ public class MainActivity extends ActionBarActivity {
     //-----------------------------------MENU BAR----------------------------------//
     public void irContactos(View v){
         Intent intent = new Intent(this, ContactosActivity.class);
+        startActivity(intent);
+    }
+    public void irRecomendaciones(View v){
+        Intent intent = new Intent(this, RecomendacionesParaMiActivity.class);
         startActivity(intent);
     }
     public  void irUsuario(View v){
