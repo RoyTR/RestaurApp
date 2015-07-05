@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public class CategoriaAdapter extends BaseAdapter {
 
         //Usar aqui todos los parametros necesarios a mostrar TODO
         TextView Nombre = (TextView) convertView.findViewById(R.id.Categorialst_nombre);
+        ImageView IconoComida = (ImageView) convertView.findViewById(R.id.cat_img);
         //TextView Descripcion = (TextView) convertView.findViewById(R.id.Categorialst_descripcion);
 
         //aqui esta el objeto categoria
@@ -56,6 +58,30 @@ public class CategoriaAdapter extends BaseAdapter {
 
         //LLenar aqui todos los parametros TODO
         Nombre.setText(categoria.getNombre());
+        switch (categoria.getId()){
+            case 1: IconoComida.setImageResource(R.drawable.fd_ico_criolla);
+                break;
+            case 2: IconoComida.setImageResource(R.drawable.fd_ico_mariscos);
+                break;
+            case 3: IconoComida.setImageResource(R.drawable.fd_ico_chifa);
+                break;
+            case 4: IconoComida.setImageResource(R.drawable.fd_ico_italiana);
+                break;
+            case 5: IconoComida.setImageResource(R.drawable.fd_ico_indu);
+                break;
+            case 6: IconoComida.setImageResource(R.drawable.fd_ico_carnes);
+                break;
+            case 7: IconoComida.setImageResource(R.drawable.fd_ico_vegetarianos);
+                break;
+            case 8: IconoComida.setImageResource(R.drawable.fd_ico_ensaladas);
+                break;
+            case 9: IconoComida.setImageResource(R.drawable.fd_ico_light);
+                break;
+            case 10: IconoComida.setImageResource(R.drawable.fd_ico_parrillas);
+                break;
+            default: IconoComida.setImageResource(R.drawable.fd_ico_def);
+                break;
+        }
         //Descripcion.setText(categoria.getDescripcion());
 
         return convertView;

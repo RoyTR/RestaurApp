@@ -113,7 +113,7 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/distritos/"+distritoId.toString()+"/restaurantes", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/distritos/"+distritoId.toString()+"/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -129,7 +129,11 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
 
                         for(int i=0;i<jArray.length();i++){
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjcat = jObj.getJSONObject("main_category");
+                            JSONObject jobjcatdata = jobjcat.getJSONObject("data");
+
                             Restaurante restaurante = new Restaurante();
+                            restaurante.setCategoria(jobjcatdata.getInt("id"));
                             restaurante.setIdRestaurante(jObj.getInt("id"));
                             restaurante.setNombre(jObj.getString("nombre"));
                             restaurante.setLatitud(jObj.getString("latitud"));
@@ -175,7 +179,7 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/categorias/"+categoriaId.toString()+"/restaurantes", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/categorias/"+categoriaId.toString()+"/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -191,7 +195,11 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
 
                         for(int i=0;i<jArray.length();i++){
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjcat = jObj.getJSONObject("main_category");
+                            JSONObject jobjcatdata = jobjcat.getJSONObject("data");
+
                             Restaurante restaurante = new Restaurante();
+                            restaurante.setCategoria(jobjcatdata.getInt("id"));
                             restaurante.setIdRestaurante(jObj.getInt("id"));
                             restaurante.setNombre(jObj.getString("nombre"));
                             restaurante.setLatitud(jObj.getString("latitud"));

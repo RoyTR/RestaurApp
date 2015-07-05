@@ -278,7 +278,7 @@ public class MainActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/restaurantes", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -296,7 +296,11 @@ public class MainActivity extends ActionBarActivity {
                         //Convertir JsonAray ---> List<Restaurante>
                         for(int i=0;i<jArray.length();i++){
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjcat = jObj.getJSONObject("main_category");
+                            JSONObject jobjcatdata = jobjcat.getJSONObject("data");
+
                             Restaurante restaurante = new Restaurante();
+                            restaurante.setCategoria(jobjcatdata.getInt("id"));
                             restaurante.setIdRestaurante((Integer) jObj.getInt("id"));
                             restaurante.setNombre(jObj.getString("nombre"));
                             restaurante.setLatitud(jObj.getString("latitud"));
@@ -391,7 +395,7 @@ public class MainActivity extends ActionBarActivity {
         sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
         Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
 
-        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId+"/favoritos", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId+"/favoritos?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -409,7 +413,11 @@ public class MainActivity extends ActionBarActivity {
                         //Convertir JsonAray ---> List<Restaurante>
                         for(int i=0;i<jArray.length();i++){
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjcat = jObj.getJSONObject("main_category");
+                            JSONObject jobjcatdata = jobjcat.getJSONObject("data");
+
                             Restaurante restaurante = new Restaurante();
+                            restaurante.setCategoria(jobjcatdata.getInt("id"));
                             restaurante.setIdRestaurante( jObj.getInt("id"));
                             restaurante.setNombre(jObj.getString("nombre"));
                             restaurante.setLatitud(jObj.getString("latitud"));
@@ -499,7 +507,7 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes/toprecomendados", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/restaurantes/toprecomendados?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -517,7 +525,11 @@ public class MainActivity extends ActionBarActivity {
                         //Convertir JsonAray ---> List<Restaurante>
                         for(int i=0;i<jArray.length();i++){
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjcat = jObj.getJSONObject("main_category");
+                            JSONObject jobjcatdata = jobjcat.getJSONObject("data");
+
                             Restaurante restaurante = new Restaurante();
+                            restaurante.setCategoria(jobjcatdata.getInt("id"));
                             restaurante.setIdRestaurante( jObj.getInt("id"));
                             restaurante.setNombre(jObj.getString("nombre"));
                             restaurante.setLatitud(jObj.getString("latitud"));
@@ -608,7 +620,7 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes/toppuntuados", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/restaurantes/toppuntuados?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -626,7 +638,11 @@ public class MainActivity extends ActionBarActivity {
                         //Convertir JsonAray ---> List<Restaurante>
                         for (int i = 0; i < jArray.length(); i++) {
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjcat = jObj.getJSONObject("main_category");
+                            JSONObject jobjcatdata = jobjcat.getJSONObject("data");
+
                             Restaurante restaurante = new Restaurante();
+                            restaurante.setCategoria(jobjcatdata.getInt("id"));
                             restaurante.setIdRestaurante(jObj.getInt("id"));
                             restaurante.setNombre(jObj.getString("nombre"));
                             restaurante.setLatitud(jObj.getString("latitud"));

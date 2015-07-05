@@ -100,7 +100,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/rest_row_foodico"
-            android:src="@drawable/fd_ico_carnes" />
+            android:src="@drawable/fd_ico_def" />
     </LinearLayout>
 
 </RelativeLayout>

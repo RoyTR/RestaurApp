@@ -1,6 +1,7 @@
 package upc.edu.pe.restaurapp.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,31 @@ public class RestauranteAdapter extends BaseAdapter {
         Nombre.setText(restaurante.getNombre());
         Descripcion.setText(restaurante.getDescripcion());
         Puntuacion.setText(restaurante.getPuntuacionTotal().toString());
+
+        switch (restaurante.getCategoria()){
+            case 1: IconoComida.setImageResource(R.drawable.fd_ico_criolla);
+                break;
+            case 2: IconoComida.setImageResource(R.drawable.fd_ico_mariscos);
+                break;
+            case 3: IconoComida.setImageResource(R.drawable.fd_ico_chifa);
+                break;
+            case 4: IconoComida.setImageResource(R.drawable.fd_ico_italiana);
+                break;
+            case 5: IconoComida.setImageResource(R.drawable.fd_ico_indu);
+                break;
+            case 6: IconoComida.setImageResource(R.drawable.fd_ico_carnes);
+                break;
+            case 7: IconoComida.setImageResource(R.drawable.fd_ico_vegetarianos);
+                break;
+            case 8: IconoComida.setImageResource(R.drawable.fd_ico_ensaladas);
+                break;
+            case 9: IconoComida.setImageResource(R.drawable.fd_ico_light);
+                break;
+            case 10: IconoComida.setImageResource(R.drawable.fd_ico_parrillas);
+                break;
+            default: IconoComida.setImageResource(R.drawable.fd_ico_def);
+                break;
+        }
 
         //se comen el click D:
         //Button boton = (Button) convertView.findViewById(R.id.restaurantelst_btn);

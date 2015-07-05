@@ -14,6 +14,18 @@ public class Restaurante {
     private Integer NumeroReomendaciones;
     private String Distrito;
 
+    //categoria invalida para que use default y no se caiga al listar
+    private Integer Categoria = 11;
+
+    public Integer getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(Integer categoria) {
+        Categoria = categoria;
+    }
+
+
 
     public Integer getIdRestaurante() {
         return IdRestaurante;
