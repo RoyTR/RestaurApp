@@ -53,7 +53,7 @@
                 android:text="Buscar" />
         </LinearLayout>
 
-        <TextView
+        <!--TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -61,13 +61,13 @@
             android:id="@+id/textView3"
             android:layout_below="@+id/contactos_grupos_lay_grupos_buscar_bar"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" /-->
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/contactos_agregar_lv_lista_usuarios"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/contactos_grupos_lay_grupos_buscar_bar"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

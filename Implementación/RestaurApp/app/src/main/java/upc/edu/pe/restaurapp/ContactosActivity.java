@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +22,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
-import org.apache.http.protocol.RequestExpectContinue;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -148,7 +145,8 @@ public class ContactosActivity extends ActionBarActivity {
             this.idsAuxiliarDeUsuarios.add(this.idsUsuariosParaNuevoGrupo.get(i));
             this.idsAuxiliarDeGrupos.add(this.idsDeGrupos.get(i));
         }
-        llenarListaDeUsuariosAgregar();
+        //llenarListaDeUsuariosAgregar();
+        this.lstAmigos.clear();
     }
     public void AgregarGrupos(View v){
         setContentView(R.layout.activity_contactos_grupos_crear);
@@ -279,19 +277,25 @@ public class ContactosActivity extends ActionBarActivity {
         });
     }
     private void actualizarListaDeAmigos() {
-        //Lista
-        ListView lstVwAmigos = (ListView) findViewById(R.id.contactos_amigos_listview);
-        AmigoAdapter amigoAdapter = new AmigoAdapter(this.lstAmigos,this);
-        lstVwAmigos.setAdapter(amigoAdapter);
+        TextView tvMensaje = (TextView) findViewById(R.id.contactos_amigos_tv_mensaje_no_amigos);
+        if(this.lstAmigos.size() == 0) {
+            tvMensaje.setVisibility(View.VISIBLE);
+        } else {
+            tvMensaje.setVisibility(View.GONE);
+            //Lista
+            ListView lstVwAmigos = (ListView) findViewById(R.id.contactos_amigos_listview);
+            AmigoAdapter amigoAdapter = new AmigoAdapter(this.lstAmigos, this);
+            lstVwAmigos.setAdapter(amigoAdapter);
 
-        //Listener
-        lstVwAmigos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Usuario usuario = (Usuario) parent.getItemAtPosition(position);
-                Toast.makeText(ContactosActivity.this, usuario.getEmail(), Toast.LENGTH_SHORT).show();
-            }
-        });
+            //Listener
+            lstVwAmigos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Usuario usuario = (Usuario) parent.getItemAtPosition(position);
+                    Toast.makeText(ContactosActivity.this, usuario.getEmail(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     public void llenarListaDeGrupos(){
@@ -344,20 +348,26 @@ public class ContactosActivity extends ActionBarActivity {
         });
     }
     private void actualizarListaDeGrupos() {
-        //Lista
-        ListView lstVwGrupos = (ListView) findViewById(R.id.contactos_grupos_listview);
-        GrupoAdapter grupoAdapter = new GrupoAdapter(lstGrupos,this);
-        lstVwGrupos.setAdapter(grupoAdapter);
+        TextView tvMensaje = (TextView) findViewById(R.id.contactos_grupos_tv_mensaje_no_grupos);
+        if (this.lstGrupos.size() == 0) {
+            tvMensaje.setVisibility(View.VISIBLE);
+        } else {
+            tvMensaje.setVisibility(View.GONE);
+            //Lista
+            ListView lstVwGrupos = (ListView) findViewById(R.id.contactos_grupos_listview);
+            GrupoAdapter grupoAdapter = new GrupoAdapter(lstGrupos, this);
+            lstVwGrupos.setAdapter(grupoAdapter);
 
-        //Listener
-        lstVwGrupos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Grupo grupo = (Grupo) parent.getItemAtPosition(position);
-                llenarGrupoBean(grupo);
-                irAVisualizarGrupo();
-            }
-        });
+            //Listener
+            lstVwGrupos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Grupo grupo = (Grupo) parent.getItemAtPosition(position);
+                    llenarGrupoBean(grupo);
+                    irAVisualizarGrupo();
+                }
+            });
+        }
     }
 
     public void llenarListaDeCrearGrupos(){
@@ -389,14 +399,15 @@ public class ContactosActivity extends ActionBarActivity {
         Button btngrupos = (Button) findViewById(R.id.footercontactobtngrupos);
         btngrupos.setBackgroundColor(getResources().getColor(R.color.restaurapptheme_color));
         redirigir = 2;
-        llenarListaDeUsuariosAgregar();
+        //llenarListaDeUsuariosAgregar();
+        this.lstAmigos.clear();
     }
     public void llenarListaDeUsuariosAgregar() {
         this.lstAmigos.clear();
         prgDialog.setMessage("Cargando Usuarios...");
         prgDialog.show();
         TextView tvBuscar = (TextView) findViewById(R.id.contactos_usuarios_agregar_tv_buscar);
-        RestaurAppisClient.get("usuarios/util/buscar?buscar=" + tvBuscar.getText().toString() + "&excluir=" + idUsuarioLogueado, null, new AsyncHttpResponseHandler() {
+        RestaurAppisClient.get("usuarios/util/buscar?buscar=" + tvBuscar.getText().toString() + "&excluir=" + idUsuarioLogueado + "&redirigir=" + redirigir, null, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
