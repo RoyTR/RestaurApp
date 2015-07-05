@@ -20,6 +20,17 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="El usuario no tiene grupos :(\n\n\nUn grupo es la mejor manera de recomendación a varios usuarios.\nQue esperas para crear grupos de tus amigos! :D"
+            android:visibility="gone"
+            android:id="@+id/contactos_grupos_tv_mensaje_no_grupos"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <LinearLayout
