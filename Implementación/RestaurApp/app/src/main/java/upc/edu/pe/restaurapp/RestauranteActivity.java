@@ -286,7 +286,7 @@ public class RestauranteActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes/"+IdRestaurante+"/recomendaciones", new AsyncHttpResponseHandler() {
+        client.get("http://52.25.159.62/api/restaurantes/"+IdRestaurante+"/recomendaciones?include=emisor", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -303,15 +303,23 @@ public class RestauranteActivity extends ActionBarActivity {
                         //Convertir JsonAray ---> List<Restaurante>
                         for (int i = 0; i < jArray.length(); i++) {
                             JSONObject jObj = jArray.getJSONObject(i);
+                            JSONObject jobjUsu = jObj.getJSONObject("emisor");
+                            JSONObject jobjUsuData = jobjUsu.getJSONObject("data");
+
                             Comentario comentario = new Comentario();
+
                             comentario.setId(jObj.getInt("id"));
                             comentario.setComentario(jObj.getString("comentario"));
+                            comentario.setNomusuario(jobjUsuData.getString("nombres") + " " + jobjUsuData.getString("apellidos"));
+                            comentario.setFecha(jObj.getString("created_at"));
 
                             llenarListaComentarios(comentario);
                         }
                     }
                     actualizarListaConAdapterComentarios();
                     prgDialog.hide();
+                    if(listaComentarios.isEmpty())
+                        Toast.makeText(getApplicationContext(),"Este restaurante aún no tiene comentarios",Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -339,26 +347,5 @@ public class RestauranteActivity extends ActionBarActivity {
         ComentarioAdapter comentarioAdapter = new ComentarioAdapter(listaComentarios,this);
         lstVwComentarios.setAdapter(comentarioAdapter);
 
-        //Listener
-        /*lstVwRestaurantesRecomRecomendados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Restaurante restaurante = (Restaurante) parent.getItemAtPosition(position);
-
-                Intent intent = new Intent(MainActivity.this, RestauranteActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("IdRestaurante", restaurante.getIdRestaurante());
-                bundle.putString("Nombre", restaurante.getNombre());
-                bundle.putString("Latitud", restaurante.getLatitud());
-                bundle.putString("Longitud", restaurante.getLongitud());
-                bundle.putString("Descripcion", restaurante.getDescripcion());
-                bundle.putInt("Foto_id", restaurante.getFoto_id());
-                bundle.putString("DistritoId", restaurante.getDistrito());
-                bundle.putDouble("PuntuacionTotal", restaurante.getPuntuacionTotal());
-                intent.putExtras(bundle);
-
-                startActivity(intent);
-            }
-        });*/
     }
 }
