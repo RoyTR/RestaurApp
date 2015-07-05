@@ -322,6 +322,9 @@ public class MainActivity extends ActionBarActivity {
                     }
                     actualizarListaConAdapterCerca();
                     prgDialog.hide();
+                    if(lstRestCerca.isEmpty())
+                        Toast.makeText(getApplicationContext(),"No hay Restaurantes Cercanos",Toast.LENGTH_LONG).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -432,6 +435,8 @@ public class MainActivity extends ActionBarActivity {
                     }
                     actualizarListaConAdapterFavoritos();
                     prgDialog.hide();
+                    if(lstRestFavoritos.isEmpty())
+                        Toast.makeText(getApplicationContext(),"No tiene restaurantes favoritos, por favor acceda a Preferencias de Usuario",Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -539,6 +544,8 @@ public class MainActivity extends ActionBarActivity {
                     }
                     actualizarListaConAdapterPreferencias();
                     prgDialog.hide();
+                    if(lstRestPreferencias.isEmpty())
+                        Toast.makeText(getApplicationContext(),"No existen Restaurantes en el TOP",Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -645,6 +652,8 @@ public class MainActivity extends ActionBarActivity {
                     }
                     actualizarListaConAdapterRecomendados();
                     prgDialog.hide();
+                    if(lstRestRecomendados.isEmpty())
+                        Toast.makeText(getApplicationContext(),"No existen Restaurantes en el TOP",Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -50,8 +50,7 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listViewRecomendacionesRecomendados"
-            android:entries="@array/listaPuntajeVacia"/>
+            android:id="@+id/listViewRecomendacionesRecomendados"/>
              />
     </LinearLayout>
 

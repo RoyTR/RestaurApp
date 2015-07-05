@@ -28,7 +28,7 @@
         android:layout_marginTop="5dp"
         android:layout_toLeftOf="@+id/rest_row_right"
         android:layout_toRightOf="@+id/rest_row_left"
-        >
+        android:id="@+id/linearLayout4">
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,6 +82,25 @@
                 android:text="9.8"/>
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/rest_row_food_layout"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/rest_row_left"
+        android:layout_alignRight="@+id/rest_row_right"
+        android:layout_alignEnd="@+id/rest_row_right"
+        android:layout_alignLeft="@+id/rest_row_right"
+        android:layout_alignStart="@+id/rest_row_right"
+        android:layout_below="@+id/rest_row_right">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/rest_row_foodico"
+            android:src="@drawable/fd_ico_carnes" />
     </LinearLayout>
 
 </RelativeLayout>

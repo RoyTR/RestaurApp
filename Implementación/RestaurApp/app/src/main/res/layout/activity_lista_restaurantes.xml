@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="upc.edu.pe.restaurapp.ListaRestaurantesActivity"
-    android:id="@+id/lst_restaurantes_main_layout">
+    android:id="@+id/lst_restaurantes_main_layout"
+    android:background="@color/colorBlanco">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -38,8 +39,7 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lst_restaurantes_list_view"
-            android:entries="@array/listaRestaurantesVacia"/>
+            android:id="@+id/lst_restaurantes_list_view"/>
             />
 
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -55,6 +56,7 @@ public class RestauranteAdapter extends BaseAdapter {
         TextView Nombre = (TextView) convertView.findViewById(R.id.restaurantelst_nombre);
         TextView Descripcion = (TextView) convertView.findViewById(R.id.restaurantelst_descripcion);
         TextView Puntuacion = (TextView) convertView.findViewById(R.id.restaurantelst_puntuacion);
+        ImageView IconoComida = (ImageView) convertView.findViewById(R.id.rest_row_foodico);
 
         Restaurante restaurante = restaurantes.get(position);
 
