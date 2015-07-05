@@ -1,8 +1,8 @@
 package upc.edu.pe.restaurapp;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,8 +88,8 @@ public class LoginMainActivityFragment extends Fragment {
         mProfileTracker.startTracking();
     }
 
-    public void displayWelcomeMessage(Profile profile){
-        if(profile != null)
+    public void displayWelcomeMessage(Profile profile) {
+        if (profile != null)
             mTextDetails.setText("Bienvenido " + profile.getName() + profile.getId());
     }
 

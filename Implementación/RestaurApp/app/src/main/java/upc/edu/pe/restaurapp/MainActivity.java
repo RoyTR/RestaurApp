@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -53,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
     final List<Restaurante> lstRestPreferencias = new ArrayList<Restaurante>();
     final List<Restaurante> lstRestRecomendados = new ArrayList<Restaurante>();
     GoogleMap mapa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,6 +195,12 @@ public class MainActivity extends ActionBarActivity {
         //Establecer tipos de mapa
         mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mapa.setMyLocationEnabled(true);
+        mapa.getUiSettings().setZoomControlsEnabled(true);
+
+        LatLng coordinate = new LatLng(-12.0459426, -77.0305473);
+        CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 17);
+        mapa.animateCamera(yourLocation);
+
 
         for (int i = 0; i < lstRestCerca.size(); i++) {
             mapa.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(lstRestCerca.get(i).getLatitud()), Double.parseDouble(lstRestCerca.get(i).getLongitud()))).title(lstRestCerca.get(i).getNombre()).snippet(lstRestCerca.get(i).getDescripcion()));
