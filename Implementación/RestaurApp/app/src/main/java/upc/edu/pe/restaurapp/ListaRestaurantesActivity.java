@@ -150,6 +150,8 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
                     Bundle bundle = getIntent().getExtras();
                     bundle.remove("distritoId");
                     prgDialog.hide();
+                    if(lstRestaurantes.isEmpty())
+                        Toast.makeText(getApplicationContext(),"Este distrito aun no tiene restaurantes registrados",Toast.LENGTH_LONG).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -216,6 +218,8 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
                     Bundle bundle = getIntent().getExtras();
                     bundle.remove("categoriaId");
                     prgDialog.hide();
+                    if(lstRestaurantes.isEmpty())
+                        Toast.makeText(getApplicationContext(),"Esta Categoría aun no tiene restaurantes registrados",Toast.LENGTH_LONG).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
