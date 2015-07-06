@@ -389,12 +389,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Postear en Facebook"
-            android:background="@color/colorFacebook"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Enviar Recomendacion"
             android:id="@+id/restaurante_btn_enviar_recomend"
             android:onClick="recomendarRestaurante"
