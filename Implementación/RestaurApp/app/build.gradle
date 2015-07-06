@@ -1,17 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "22.0.0"
-
-    repositories{
-        mavenCentral()
-    }
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "upc.edu.pe.restaurapp"
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -24,13 +20,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
-
     //NUEVO
-    compile 'com.facebook.android:facebook-android-sdk:4.1.0'
     compile 'com.loopj.android:android-async-http:1.4.5'
     compile 'com.andreabaccega:android-form-edittext:1.1.0@aar'
     compile 'com.google.android.gms:play-services:7.5.0'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile project(':facebook')
 }
