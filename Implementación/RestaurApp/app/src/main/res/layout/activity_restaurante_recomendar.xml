@@ -290,7 +290,6 @@
                     android:text="Contactos"/>
             </RadioGroup>
         </LinearLayout>-->
-
     </RelativeLayout>
 
 
@@ -302,17 +301,15 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
+        <com.facebook.share.widget.ShareButton
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="Recomendar"
             android:layout_weight="1"
-            android:text="Postear en Facebook"
-            android:background="@color/colorFacebook"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Enviar Recomendacion"
             android:id="@+id/restaurante_btn_enviar_recomend"
             android:onClick="recomendarRestaurante"
             android:background="@color/restaurapptheme_color"/>

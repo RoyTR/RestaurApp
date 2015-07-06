@@ -5,21 +5,21 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -34,7 +34,6 @@ import java.util.List;
 
 import upc.edu.pe.restaurapp.Adapter.ComentarioAdapter;
 import upc.edu.pe.restaurapp.Entidades.Comentario;
-import upc.edu.pe.restaurapp.Entidades.Restaurante;
 import upc.edu.pe.restaurapp.Utilitario.Validar;
 
 
@@ -53,7 +52,7 @@ public class RestauranteActivity extends ActionBarActivity {
     List<Comentario> listaComentarios = new ArrayList<Comentario>();
     public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES";
     public Integer idUsuarioLogueado;
-
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +143,8 @@ public class RestauranteActivity extends ActionBarActivity {
     }
 
     public void irRecomendar(View v){
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_restaurante_recomendar);
         this.recomendacion_grupoId = 0;
 

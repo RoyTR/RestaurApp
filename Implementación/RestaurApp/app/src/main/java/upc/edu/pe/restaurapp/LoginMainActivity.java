@@ -63,6 +63,7 @@ public class LoginMainActivity extends Activity {
                 );
 
                 FacebookId = loginResult.getAccessToken().getUserId();
+               // setContentView(R.layout.activity_lista_restaurantes);
             }
 
 
