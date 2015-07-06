@@ -1,7 +1,55 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment"
-    android:name="upc.edu.pe.restaurapp.LoginMainActivityFragment"
-    tools:layout="@layout/fragment_login_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:background="@color/restaurapptheme_color"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="197dp"
+        android:layout_height="132dp"
+        android:id="@+id/imageView2"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:src="@drawable/restaurapplogoicon"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/info"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textSize="18sp"
+        />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="232dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:layout_width="232dp"
+        android:layout_height="36dp"
+        android:text="Soy Nuevo en RestaurApp"
+        android:id="@+id/button2"
+        android:onClick="Registro"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape"
+        android:textSize="15dp" />
+
+    <Button
+        android:layout_width="232dp"
+        android:layout_height="36dp"
+        android:text="Soy Usuario de RestaurApp"
+        android:id="@+id/button3"
+        android:onClick="Login"
+        android:background="@drawable/shape"
+        android:textSize="15dp"
+        android:layout_marginBottom="20dp" />
+
+</LinearLayout>
