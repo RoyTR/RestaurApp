@@ -24,7 +24,9 @@ public class LoginMainActivity extends Activity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private ProfileTracker profileTracker;
-    public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES" ;
+    private String FacebookId;
+    private String Nombre;
+    private String Apellidos;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,11 @@ public class LoginMainActivity extends Activity {
                     Profile currentProfile) {
 
                 if(currentProfile != null)
-                    info.setText(currentProfile.getName() + "-" + currentProfile.getName());
+                {
+                    FacebookId = currentProfile.getId();
+                    Nombre = currentProfile.getFirstName();
+                    Apellidos = currentProfile.getLastName();
+                }
             }
         };
 
@@ -52,9 +58,11 @@ public class LoginMainActivity extends Activity {
             public void onSuccess(LoginResult loginResult) {
 
                 info.setText(
-                        "User ID: "
+                        "PRUEBA BORRAR LUEGO - User ID: "
                                 + loginResult.getAccessToken().getUserId()
                 );
+
+                FacebookId = loginResult.getAccessToken().getUserId();
             }
 
 
