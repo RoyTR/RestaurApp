@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="El usuario no tiene amigos :(\n\n\nNo esperes más y empieza a agregar amigos!"
+            android:text="Aun no tienes amigos agregados :(\n\n\nQue esperas para agregar algunos!"
             android:visibility="gone"
             android:id="@+id/contactos_amigos_tv_mensaje_no_amigos"
             android:layout_alignParentTop="true"

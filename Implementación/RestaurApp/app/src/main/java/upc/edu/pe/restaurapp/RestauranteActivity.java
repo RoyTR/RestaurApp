@@ -3,16 +3,22 @@ package upc.edu.pe.restaurapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
@@ -29,12 +35,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import upc.edu.pe.restaurapp.Adapter.ComentarioAdapter;
 import upc.edu.pe.restaurapp.Entidades.Comentario;
 import upc.edu.pe.restaurapp.Entidades.Restaurante;
+import upc.edu.pe.restaurapp.Servicios.RestaurAppisClient;
 import upc.edu.pe.restaurapp.Utilitario.Validar;
 
 
@@ -53,6 +63,17 @@ public class RestauranteActivity extends ActionBarActivity {
     List<Comentario> listaComentarios = new ArrayList<Comentario>();
     public static final String RESTAURAPP_PREFERENCES = "RESTAURAPP_PREFERENCES";
     public Integer idUsuarioLogueado;
+    ImageView ImageView1;
+    ImageView ImageView2;
+    ImageView ImageView3;
+    Button Cancel1;
+    Button Cancel2;
+    Button Cancel3;
+    int CAMERA_PIC_REQUEST = 1337;
+    int aux;
+    public Uri fileUri1;
+    public Uri fileUri2;
+    public Uri fileUri3;
 
 
     @Override
@@ -178,6 +199,71 @@ public class RestauranteActivity extends ActionBarActivity {
                 // something
             }
         });
+
+        ImageView1 =(ImageView) findViewById(R.id.restaurante_recomendacion_foto_img1);
+        ImageView1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                aux = 1;
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                fileUri1 = getOutputMediaFileUri();
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri1);
+                startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+            }
+        });
+        Cancel1 = (Button) findViewById(R.id.restaurante_recomendacion_foto_btn1);
+        Cancel1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView1.setImageResource(R.drawable.plus);
+                EliminarFile(fileUri1);
+                fileUri1 = null;
+            }
+        });
+
+        ImageView2 =(ImageView) findViewById(R.id.restaurante_recomendacion_foto_img2);
+        ImageView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                aux = 2;
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                fileUri2 = getOutputMediaFileUri();
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri2);
+                startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+            }
+        });
+        Cancel2 = (Button) findViewById(R.id.restaurante_recomendacion_foto_btn2);
+        Cancel2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView2.setImageResource(R.drawable.plus);
+                EliminarFile(fileUri2);
+                fileUri2 = null;
+            }
+        });
+
+        ImageView3 =(ImageView) findViewById(R.id.restaurante_recomendacion_foto_img3);
+        ImageView3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                aux = 3;
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                fileUri3 = getOutputMediaFileUri();
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri3);
+                startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+            }
+        });
+        Cancel3 = (Button) findViewById(R.id.restaurante_recomendacion_foto_btn3);
+        Cancel3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView3.setImageResource(R.drawable.plus);
+                EliminarFile(fileUri3);
+                fileUri3 = null;
+            }
+        });
     }
 
     public void AbrirCamara(View v)
@@ -196,6 +282,21 @@ public class RestauranteActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if( resultCode == RESULT_OK)
+        {
+            if( requestCode == CAMERA_PIC_REQUEST) {
+                if (aux == 1) {
+                    ImageView1.setImageBitmap(getThumbnailBitmap(fileUri1.getPath(), 50));
+                }
+                if (aux == 2) {
+                    ImageView2.setImageBitmap(getThumbnailBitmap(fileUri2.getPath(), 50));
+                }
+                if (aux == 3) {
+                    ImageView3.setImageBitmap(getThumbnailBitmap(fileUri3.getPath(), 50));
+                }
+            }
+        }
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if(data == null)
@@ -213,6 +314,26 @@ public class RestauranteActivity extends ActionBarActivity {
 
     public void recomendarRestaurante(View v)
     {
+        final File file1;
+        final File file2;
+        final File file3;
+        final int auxIdUsuario = this.idUsuarioLogueado;
+        if(this.fileUri1 != null) {
+            file1 = new File(this.fileUri1.getPath());
+        } else {
+            file1 = null;
+        }
+        if(this.fileUri2 != null) {
+            file2 = new File(this.fileUri2.getPath());
+        } else {
+            file2 = null;
+        }
+        if(this.fileUri3 != null) {
+            file3 = new File(this.fileUri3.getPath());
+        } else {
+            file3 = null;
+        }
+
         TextView seekBarValue = (TextView)findViewById(R.id.restaurante_txtvw_seekbar_valor);
         FormEditText  comentarioET = (FormEditText) findViewById(R.id.restaurante_rec_comentarios);
         FormEditText[] allFields = {comentarioET};
@@ -245,18 +366,49 @@ public class RestauranteActivity extends ActionBarActivity {
                     String response = new String(responseBody);
                     try {
                         JSONObject obj = new JSONObject(response);
-                        //JSONObject obj2 = obj.getJSONObject("data");
 
                         //TODO: revisar manejo del error
                         if (response.contains("error")) {
                             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Recomendacion Enviada!", Toast.LENGTH_LONG).show();
-                        }
-                        Button btnRecomendar = (Button) findViewById(R.id.restaurante_btn_enviar_recomend);
-                        btnRecomendar.setClickable(false);
-                        prgDialog.hide();
+                            int idRecomendacion = obj.getJSONObject("data").getInt("id");
+                            RequestParams requestParams = new RequestParams();
+                            try {
+                                if(file1 != null) {
+                                    requestParams.put("file1", file1);
+                                }
+                                if(file2 != null) {
+                                    requestParams.put("file2", file2);
+                                }
+                                if(file3 != null) {
+                                    requestParams.put("file3", file3);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            requestParams.put("recomendacion_id", idRecomendacion);
+                            requestParams.put("created_by", auxIdUsuario);
 
+                            prgDialog.hide();
+                            prgDialog.show();
+                            RestaurAppisClient.post("recomendaciones/fotos/crearAgregarFotos", requestParams, new AsyncHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                    Toast.makeText(getApplicationContext(), "Recomendacion Enviada!", Toast.LENGTH_LONG).show();
+                                    Button btnRecomendar = (Button) findViewById(R.id.restaurante_btn_enviar_recomend);
+                                    btnRecomendar.setClickable(false);
+                                    prgDialog.hide();
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                    Toast.makeText(getApplicationContext(), "Recomendacion Enviada!", Toast.LENGTH_LONG).show();
+                                    Button btnRecomendar = (Button) findViewById(R.id.restaurante_btn_enviar_recomend);
+                                    btnRecomendar.setClickable(false);
+                                    prgDialog.hide();
+                                }
+                            });
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -347,5 +499,48 @@ public class RestauranteActivity extends ActionBarActivity {
         ComentarioAdapter comentarioAdapter = new ComentarioAdapter(listaComentarios,this);
         lstVwComentarios.setAdapter(comentarioAdapter);
 
+    }
+
+    private Bitmap getThumbnailBitmap(String path, int thumbnailSize) {
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(path, bounds);
+        if ((bounds.outWidth == -1) || (bounds.outHeight == -1)) {
+            return null;
+        }
+        int originalSize = (bounds.outHeight > bounds.outWidth) ? bounds.outHeight
+                : bounds.outWidth;
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inSampleSize = originalSize / thumbnailSize;
+        return BitmapFactory.decodeFile(path, opts);
+    }
+
+    private static Uri getOutputMediaFileUri(){
+        return Uri.fromFile(getOutputMediaFile());
+    }
+
+    private static File getOutputMediaFile(){
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "RestaurApp");
+
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("RestaurApp", "failed to create directory");
+                return null;
+            }
+        }
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                "IMG_"+ timeStamp + ".png");
+
+        return mediaFile;
+    }
+
+    private void EliminarFile(Uri uriFile){
+        if(uriFile != null) {
+            File file = new File(uriFile.getPath());
+            file.delete();
+        }
     }
 }
