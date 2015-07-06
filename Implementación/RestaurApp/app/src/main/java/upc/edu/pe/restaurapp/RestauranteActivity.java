@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -80,6 +82,9 @@ public class RestauranteActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurante_ver);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         prgDialog = new ProgressDialog(this);
         SharedPreferences shared = getSharedPreferences(RESTAURAPP_PREFERENCES, MODE_PRIVATE);
@@ -464,6 +469,9 @@ public class RestauranteActivity extends ActionBarActivity {
                             comentario.setComentario(jObj.getString("comentario"));
                             comentario.setNomusuario(jobjUsuData.getString("nombres") + " " + jobjUsuData.getString("apellidos"));
                             comentario.setFecha(jObj.getString("created_at"));
+                            comentario.setPuntuacion(jObj.getString("puntuacion"));
+                            comentario.setRestaurante_id(jObj.getInt("restaurante_id"));
+                            comentario.setGrupo_id(jObj.getInt("grupo_id"));
 
                             llenarListaComentarios(comentario);
                         }
@@ -498,6 +506,23 @@ public class RestauranteActivity extends ActionBarActivity {
         ListView lstVwComentarios = (ListView) findViewById(R.id.restaurante_lista_comentarios);
         ComentarioAdapter comentarioAdapter = new ComentarioAdapter(listaComentarios,this);
         lstVwComentarios.setAdapter(comentarioAdapter);
+        lstVwComentarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Comentario comentario = (Comentario)parent.getItemAtPosition(position);
+                Intent intent = new Intent(RestauranteActivity.this, RecomendacionVerActivity.class);
+                intent.putExtra("Nombre", Nombre);
+                intent.putExtra("Descripcion", Descripcion);
+                intent.putExtra("PuntuacionTotal", PuntuacionTotal);
+                intent.putExtra("id", comentario.getId());
+                intent.putExtra("comentario", comentario.getComentario());
+                intent.putExtra("nomusuario", comentario.getNomusuario());
+                intent.putExtra("fecha", comentario.getFecha());
+                intent.putExtra("puntuacion", comentario.getPuntuacion());
+                intent.putExtra("grupo_id", comentario.getGrupo_id());
+                startActivity(intent);
+            }
+        });
 
     }
 

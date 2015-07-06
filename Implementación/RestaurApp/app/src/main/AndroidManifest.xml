@@ -121,7 +121,18 @@
         </activity>
         <activity
             android:name=".RecomendacionesParaMiActivity"
-            android:label="@string/title_activity_recomendaciones_para_mi" >
+            android:label="@string/title_activity_recomendaciones_para_mi"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".RecomendacionVerActivity"
+            android:label="@string/title_activity_recomendacion_ver"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ImageFotoActivity"
+            android:label="@string/title_activity_image_foto"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

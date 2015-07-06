@@ -108,5 +108,7 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_lista_restaurantes">ListaRestaurantesActivity</string>
     <string name="title_activity_recomendaciones_para_mi">RecomendacionesParaMiActivity</string>
+    <string name="title_activity_recomendacion_ver">RecomendacionVerActivity</string>
+    <string name="title_activity_image_foto">RecomendacionVerImageFotoActivity</string>
 
 </resources>

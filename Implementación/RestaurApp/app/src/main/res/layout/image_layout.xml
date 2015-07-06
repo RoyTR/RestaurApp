@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <!--ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/restaurante_recomendacion_ver_foto_normal"
+        android:src="@drawable/loading"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true" /-->
+    <!--Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="OK" android:onClick="dismissListener"/-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurante_recomendacion_ver_foto_normal"
+        android:src="@drawable/loading"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CARGANDO..."
+        android:id="@+id/textView123456"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/restaurante_recomendacion_ver_foto_normal"
+        android:layout_toEndOf="@+id/restaurante_recomendacion_ver_foto_normal" />
+</RelativeLayout>

@@ -11,6 +11,10 @@ public class Comentario {
     private String nomusuario;
     private String fecha;
 
+    private String puntuacion;
+    private Integer restaurante_id;
+    private Integer grupo_id;
+
     public String getNomusuario() {
         return nomusuario;
     }
@@ -43,5 +47,27 @@ public class Comentario {
         this.id = id;
     }
 
+    public String getPuntuacion() {
+        return puntuacion;
+    }
 
+    public void setPuntuacion(String puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
+    public Integer getGrupo_id() {
+        return grupo_id;
+    }
+
+    public void setGrupo_id(Integer grupo_id) {
+        this.grupo_id = grupo_id;
+    }
+
+    public Integer getRestaurante_id() {
+        return restaurante_id;
+    }
+
+    public void setRestaurante_id(Integer restaurante_id) {
+        this.restaurante_id = restaurante_id;
+    }
 }
