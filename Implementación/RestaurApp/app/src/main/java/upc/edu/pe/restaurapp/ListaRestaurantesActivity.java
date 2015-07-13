@@ -113,7 +113,7 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/distritos/"+distritoId.toString()+"/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/distritos/"+distritoId.toString()+"/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -181,7 +181,7 @@ public class ListaRestaurantesActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/categorias/"+categoriaId.toString()+"/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/categorias/"+categoriaId.toString()+"/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);

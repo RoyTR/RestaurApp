@@ -360,7 +360,7 @@ public class RestauranteActivity extends ActionBarActivity {
             params.put("grupo_id", this.recomendacion_grupoId);
             params.put("created_by", idUsuarioLogueado);
 
-            client.post("http://52.25.159.62/api/recomendaciones/create", params, new AsyncHttpResponseHandler() {
+            client.post("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/recomendaciones/create", params, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     String response = new String(responseBody);
@@ -438,7 +438,7 @@ public class RestauranteActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes/"+IdRestaurante+"/recomendaciones?include=emisor", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/restaurantes/"+IdRestaurante+"/recomendaciones?include=emisor", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);

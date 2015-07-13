@@ -294,7 +294,7 @@ public class MainActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/restaurantes?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -411,7 +411,7 @@ public class MainActivity extends ActionBarActivity {
         sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
         Integer usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
 
-        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId+"/favoritos?include=main_category", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/usuarios/"+usuarioActualId+"/favoritos?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -523,7 +523,7 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes/toprecomendados?include=main_category", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/restaurantes/toprecomendados?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -636,7 +636,7 @@ public class MainActivity extends ActionBarActivity {
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
 
-        client.get("http://52.25.159.62/api/restaurantes/toppuntuados?include=main_category", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/restaurantes/toppuntuados?include=main_category", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -746,7 +746,7 @@ public class MainActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/categorias", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/categorias", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -824,7 +824,7 @@ public class MainActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/distritos", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/distritos", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);

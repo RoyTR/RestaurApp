@@ -117,7 +117,7 @@ public class AmigosGruposActivity extends ActionBarActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         prgDialog.setMessage("Please wait...");
         prgDialog.show();
-        client.get("http://52.25.159.62/api/usuarios/"+idUsuarioLogueado.toString()+"/amigosgrupos", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/usuarios/"+idUsuarioLogueado.toString()+"/amigosgrupos", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);

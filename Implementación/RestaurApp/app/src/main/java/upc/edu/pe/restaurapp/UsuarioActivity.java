@@ -109,7 +109,7 @@ public class UsuarioActivity extends ActionBarActivity {
         //Llamada a nuestro servicio
         AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get("http://52.25.159.62/api/categorias", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/categorias", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
@@ -184,7 +184,7 @@ public class UsuarioActivity extends ActionBarActivity {
 
         /*----------Llamada a nuestro servicio---------*/
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://52.25.159.62/api/usuarios/"+usuarioActualId.toString(), params, new AsyncHttpResponseHandler() {
+        client.post("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/usuarios/"+usuarioActualId.toString(), params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
@@ -252,7 +252,7 @@ public class UsuarioActivity extends ActionBarActivity {
         //api
         prgDialog.setMessage("Guardando..");
         prgDialog.show();
-        client.post("http://52.25.159.62/api/preferencias/agregar", params, new AsyncHttpResponseHandler() {
+        client.post("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/preferencias/agregar", params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
@@ -282,7 +282,7 @@ public class UsuarioActivity extends ActionBarActivity {
         //api
         prgDialog.setMessage("Guardando..");
         prgDialog.show();
-        client.post("http://52.25.159.62/api/preferencias/eliminar?usuario_id="+usuario_id+"&categoria_id="+categoria_id,  new AsyncHttpResponseHandler() {
+        client.post("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/preferencias/eliminar?usuario_id="+usuario_id+"&categoria_id="+categoria_id,  new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
@@ -351,7 +351,7 @@ public class UsuarioActivity extends ActionBarActivity {
 
         //Llamada a nuestro servicio
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId.toString()+"/preferencias?include=detail", null, new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/usuarios/"+usuarioActualId.toString()+"/preferencias?include=detail", null, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);

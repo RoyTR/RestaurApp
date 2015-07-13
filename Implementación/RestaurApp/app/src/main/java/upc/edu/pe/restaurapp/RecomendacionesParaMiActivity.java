@@ -102,7 +102,7 @@ public class RecomendacionesParaMiActivity extends ActionBarActivity {
         sharedpreferences = getSharedPreferences(RESTAURAPP_PREFERENCES, Context.MODE_PRIVATE);
         usuarioActualId = sharedpreferences.getInt("USUARIO_ACTUAL_ID",0);
 
-        client.get("http://52.25.159.62/api/usuarios/"+usuarioActualId+"/recomendacionesparami?include=restaurante,emisor", new AsyncHttpResponseHandler() {
+        client.get("http://"+getApplicationContext().getResources().getString(R.string.aws_elastic_ip)+"/api/usuarios/"+usuarioActualId+"/recomendacionesparami?include=restaurante,emisor", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);

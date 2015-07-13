@@ -6,6 +6,7 @@ import com.loopj.android.http.*;
  * Created by Roy on 08/06/2015.
  */
 public class RestaurAppisClient {
+    //52.25.159.62
     private static final String BASE_URL = "http://ec2-52-25-159-62.us-west-2.compute.amazonaws.com/api/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
